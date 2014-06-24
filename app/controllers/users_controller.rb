@@ -25,6 +25,19 @@ class UsersController < ApplicationController
       redirect_to user_url(current_user)
     end
   end
+  
+  def dashboard
+    if signed_in?
+      
+      render :dashboard
+    else
+      render 'static_pages/home'
+    end
+    
+  end
+
+
+
 
   private
 

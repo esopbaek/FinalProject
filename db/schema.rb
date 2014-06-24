@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130814223245) do
+ActiveRecord::Schema.define(version: 20140624155851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "foods", force: true do |t|
+    t.string   "name",                        null: false
+    t.integer  "calories",        default: 0
+    t.integer  "total_fat",       default: 0
+    t.integer  "saturated",       default: 0
+    t.integer  "polyunsaturated", default: 0
+    t.integer  "monounsaturated", default: 0
+    t.integer  "trans",           default: 0
+    t.integer  "cholesterol",     default: 0
+    t.integer  "sodium",          default: 0
+    t.integer  "potassium",       default: 0
+    t.integer  "carbs",           default: 0
+    t.integer  "fiber",           default: 0
+    t.integer  "vitamin_a",       default: 0
+    t.integer  "vitamin_c",       default: 0
+    t.integer  "calcium",         default: 0
+    t.integer  "iron",            default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username",        null: false
