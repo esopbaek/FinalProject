@@ -6,7 +6,7 @@
 <table>
   <thead>
   </thead>  
-    <tr>
+    <tr class="heading">
       <th class="meal">Breakfast</th>
       <th class="macro">Calories</th>
       <th class="macro">Carbs</th>
@@ -19,33 +19,97 @@
   <tbody>
     <tr>
       <td class="links">
+        <a href="#">Add Food</a>
       </td>
-      <td class="macro">Calories</td>
-      <td class="macro">Carbs</td>
-      <td class="macro">Fat</td>
-      <td class="macro">Protein</td>
-      <td class="macro">Sodium</td>
-      <td class="macro">Sugar</td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="delete"></td>
+    </tr>
+    
+    <tr class="heading">
+      <td class="meal">Lunch</td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
       <td class="delete"></td>
     </tr>
     
     <tr>
-      <td class="meal">Lunch</td>
-      <td class="macro">Calories</td>
-      <td class="macro">Carbs</td>
-      <td class="macro">Fat</td>
-      <td class="macro">Protein</td>
-      <td class="macro">Sodium</td>
-      <td class="macro">Sugar</td>
+      <td class="links">
+        <a href="#">Add Food</a>
+      </td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
       <td class="delete"></td>
     </tr>
+    
+    <tr class="heading">
+      <td class="meal">Dinner</td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="delete"></td>
+    </tr>
+    
+    <tr>
+      <td class="links">
+        <a href="#">Add Food</a>
+      </td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="delete"></td>
+    </tr>
+    
+    <tr class="heading">
+      <td class="meal">Snack</td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="delete"></td>
+    </tr>
+    
+    <tr>
+      <td class="links">
+        <a href="#">Add Food</a>
+      </td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="delete"></td>
+    </tr>
+    
+  
   </tbody>
 </table>  
 </div>
 
 <style>
 
-body, table, thead, tfoot, tbody, tr, td {
+body, table, thead, tfoot, tbody, tr, td, th {
   margin: 0;
   padding: 0;
   border: 0;
@@ -63,14 +127,15 @@ body, table, thead, tfoot, tbody, tr, td {
 .table {
   border: 1px solid black;
   width: 690px;
-  margin: 0 auto;
+  margin: 20px auto;
 }
+
 
 th.macro {
   background: RGB(14, 64, 113);
   color: white;
   font-size: 12px;
-  padding: 10px;
+  padding: 15px 10px;
   font-family: sans-serif;
 }
 
@@ -80,6 +145,12 @@ th.macro {
   font-size: 20px;
   font-family: sans-serif;
   width: 300px;
+  font-weight: bold;
 }
+
+th, td {
+  border: 1px solid black;
+}
+
 
 </style>
