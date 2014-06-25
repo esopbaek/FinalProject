@@ -49,8 +49,9 @@
   </tr>
   
   <tr>
+    <% burned = @profile.workouts_per_week * @profile.mins_per_workout * 8 %>
     <td><strong>Calories Burned/Week</strong></td>
-    <td class="red">  Calories / Week</td>
+    <td class="red"><%= burned %> Calories / Week</td>
   </tr>
  
   <tr>

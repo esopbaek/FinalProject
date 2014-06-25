@@ -1,0 +1,92 @@
+<% method = (@profile.persisted? ? "put" : "post") %>
+
+<style>
+label {
+  font-weight: bold;
+}
+
+button {
+  border: 1px solid black;
+  color: green;
+}
+</style>
+<h2>Create Your Free Account - Step 2 of 3</h2>
+
+<form action="/diet_profile", method="post">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+  <input
+     name="_method"
+     type="hidden"
+     value="<%= method %>">
+     
+<label>Current Weight:</label>
+<input type="text" name="profile[current_weight]" value="<%= @profile.current_weight %>">lbs
+<br>
+
+<label>Goal Weight:</label>
+<input type="text" name="profile[goal_weight]" value="<%= @profile.goal_weight %>">lbs
+<br>
+
+<label>Height:</label>
+  <input type="text" name="profile[height_ft]" value="<%= @profile.height_ft %>">ft
+  <input type="text" name="profile[height_in]" value="<%= @profile.height_in %>">in
+<br>
+
+<label>Gender:</label>
+<input type="radio" name="profile[gender]" value="male" checked>Male
+<input type="radio" name="profile[gender]" value="female">Female
+<br>
+
+<label>Date Of Birth:</label>
+<input type="date" name="profile[d_o_b]" value="<%= @profile.d_o_b %>"
+<br>
+
+<p><strong>How would you describe your normal daily activities?</strong></p>
+<input type="radio" name="profile[activity_level]" value="Sedentary" checked>
+Sedentary: Spend most of the day sitting (e.g. bank teller, desk job)
+<br>
+
+<input type="radio" name="profile[activity_level]" value="Lightly Active">
+Lightly Active: Spend a good part of the day on your feet (e.g. teacher, salesman)
+<br>
+
+<input type="radio" name="profile[activity_level]" value="Active">
+Active: Spend a good part of the day doing some physical activity (e.g. waitress, mailman)
+<br>
+
+<input type="radio" name="profile[activity_level]" value="Very Active">
+Very Active: Spend most of the day doing heavy physical activity (e.g. bike messenger, carpenter)
+<br>
+<br>
+
+<label>How many times a week do you plan on exercising?</label>
+<select name="profile[workouts_per_week]">
+  <option value="0">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+</select>workouts/week
+<input type="text" name="profile[mins_per_workout]" value="<%= @profile.mins_per_workout %>">min./workout
+<br>
+<label>What is your goal?</label>
+<select name="profile[goal_rate]">
+  <option value="Lose 2 pounds per week">Lose 2 pounds per week</option>
+  <option value="Lose 1.5 pounds per week">Lose 1.5 pounds per week</option>
+  <option value="Lose 1 pound per week">Lose 1 pound per week</option>
+  <option value="Lose 0.5 pounds per week">Lose 0.5 pounds per week</option>
+  <option value="Maintain my current weight">Maintain my current weight</option>
+  <option value="Gain 0.5 pounds per week">Gain 0.5 pounds per week</option>
+  <option value="Gain 1 pound per week">Gain 1 pound per week</option>
+</select>
+<br>
+<br>
+
+<input type="submit" value="Save and Continue">
+</form>

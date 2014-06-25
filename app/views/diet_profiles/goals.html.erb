@@ -1,7 +1,7 @@
 <table class="nutrition-goals">
   <tr>
     <td>Nutrition Goals</td>
-    <td>Target</td>
+    <td>Goals</td>
   </tr>
   
   <tr>
@@ -31,7 +31,7 @@
 <table class="fitness-goals">
   <tr>
     <td>Fitness Goals</td>
-    <td>Target</td>
+    <td>Goals</td>
   </tr>
   
   <tr>
@@ -50,3 +50,41 @@
   </tr>
   
 </table>
+
+<table class="diet-profile">
+  <tr>
+    <td>Fitness Goals</td>
+    <td>Target</td>
+  </tr>
+  
+  <tr>
+    <td><strong>Calories Burned</strong></td>
+  </tr>
+ 
+  <tr>
+    <td>From Normal Daily Activity</td>
+    <td><%= @BMR  %> cal/day</td>
+  </tr>
+  
+  <tr>
+    <td><strong>Net Calories Consumed*</strong></td>
+  </tr>
+  
+  <tr>
+    <td>Your Daily Goal</td>
+    <td>TBD</td>
+  </tr>
+  
+  <tr>
+    <td>Daily Calorie Defecit</td>
+    <td>TBD</td>
+  </tr>
+  
+  <tr>
+    <td>Projected Weight Loss</td>
+    <td>TBD</td>
+  </tr>
+  
+</table>
+
+<a href="<%= edit_diet_profile_url %>">Change Goals</a>

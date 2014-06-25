@@ -51,6 +51,50 @@ class DietProfilesController < ApplicationController
   end
   
   def goals
+    @profile = DietProfile.find(current_user.diet_profile)
+    @progress_date = Date.today + 35
+    
+    @part_1 = (10 * @profile.current_weight * 0.45)
+
+    @height_in_cm = ((@profile.height_ft * 12) + @profile.height_in) * 2.54
+    @part_2 = (6.25 * @height_in_cm)
+
+    @part_3 = 5 * (((Date.today - @profile.d_o_b).to_int)/365)
+    @BMR = @part_1 + @part_2 - @part_3
+
+    if @profile.gender == "male"
+      @BMR = @BMR + 10
+    else
+      @BMR = @BMR - 161
+    end
+    
+    if @profile.activity_level == "Sedentary"
+      @BMR = (@BMR*1.252).to_int
+    elsif @profile.activity_level == "Lightly Active"
+      @BMR = (@BMR*1.3985)
+    elsif @profile.activity_level == "Active"
+      @BMR = (@BMR*1.5974)
+    else
+      @BMR = (@BMR*1.802)
+    end
+    
+    @carbs = (@BMR*0.5/4).to_int
+    @fats = (@BMR*0.3/9).to_int
+    @protein = (@BMR*0.2/4).to_int
+  end
+  
+  def edit
+    @profile = DietProfile.find(current_user.diet_profile)
+  end
+  
+  def update
+    @profile = DietProfile.find(current_user.diet_profile)
+    if @profile.update_attributes(profile_params)
+      redirect_to summary_diet_profile_url
+    else
+      flash.now[:errors] = @profile.errors.full_messages
+      render :edit
+    end
   end
   
   private
