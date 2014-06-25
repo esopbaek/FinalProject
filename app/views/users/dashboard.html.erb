@@ -1,27 +1,81 @@
-<div class="nav">NavBar: Add All Links
+<div class="nav">MY HOME
   <ul>
-    <li><a href="<%= goals_diet_profile_url %>">Goals</a></li>
-    <li><a href="#">Check-in</a></li>
-    <li><a href="#">Profile</a></li>
-    <li><a href="#">My Blog</a></li>
-    <li><a href="#">Friends</a></li>
+    <li class="link"><a href="<%= goals_diet_profile_url %>">Goals</a></li>
+    <li class="link"><a href="#">Check-in</a></li>
+    <li class="link"><a href="#">Profile</a></li>
+    <li class="link"><a href="#">My Blog</a></li>
+    <li class="link"><a href="#">Friends</a></li>
 </div>
 
-<div class="summary">Your Daily Summary
-  <button class="add-food">Add Food</button>
-  <button class="add-exercise">Add Exercise</button>
-  <br>
-  <table>
-  <div class="total"><%= @net_cal - @food.calories + @exercise.calories %></div>
-  <p>calories remaining</p>
-  </table>
-  <p><%= @net_cal %> | </p>
-  <p>Goal | Food - Exercise = Net</p>
+<div class="summary-box">
+  <div class="head">
+      Your Daily Summary
+  </div>
+
+  <div class="summary">
+    <div class="buttons">
+    <a href="<%= diary_foods_url %>" class="add-food">Add Food</a>
+    <a href="#" class="add-exercise">Add Exercise</a>
+    </div>
+    
+    <div class="image-holder"></div>
+    <div class="total"><%= @net_cal - @food_total_cals + @exercise_total_cals %></div><p>CALORIES REMAINING</p>
+  
+      <div class="equation">
+        <div class="value">
+          <span class="num"><%= @net_cal %></span>
+          <span class="desc">Goal</span>
+        </div>
+        <div class="value">
+          <span class="num"><%= @food_total_cals %></span>
+          <span class="desc">Food</span>
+              
+        </div>
+        <div class="symbol">-</div>
+        <div class="value">
+          <span class="num"><%= @exercise_total_cals %></span>
+          <span class="desc">Exercise</span>
+        </div>
+        <div class="symbol">=</div>
+        <div class="value">
+          <span class="num"><%= @food_total_cals - @exercise_total_cals %></span>
+          <span class="desc">Net</span>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div>
+        <p class="progress">TBD lbs lost</p>
+      </div>
+  </div>
 </div>
 
 
 
 <style>
+
+
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.summary-box {
+  margin: 0 200px;
+  height: 400px;
+}
+
+div, span, ul, li, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+}
 
 div {
   margin: 0;
@@ -30,21 +84,96 @@ div {
   font: inherit;
 }
 
-.summary {
-  background: RGB(67, 94, 255);
-  color: white;
-  height: 100%;
+.image-holder  {
+  height: 115px;
+  width: 110px;
+  float: left;
+  margin: 0 15px;
+  border: 2px solid black;
+  background: RGB(224,224,224);
 }
 
 .nav {
-  background: RGB(112, 207, 255);
-  height: 100%;
-  font: white;
+  margin-top: 20px;
+  background: RGB(12, 94, 177);
+  height: 50px;
+  color: white;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.add-food, .add-exercise {
+  float: right;
+  margin: 10px;
+  padding: 12px 17px;
+  border-radius: 4px;
+  border: 1px solid black;
+  font-size: 12px;
+  font-family: sans-serif;
 }
 
 .total {
-  color: RGB(0,255,51);
-  font-size: 30px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  color: RGB(57, 164, 54);
+  font-size: 55px;
+  font-family: sans-serif;
+  font-weight: bold;
 }
+
+.summary {
+  background: RGB(244, 244, 244);
+  color: white;
+  height: 100%;
+  display: block;
+}
+
+.head {
+  margin-top: 30px;
+  padding: 20px;
+  background: RGB(14, 64, 113);
+  color: white;
+  font-family: sans-serif;
+}
+
+.equation {
+  margin-top: 100px;
+  display: block;
+  border: 3px solid black;
+  color: black;
+  height: 30px;
+}
+
+.num, .group {
+  float: left;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.desc {
+  font-size: 13px;
+}
+
+.value, .symbol {
+  float: left;
+}
+
+p {
+  color: black;
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+p.progress {
+  font-size: 20px;
+}
+
+.link {
+  float :left;
+  padding: 6px;
+  list-style-type: none;
+}
+
+
 
 </style>

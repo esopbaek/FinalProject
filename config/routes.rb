@@ -7,5 +7,10 @@ MyApp::Application.routes.draw do
       get :goals
     end
   end
+  resources :foods do
+    collection do
+      get :diary
+    end
+  end
   root to: 'users#dashboard'
 end
