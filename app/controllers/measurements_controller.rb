@@ -5,11 +5,14 @@ class MeasurementsController < ApplicationController
 
   def create
     @measurement = Measurement.new(measurement_params)
+    @measurement.user_id = current_user.id
+    @current_measurements = Measurement.where("name != (?)", "weight")
 
     if @measurement.save
-
+      redirect_to new_measurement_url
     else
-
+      flash.now[:errors] = @measurement.errors.full_messages
+      render :new
     end
   end
 
@@ -23,6 +26,9 @@ class MeasurementsController < ApplicationController
     @measurement = Measurement.find(params[:id])
     @measurement.destroy
     redirect_to new_measurement_url
+  end
+
+  def all
   end
 
   private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625153935) do
+ActiveRecord::Schema.define(version: 20140625202430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,22 @@ ActiveRecord::Schema.define(version: 20140625153935) do
   end
 
   add_index "measurements", ["user_id"], name: "index_measurements_on_user_id", using: :btree
+
+  create_table "social_profiles", force: true do |t|
+    t.integer  "age",                     null: false
+    t.string   "gender",                  null: false
+    t.text     "about_me",   default: ""
+    t.text     "why",        default: ""
+    t.text     "inspir1",    default: ""
+    t.text     "inspir2",    default: ""
+    t.text     "inspir3",    default: ""
+    t.text     "inspir4",    default: ""
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "social_profiles", ["user_id"], name: "index_social_profiles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",        null: false

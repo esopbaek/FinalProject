@@ -1,5 +1,6 @@
 <div class="h3"><h2>Track Additional Measurements</h2></div>
 
+<%= render "layouts/errors" %>
 <div class="add-measurements">
   <table>
     <tr>
@@ -8,16 +9,12 @@
 
     <% @current_measurements.each do |measurement| %>
       <tr>
-        <td>measurement.name</td>
+        <td><%= measurement.name %></td>
         <td><%= button_to "remove", measurement_url(measurement), :method => :delete %></td>
       </tr>
     <% end %>
 
 
-    <tr>
-      <td>abc</td>
-      <td>abc</td>
-    </tr>
   </table>
 
   <div class="add-another-measurement">
@@ -31,7 +28,7 @@
            type="hidden"
            value="<%= form_authenticity_token %>">
         <label>Description:</label>
-          <input type="text">
+          <input type="text" name="measurement[name]" placeholder="(i.e. '%Body Fat')">
     </div>
       <input type="submit" value="Add Measurement">
       <a href="<%= measurements_url %>">Cancel</a>

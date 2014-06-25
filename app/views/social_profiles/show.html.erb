@@ -1,0 +1,73 @@
+<div id="profile-body">
+  <h2><%= current_user.username %>'s profile</h2>
+  <div class="block1">
+    <div class="img">
+    </div>
+
+    <div class="basic-info">
+      <%= current_user.username %><br>
+      <%= @social_profile.age %><br>
+      <%= @social_profile.gender %><br>
+      <a href="<%= edit_social_profile_url %>">Edit Profile</a>
+      <a href="#">Edit Photos</a>
+    </div>
+  </div>
+
+  <div class="block2">
+    <div class="about-me">
+    </div>
+
+    <div class="my-progress">
+      <a href="http://www.myfitnesspal.com/weight-loss-ticker"><img border="0" src="http://tickers.myfitnesspal.com/ticker/show/4082/4948/40824948.png" /></a><p style="text-align:center;width:420px;"><small>Created by MyFitnessPal - Free <a href="http://www.myfitnesspal.com">Calorie Counter</a></small></p>
+    </div>
+  </div>
+
+</div>
+
+<style>
+
+div, h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+div > *{
+  border: 1px solid black;
+}
+
+.profile-body {
+
+}
+
+.block1 {
+  background: RGB(245,245,245);
+  border: 3px solid black;
+  height: 200px;
+
+}
+
+.img {
+  float: left;
+  height: 100px;
+  width: 100px;
+  margin-left: 50px;
+  margin-top: 50px;
+  border: 1px solid red;
+}
+
+.basic-info {
+  float: right;
+}
+.block2 {}
+
+.about-me {
+  float: left;
+}
+.my-progress {
+  float: right;
+}
+
+</style>
+

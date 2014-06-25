@@ -1,27 +1,25 @@
-<%= @profile.attributes %>
-
 <table class="nutrition-goals">
   <tr>
     <td>Nutrition Goals</td>
     <td>Goals</td>
   </tr>
-  
+
   <tr>
-    
+
     <td><strong>Net Calories Consumed*/Day</strong></td>
     <td class="red"><%= @net_cal %> Calories/Day</td>
   </tr>
- 
+
   <tr>
     <td>Carbs/Day</td>
     <td><%= @carbs %> g</td>
   </tr>
-  
+
   <tr>
     <td>Fat/Day</td>
     <td><%= @fats %> g</td>
   </tr>
-  
+
   <tr>
     <td>Protein/Day</td>
     <td><%= @protein %> g</td>
@@ -35,17 +33,17 @@
     <td>Fitness Goals</td>
     <td>Goals</td>
   </tr>
-  
+
   <tr>
     <td><strong>Calories Burned/Week</strong></td>
     <td class="red"><%= @cals_burned %> Calories / Week</td>
   </tr>
- 
+
   <tr>
     <td>Workouts/Week</td>
     <td><%= @profile.workouts_per_week  %> workouts</td>
   </tr>
-  
+
   <tr>
     <td>Minutes/Workout</td>
     <td><%= @profile.mins_per_workout  %> minutes</td>
@@ -58,34 +56,40 @@
     <td>Fitness Goals</td>
     <td>Target</td>
   </tr>
-  
+
   <tr>
     <td><strong>Calories Burned</strong></td>
   </tr>
- 
+
   <tr>
     <td>From Normal Daily Activity</td>
     <td><%= @BMR  %> cal/day</td>
   </tr>
-  
+
   <tr>
     <td><strong>Net Calories Consumed*</strong></td>
   </tr>
-  
+
   <tr>
     <td>Your Daily Goal</td>
     <td><%= @net_cal%> cal/day</td>
   </tr>
-  
+
   <tr>
     <td>Daily Calorie Defecit</td>
-    <td><%= @cal_deficit %> calories</td>
+    <td class="red"><%= @cal_deficit %> calories</td>
   </tr>
-  
+
   <tr>
     <td>Projected Weight Loss</td>
-    <td><%= @projected_loss %></td>
+    <td class="red"><%= @projected_loss %></td>
   </tr>
 </table>
 <br>
 <a href="<%= edit_diet_profile_url %>">Change Goals</a>
+
+<style>
+.red {
+  color: red;
+}
+</style>

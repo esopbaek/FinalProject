@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def calculate_age(diet_profile)
+    (Date.today - diet_profile.d_o_b).to_int/365
+  end
+
   def calculate_BMR(profile)
     part_1 = (10 * profile.current_weight * 0.45)
 
@@ -13,7 +17,7 @@ module ApplicationHelper
     else
       bmr = bmr - 161
     end
-  
+
     if profile.activity_level == "Sedentary"
       bmr = (bmr*1.252).to_int
     elsif profile.activity_level == "Lightly Active"
@@ -25,7 +29,7 @@ module ApplicationHelper
     end
     bmr
   end
-  
+
   def calculate_net_cals(profile)
     net_cal = calculate_BMR(profile)
     if profile.goal_rate == "Lose 2 pounds per week"
@@ -39,13 +43,13 @@ module ApplicationHelper
     elsif profile.goal_rate == "Maintain my current weight"
       net_cal -= 0
     elsif profile.goal_rate == "Gain 0.5 pounds per week"
-      net_cal += 250 
+      net_cal += 250
     else
       net_cal += 500
     end
     net_cal
   end
-  
+
   def calculate_calories_burned(profile)
     (0.04 * (profile.workouts_per_week * profile.mins_per_workout)) * profile.current_weight
   end

@@ -15,9 +15,9 @@
           value="1">
       <input type="text" name="log[unit]">lbs
     </form>
-
-<p>   Last recorded weight: <%= @most_recent_weight.unit %> lbs on <%= @most_recent_weight.created_at.strftime("%d %b. %Y") %></p>
-
+<% if @most_recent_weight %>
+<p>Last recorded weight: <%= @most_recent_weight.unit %> lbs on <%= @most_recent_weight.created_at.strftime("%d %b. %Y") %></p>
+<% end %>
 
 
 
@@ -41,7 +41,7 @@
         <% end %>
 
           <tr>
-            <td colspan="3"><a href="<%= new_measurement_url %>">Track Additional Measurements</a> | <a href="<%= new_measurement_url %>">Track Additional Measurements</a></td>
+            <td colspan="3"><a href="<%= new_measurement_url %>">Track Additional Measurements</a> | <a href="<%= all_measurements_url %>">Edit Previous Entries</a></td>
           </tr>
       </tbody>
     </table>
