@@ -1,4 +1,5 @@
 <% method = (@profile.persisted? ? "put" : "post") %>
+<% header = (@profile.persisted? ? "Update Your Profile" : "Create Your Free Account - Step 2 of 3") %>
 
 <style>
 label {
@@ -10,7 +11,7 @@ button {
   color: green;
 }
 </style>
-<h2>Create Your Free Account - Step 2 of 3</h2>
+<h2><%= header %></h2>
 
 <form action="/diet_profile", method="post">
   <input

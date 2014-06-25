@@ -10,8 +10,15 @@
 <div class="summary">Your Daily Summary
   <button class="add-food">Add Food</button>
   <button class="add-exercise">Add Exercise</button>
-  Goal | Food - Exercise = Net
+  <br>
+  <table>
+  <div class="total"><%= @net_cal - @food.calories + @exercise.calories %></div>
+  <p>calories remaining</p>
+  </table>
+  <p><%= @net_cal %> | </p>
+  <p>Goal | Food - Exercise = Net</p>
 </div>
+
 
 
 <style>
@@ -26,12 +33,18 @@ div {
 .summary {
   background: RGB(67, 94, 255);
   color: white;
+  height: 100%;
 }
 
 .nav {
   background: RGB(112, 207, 255);
   height: 100%;
   font: white;
+}
+
+.total {
+  color: RGB(0,255,51);
+  font-size: 30px;
 }
 
 </style>

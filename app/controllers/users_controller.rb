@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
   before_action :require_signed_in!, :only => [:show]
   before_action :require_signed_out!, :only => [:create, :new]
 
@@ -27,6 +28,14 @@ class UsersController < ApplicationController
   end
   
   def dashboard
+    @profile = current_user.diet_profile
+    @net_cal = calculate_net_cals(@profile)
+    @exercise_total_cals = Exercise.where("created_at > ? AND created_at < ?", 
+                            Date.yesterday, Date.tomorrow)
+                          .sum(:cals_burned)
+    @food_total_cals = Food.where("created_at > ? AND created_at < ?", 
+                        Date.yesterday, Date.tomorrow)
+                      .sum(:calories)
     if signed_in?
       render :dashboard
     else

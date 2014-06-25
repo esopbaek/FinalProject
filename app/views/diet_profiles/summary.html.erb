@@ -4,12 +4,10 @@
 }
 </style>
 <%= current_user.diet_profile.attributes %>
-<%= @part_1 %>
-<%= @part_2 %>
-<%= @part_3 %>
-<%= @BMR %>
+
 
 <h2>Your Suggested Fitness And Nutrition Goals</h3>
+  
 <p>Congratulations! Your personalized diet and fitness profile is now complete. Based on your answers, here are your suggested nutrition and fitness goals</p>
 
 <table class="nutrition-goals">
@@ -21,7 +19,7 @@
   <tr>
     
     <td><strong>Net Calories Consumed*/Day</strong></td>
-    <td class="red"><%= @BMR %> Calories/Day</td>
+    <td class="red"><%= @net_cal %> Calories/Day</td>
   </tr>
  
   <tr>
@@ -49,9 +47,8 @@
   </tr>
   
   <tr>
-    <% burned = @profile.workouts_per_week * @profile.mins_per_workout * 8 %>
     <td><strong>Calories Burned/Week</strong></td>
-    <td class="red"><%= burned %> Calories / Week</td>
+    <td class="red"><%= @cals_burned %> Calories / Week</td>
   </tr>
  
   <tr>
