@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
-      redirect_to user_url(@user)
+      redirect_to new_diet_profile_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
@@ -28,12 +28,10 @@ class UsersController < ApplicationController
   
   def dashboard
     if signed_in?
-      
       render :dashboard
     else
       render 'static_pages/home'
     end
-    
   end
 
 

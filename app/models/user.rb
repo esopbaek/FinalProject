@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_one :diet_profile
+  
   attr_reader :password
   validates :password_digest, :presence => true
   validates :password, :length => { :minimum => 6, :allow_nil => true }

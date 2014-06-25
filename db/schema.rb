@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624155851) do
+ActiveRecord::Schema.define(version: 20140624161313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "diet_profiles", force: true do |t|
+    t.integer  "current_weight",    null: false
+    t.integer  "goal_weight",       null: false
+    t.integer  "height_ft",         null: false
+    t.integer  "height_in",         null: false
+    t.string   "gender",            null: false
+    t.string   "activity_level",    null: false
+    t.integer  "workouts_per_week"
+    t.integer  "mins_per_workout"
+    t.integer  "user_id",           null: false
+    t.date     "d_o_b",             null: false
+    t.string   "goal_rate",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "foods", force: true do |t|
     t.string   "name",                        null: false

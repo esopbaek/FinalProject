@@ -1,0 +1,52 @@
+<table class="nutrition-goals">
+  <tr>
+    <td>Nutrition Goals</td>
+    <td>Target</td>
+  </tr>
+  
+  <tr>
+    
+    <td><strong>Net Calories Consumed*/Day</strong></td>
+    <td class="red"><%= @BMR %> Calories/Day</td>
+  </tr>
+ 
+  <tr>
+    <td>Carbs/Day</td>
+    <td><%= @carbs %> g</td>
+  </tr>
+  
+  <tr>
+    <td>Fat/Day</td>
+    <td><%= @fats %> g</td>
+  </tr>
+  
+  <tr>
+    <td>Protein/Day</td>
+    <td><%= @protein %> g</td>
+  </tr>
+</table>
+
+<br>
+
+<table class="fitness-goals">
+  <tr>
+    <td>Fitness Goals</td>
+    <td>Target</td>
+  </tr>
+  
+  <tr>
+    <td><strong>Calories Burned/Week</strong></td>
+    <td class="red">  Calories / Week</td>
+  </tr>
+ 
+  <tr>
+    <td>Workouts/Week</td>
+    <td><%= @profile.workouts_per_week  %> workouts</td>
+  </tr>
+  
+  <tr>
+    <td>Minutes/Workout</td>
+    <td><%= @profile.mins_per_workout  %> minutes</td>
+  </tr>
+  
+</table>

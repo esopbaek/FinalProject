@@ -1,0 +1,73 @@
+<style>
+.red {
+  color: red;
+}
+</style>
+<%= current_user.diet_profile.attributes %>
+<%= @part_1 %>
+<%= @part_2 %>
+<%= @part_3 %>
+<%= @BMR %>
+
+<h2>Your Suggested Fitness And Nutrition Goals</h3>
+<p>Congratulations! Your personalized diet and fitness profile is now complete. Based on your answers, here are your suggested nutrition and fitness goals</p>
+
+<table class="nutrition-goals">
+  <tr>
+    <td>Nutrition Goals</td>
+    <td>Target</td>
+  </tr>
+  
+  <tr>
+    
+    <td><strong>Net Calories Consumed*/Day</strong></td>
+    <td class="red"><%= @BMR %> Calories/Day</td>
+  </tr>
+ 
+  <tr>
+    <td>Carbs/Day</td>
+    <td><%= @carbs %> g</td>
+  </tr>
+  
+  <tr>
+    <td>Fat/Day</td>
+    <td><%= @fats %> g</td>
+  </tr>
+  
+  <tr>
+    <td>Protein/Day</td>
+    <td><%= @protein %> g</td>
+  </tr>
+</table>
+
+<br>
+
+<table class="fitness-goals">
+  <tr>
+    <td>Fitness Goals</td>
+    <td>Target</td>
+  </tr>
+  
+  <tr>
+    <td><strong>Calories Burned/Week</strong></td>
+    <td class="red">  Calories / Week</td>
+  </tr>
+ 
+  <tr>
+    <td>Workouts/Week</td>
+    <td><%= @profile.workouts_per_week  %> workouts</td>
+  </tr>
+  
+  <tr>
+    <td>Minutes/Workout</td>
+    <td><%= @profile.mins_per_workout  %> minutes</td>
+  </tr>
+  
+</table>
+
+<p>If you follow this plan...</p>
+
+<p><strong>Your projected weight loss is <span class="red"><%= @profile.goal_rate %></span></strong></p>
+<p><strong>You should lose <span class="red">TBD</span> by <span class="red"><%= @progress_date %></span></strong></p>
+
+<a href="<%= root_url %>">Get Started Now!</a>
