@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(username: "Sennacy", password: "catcat")
-User.create!(username: "Rocky", password: "catcat")
-User.create!(username: "Prins", password: "catcat")
+Food.create!({name: "pizza", calories: "200"})
+Food.create!({name: "sandwich", calories: "300"})
+Food.create!({name: "water", calories: "0"})
+Food.create!({name: "soup", calories: "100"})
+Food.create!({name: "vegetables", calories: "50"})
+

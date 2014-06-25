@@ -1,5 +1,10 @@
 MyApp::Application.routes.draw do
-  resources :users, :only => [:create, :new, :show, :update, :edit]
+  resources :users, :only => [:create, :new, :show, :update, :edit] do
+    collection do
+      get :dashboard
+      get :diary
+    end
+  end
   resource :session, :only => [:create, :destroy, :new]
   resource :diet_profile, :only => [:create, :new, :show, :update, :edit] do
     collection do
@@ -7,10 +12,8 @@ MyApp::Application.routes.draw do
       get :goals
     end
   end
-  resources :foods do
-    collection do
-      get :diary
-    end
-  end
-  root to: 'users#dashboard'
+  resources :foods
+  resources :measurements
+
+  root to: 'sessions#new'
 end

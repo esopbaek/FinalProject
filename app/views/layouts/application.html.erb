@@ -8,7 +8,7 @@
     <ul>
       <li>Signed in as: <%= current_user.username %></li>
       <li><%= button_to "Sign Out", session_url, :method => :delete %></li>
-      <li><a href="<%= root_url %>">Home</a></li>
+      <li><a href="<%= dashboard_users_url %>">Home</a></li>
     </ul>
     <% else %>
     <p>
@@ -17,8 +17,145 @@
     </p>
     <% end %>
 
-    
+
+    <div class="nav">MY HOME
+      <ul>
+        <li class="link"><a href="<%= goals_diet_profile_url %>">Goals</a></li>
+        <li class="link"><a href="<%= measurements_url %>">Check-in</a></li>
+        <li class="link"><a href="#">Profile</a></li>
+        <li class="link"><a href="#">My Blog</a></li>
+        <li class="link"><a href="#">Friends</a></li>
+      </ul>
+    </div>
+
     <%= yield %>
 
   </body>
 </html>
+
+<style>
+
+
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.summary-box {
+  margin: 0 200px;
+  height: 400px;
+}
+
+div, span, ul, li, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+.image-holder  {
+  height: 115px;
+  width: 110px;
+  float: left;
+  margin: 0 15px;
+  border: 2px solid black;
+  background: RGB(224,224,224);
+}
+
+.nav {
+  margin-top: 20px;
+  background: RGB(12, 94, 177);
+  height: 50px;
+  color: white;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.add-food, .add-exercise {
+  float: right;
+  margin: 10px;
+  padding: 12px 17px;
+  border-radius: 4px;
+  border: 1px solid black;
+  font-size: 12px;
+  font-family: sans-serif;
+}
+
+.total {
+  margin-top: 15px;
+  margin-bottom: 0px;
+  color: RGB(57, 164, 54);
+  font-size: 55px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.summary {
+  background: RGB(244, 244, 244);
+  color: white;
+  height: 100%;
+  display: block;
+}
+
+.head {
+  margin-top: 30px;
+  padding: 20px;
+  background: RGB(14, 64, 113);
+  color: white;
+  font-family: sans-serif;
+}
+
+.equation {
+  margin-top: 100px;
+  display: block;
+  border: 3px solid black;
+  color: black;
+  height: 30px;
+}
+
+.num, .group {
+  float: left;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.desc {
+  font-size: 13px;
+}
+
+.value, .symbol {
+  float: left;
+}
+
+p {
+  color: black;
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+p.progress {
+  font-size: 20px;
+}
+
+.link {
+  float :left;
+  padding: 6px;
+  list-style-type: none;
+}
+
+
+
+</style>

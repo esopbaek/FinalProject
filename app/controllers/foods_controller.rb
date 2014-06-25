@@ -17,8 +17,5 @@ class FoodsController < ApplicationController
   
   def destroy
   end
-  
-  def diary
-    
-  end
+
 end
