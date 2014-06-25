@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
+      Measurement.create(name: 'weight', user_id: 1)
       redirect_to new_diet_profile_url
     else
       flash.now[:errors] = @user.errors.full_messages
@@ -26,14 +27,14 @@ class UsersController < ApplicationController
       redirect_to user_url(current_user)
     end
   end
-  
+
   def dashboard
     @profile = current_user.diet_profile
     @net_cal = calculate_net_cals(@profile)
-    @exercise_total_cals = Exercise.where("created_at > ? AND created_at < ?", 
+    @exercise_total_cals = Exercise.where("created_at > ? AND created_at < ?",
                             Date.yesterday, Date.tomorrow)
                           .sum(:cals_burned)
-    @food_total_cals = Food.where("created_at > ? AND created_at < ?", 
+    @food_total_cals = Food.where("created_at > ? AND created_at < ?",
                         Date.yesterday, Date.tomorrow)
                       .sum(:calories)
     if signed_in?

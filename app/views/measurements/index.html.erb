@@ -1,19 +1,118 @@
-
 <div class="check-in"><h2>Check-In</h2></div>
 
-<form action="" method="post">
-<h3>Enter today's weight: </h3>
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
-</form>
+<div class="content">
+  <div class="weight-update-and-table">
+    <h3>Enter today's weight: </h3>
+    <form action="<%= logs_url %>" method="post">
+      <input
+         name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>">
+
+       <input
+          name="log[measurement_id]"
+          type="hidden"
+          value="1">
+      <input type="text" name="log[unit]">lbs
+    </form>
+
+<p>   Last recorded weight: <%= @most_recent_weight.unit %> lbs on <%= @most_recent_weight.created_at.strftime("%d %b. %Y") %></p>
 
 
+
+
+  <div class="other-measures">
+    <table>
+      <thead>
+        <tr>
+          <td>Other Measurements</td>
+          <td>Last Entry</td>
+          <td>Today's Entry</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @measurements.each do |measurement| %>
+          <tr>
+            <td><%= measurement.name %></td>
+            <td>a</td>
+            <td>a</td>
+          </tr>
+        <% end %>
+
+          <tr>
+            <td colspan="3"><a href="<%= new_measurement_url %>">Track Additional Measurements</a> | <a href="<%= new_measurement_url %>">Track Additional Measurements</a></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <div class="info">
+    <div class="info-header">
+      <p>Check-in</p>
+    </div>
+    <div class="body-text">
+      To help track your progress, you should record your weight periodically. We suggest once a week because your weight fluctuates daily due to uncontrollable factors like water. Try to always weigh yourself at the same time of day - we suggest early in the morning before breakfast.
+
+      Taking your measurements can be an even better gauge of your progress because when you burn fat and build heavier muscle, your weight may not change or even increase even though your body is tighter and smaller. We suggest taking your measurements every 2-4 weeks.
+    </div>
+  </div>
+</div>
 <style>
+
+div, p, table {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+
+.weight-update-and-table {
+  width: 400px;
+  border: 1px solid black;
+  float: left;
+}
 
 .check-in {
   border-bottom: 3px solid gray;
+}
+
+thead{
+  background: RGB(10, 63, 115);
+  color: white;
+}
+
+td {
+  border: 1px solid black;
+  height: 30px;
+}
+
+table {
+  width: 500px;
+  height: 100%;
+}
+
+.other-measures {
+  border: 1px solid black;
+  height: 100%;
+  float: left;
+
+}
+
+.info {
+  float: right;
+  border: 1px solid black;
+  width: 200px;
+  background: RGB(245, 245, 245);
+}
+
+.info-header {
+  border-bottom: 1px solid RGB(224, 224, 224);
+  color: RGB(14, 64, 116);
+  font-size: 20px;
+  font-family: sans-serif;
 }
 
 </style>

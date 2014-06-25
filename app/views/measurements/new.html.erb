@@ -1,0 +1,143 @@
+<div class="h3"><h2>Track Additional Measurements</h2></div>
+
+<div class="add-measurements">
+  <table>
+    <tr>
+      <th colspan="2">Current Measurements</th>
+    </tr>
+
+    <% @current_measurements.each do |measurement| %>
+      <tr>
+        <td>measurement.name</td>
+        <td><%= button_to "remove", measurement_url(measurement), :method => :delete %></td>
+      </tr>
+    <% end %>
+
+
+    <tr>
+      <td>abc</td>
+      <td>abc</td>
+    </tr>
+  </table>
+
+  <div class="add-another-measurement">
+    <div class="header-add-another">
+      <p class="add-another">Add Another Measurement</p>
+    </div>
+    <div class="body-add-another">
+      <form action="<%= measurements_url %>" method="post">
+        <input
+           name="authenticity_token"
+           type="hidden"
+           value="<%= form_authenticity_token %>">
+        <label>Description:</label>
+          <input type="text">
+    </div>
+      <input type="submit" value="Add Measurement">
+      <a href="<%= measurements_url %>">Cancel</a>
+      </form>
+  </div>
+</div>
+
+<div class="measurements-info">
+  <div class="measurements-info-head">
+    <p>Change Measurements</p>
+  </div>
+  <div class="measurements-info-body">
+    <p>MyFitnessPal.com allows you to customize what measurements you track to fit your own personal program and goals.</p>
+    <br>
+    <p>Simply use the form on the right to add or remove any measurement. The changes you enter will be used to track your progress from now on.</p>
+  </div>
+</div>
+
+<style>
+
+h2, div, table, tr, td, p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+th {
+  color: white;
+  font-weight: bold;
+  background: RGB(10, 63, 115);
+}
+
+td {
+  border: 1px solid black;
+  background: RGB(244, 244, 244);
+}
+
+.h3 {
+  border: 1px solid black;
+  padding: 30px, 0, 20px, 20px;
+  font-size: 30px;
+  border-bottom: 1px solid RGB(224, 224, 224);
+}
+
+h2 {
+  font-family: sans-serif;
+  margin-top: 30px;
+  color: RGB(10, 62, 113);
+}
+
+.add-measurements {
+  margin-top: 50px;
+  margin-left: 25px;
+  float: left;
+  border: 1px solid black;
+  width: 500px;
+  height: 100%;
+}
+
+div.measurements-info{
+  color: white;
+  margin-right: 40px;
+  float: right;
+  border: 1px solid black;
+  background: RGB(244, 244, 244);
+  width: 400px;
+  height: 100%;
+}
+
+.measurements-info-head > p{
+  color: RGB(14, 64, 113);
+  font-weight: bold;
+  font-size: 14px;
+  font-family: sans-serif;
+  padding: 20px;
+  background: RGB(244,244,244);
+  border-bottom: 1px solid RGB(224, 224, 224);
+}
+
+.measurements-info-body > p {
+  background: RGB(244,244,244);
+  font-family: sans-serif;
+  font-size: 14px;
+  padding: 10px;
+}
+
+table {
+  width: 200px;
+  border: 1px solid red;
+}
+
+.header-add-another {
+  bottom-border: 1px solid RGB (224,224,224);
+}
+
+.body-add-another {
+  bottom-border: 1px solid RGB (224,224,224);
+}
+
+.add-another {
+  margin-top:80px;
+  color: RGB(14,75,165);
+  font-size: 20px;
+}
+
+
+</style>
+

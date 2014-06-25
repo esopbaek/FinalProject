@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_one :diet_profile
   has_many :entries
+  has_many :measurements
+  has_many :logs
 
   attr_reader :password
   validates :password_digest, :presence => true

@@ -12,3 +12,4 @@ Food.create!({name: "water", calories: "0"})
 Food.create!({name: "soup", calories: "100"})
 Food.create!({name: "vegetables", calories: "50"})
 
+

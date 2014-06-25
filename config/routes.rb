@@ -14,6 +14,7 @@ MyApp::Application.routes.draw do
   end
   resources :foods
   resources :measurements
+  resources :logs, only: [:create, :destroy, :index]
 
   root to: 'sessions#new'
 end

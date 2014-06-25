@@ -12,7 +12,7 @@ button {
 }
 </style>
 <h2><%= header %></h2>
-
+<%= render "layouts/errors" %>
 <form action="/diet_profile", method="post">
   <input
      name="authenticity_token"
@@ -22,7 +22,7 @@ button {
      name="_method"
      type="hidden"
      value="<%= method %>">
-     
+
 <label>Current Weight:</label>
 <input type="text" name="profile[current_weight]" value="<%= @profile.current_weight %>">lbs
 <br>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625152214) do
+ActiveRecord::Schema.define(version: 20140625153935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,14 @@ ActiveRecord::Schema.define(version: 20140625152214) do
     t.integer  "vitamin_c",       default: 0
     t.integer  "calcium",         default: 0
     t.integer  "iron",            default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "logs", force: true do |t|
+    t.integer  "measurement_id"
+    t.integer  "unit"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
