@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_one :diet_profile
   has_one :social_profile
-  has_many :entries
   has_many :measurements
   has_many :logs
 

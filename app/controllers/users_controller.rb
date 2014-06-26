@@ -13,6 +13,11 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       Measurement.create(name: 'weight', user_id: 1)
+      i = 0
+      while i < 365 do
+        DiaryPage.create!(entry_date: Date.today + i, user_id: @user.id)
+        i+=1
+      end
       redirect_to new_diet_profile_url
     else
       flash.now[:errors] = @user.errors.full_messages

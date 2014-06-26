@@ -2,9 +2,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   # Expose these methods to the views
-  helper_method :current_user, :signed_in?
+  helper_method :current_user, :signed_in?, :todays_page
 
   private
+  
+  def todays_page
+    DiaryPage.where("entry_date = ?", Date.today)
+  end
 
   def current_user
     return nil unless session[:token]

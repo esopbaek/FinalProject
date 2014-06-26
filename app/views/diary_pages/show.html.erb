@@ -1,5 +1,5 @@
 <div class="diary-head">
-  <p>Your Food Diary For <%= Date.today %></p>
+  <p>Your Food Diary For <%= @page.entry_date %></p>
 </div>
 
 <div class="table">
@@ -19,7 +19,7 @@
   <tbody>
     <tr>
       <td class="links">
-        <a href="#">Add Food</a>
+        <a href="<%= new_diary_page_food_entry_url(@page) %>">Add Food</a>
       </td>
       <td class="macro"></td>
       <td class="macro"></td>

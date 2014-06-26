@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EntriesTest < ActiveSupport::TestCase
+class DiaryPageTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

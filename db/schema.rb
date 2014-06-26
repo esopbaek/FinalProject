@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626140513) do
+ActiveRecord::Schema.define(version: 20140626180707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "diary_pages", force: true do |t|
+    t.date     "entry_date", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "diary_pages", ["user_id"], name: "index_diary_pages_on_user_id", using: :btree
 
   create_table "diet_profiles", force: true do |t|
     t.integer  "current_weight",    null: false
@@ -40,25 +49,39 @@ ActiveRecord::Schema.define(version: 20140626140513) do
     t.datetime "updated_at"
   end
 
-  create_table "foods", force: true do |t|
-    t.string   "name",                        null: false
-    t.integer  "calories",        default: 0
-    t.integer  "total_fat",       default: 0
-    t.integer  "saturated",       default: 0
-    t.integer  "polyunsaturated", default: 0
-    t.integer  "monounsaturated", default: 0
-    t.integer  "trans",           default: 0
-    t.integer  "cholesterol",     default: 0
-    t.integer  "sodium",          default: 0
-    t.integer  "potassium",       default: 0
-    t.integer  "carbs",           default: 0
-    t.integer  "fiber",           default: 0
-    t.integer  "vitamin_a",       default: 0
-    t.integer  "vitamin_c",       default: 0
-    t.integer  "calcium",         default: 0
-    t.integer  "iron",            default: 0
+  create_table "food_entries", force: true do |t|
+    t.integer  "diary_page_id"
+    t.integer  "food_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  add_index "food_entries", ["diary_page_id"], name: "index_food_entries_on_diary_page_id", using: :btree
+  add_index "food_entries", ["food_id"], name: "index_food_entries_on_food_id", using: :btree
+
+  create_table "foods", force: true do |t|
+    t.string   "name",                                null: false
+    t.integer  "calories",               default: 0
+    t.integer  "total_fat",              default: 0
+    t.integer  "saturated",              default: 0
+    t.integer  "polyunsaturated",        default: 0
+    t.integer  "monounsaturated",        default: 0
+    t.integer  "trans",                  default: 0
+    t.integer  "cholesterol",            default: 0
+    t.integer  "sodium",                 default: 0
+    t.integer  "potassium",              default: 0
+    t.integer  "carbs",                  default: 0
+    t.integer  "fiber",                  default: 0
+    t.integer  "vitamin_a",              default: 0
+    t.integer  "vitamin_c",              default: 0
+    t.integer  "calcium",                default: 0
+    t.integer  "iron",                   default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "serving_size",                        null: false
+    t.integer  "servings_per_container", default: 1
+    t.string   "brand"
+    t.string   "meal",                   default: ""
   end
 
   create_table "logs", force: true do |t|

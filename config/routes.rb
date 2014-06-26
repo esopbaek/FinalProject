@@ -2,7 +2,6 @@ MyApp::Application.routes.draw do
   resources :users, :only => [:create, :new, :show, :update, :edit] do
     collection do
       get :dashboard
-      get :diary
     end
   end
   resource :session, :only => [:create, :destroy, :new]
@@ -20,7 +19,9 @@ MyApp::Application.routes.draw do
     end
   end
   resources :logs, only: [:create, :destroy, :index]
-
-
+  resources :diary_pages, only: [:create, :update, :edit, :show] do
+    resources :food_entries, only: [:create, :new]
+  end
+  
   root to: 'sessions#new'
 end
