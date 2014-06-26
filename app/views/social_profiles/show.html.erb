@@ -1,20 +1,35 @@
+<%= @social_profile.attributes %>
+
 <div id="profile-body">
-  <h2><%= current_user.username %>'s profile</h2>
   <div class="block1">
+    <div id="profile-head"><h2><%= current_user.username %>'s profile</h2></div>
     <div class="img">
     </div>
 
     <div class="basic-info">
-      <%= current_user.username %><br>
-      <%= @social_profile.age %><br>
-      <%= @social_profile.gender %><br>
-      <a href="<%= edit_social_profile_url %>">Edit Profile</a>
-      <a href="#">Edit Photos</a>
+      <div class="basic-info-profile">
+        <%= current_user.username %><br>
+        <%= @social_profile.age %><br>
+        <%= @social_profile.gender %><br>
+        <%= @social_profile.page_title %>
+      </div>
+      
+      <div class="basic-info-links">
+        <a href="<%= edit_social_profile_url %>" class="profile-links">Edit Profile</a>
+        <a href="#" class="profile-links">Edit Photos</a>
+      </div>
     </div>
   </div>
 
   <div class="block2">
     <div class="about-me">
+      <p>About Me</p>
+
+        <%= @social_profile.about_me  == "" ? "I havent filled this out yet." : @social_profile.about_me %>
+      <p>Why I Want to get in shape</p>
+        <%= @social_profile.why  == "" ? "I havent filled this out yet." : @social_profile.why %>
+      <p>My Inspirations</p>
+      <%= @social_profile.inspir1 == "" ? "I havent filled this out yet." : @social_profile.inspir1 %>
     </div>
 
     <div class="my-progress">
@@ -33,19 +48,39 @@ div, h2 {
   font: inherit;
 }
 
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 div > *{
   border: 1px solid black;
 }
 
-.profile-body {
+#profile-body {
+  width: 800px;
+  display: block;
+  margin: 0px auto;
+}
 
+#profile-head {
+  width: 500px;
+}
+
+.block1, .block2 {
+  width: 800px;
 }
 
 .block1 {
   background: RGB(245,245,245);
   border: 3px solid black;
   height: 200px;
+  margin: 0 auto;
+}
 
+.basic-info, .img {
+  margin-top: 20px;
 }
 
 .img {
@@ -53,17 +88,46 @@ div > *{
   height: 100px;
   width: 100px;
   margin-left: 50px;
-  margin-top: 50px;
   border: 1px solid red;
 }
 
 .basic-info {
   float: right;
+  border: 1px solid black;
+  width: 500px;
+  height: 200px;
 }
-.block2 {}
+
+.basic-info-profile {
+  border: 1px solid red;
+}
+
+.basic-info-links {
+  height: 100px;
+  border: 1px solid green;
+    margin-top: 40px;
+}
+
+.profile-links {
+
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.block2 {
+  margin-top: 30px;
+  border: 3px solid red;
+  height: 400px;
+}
+
+.about-me .my-progress {
+  display: block;
+}
 
 .about-me {
   float: left;
+  display: block;
 }
 .my-progress {
   float: right;
