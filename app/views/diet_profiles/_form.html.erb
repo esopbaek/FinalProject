@@ -42,7 +42,7 @@ button {
 <br>
 
 <label>Date Of Birth:</label>
-<input type="date" name="profile[d_o_b]" value="<%= @profile.d_o_b %>"
+<input type="date" name="profile[d_o_b]" value="<%= @profile.d_o_b.nil? ? "" : @profile.d_o_b.strftime("%Y-%m-%d") %>"
 <br>
 
 <p><strong>How would you describe your normal daily activities?</strong></p>
@@ -66,7 +66,7 @@ Very Active: Spend most of the day doing heavy physical activity (e.g. bike mess
 <label>How many times a week do you plan on exercising?</label>
 <select name="profile[workouts_per_week]">
   <option value="0">0</option>
-  <option value="1">1</option>
+  <option value="1" selected>1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
@@ -82,7 +82,7 @@ Very Active: Spend most of the day doing heavy physical activity (e.g. bike mess
   <option value="Lose 1.5 pounds per week">Lose 1.5 pounds per week</option>
   <option value="Lose 1 pound per week">Lose 1 pound per week</option>
   <option value="Lose 0.5 pounds per week">Lose 0.5 pounds per week</option>
-  <option value="Maintain my current weight">Maintain my current weight</option>
+  <option value="Maintain my current weight" selected>Maintain my current weight</option>
   <option value="Gain 0.5 pounds per week">Gain 0.5 pounds per week</option>
   <option value="Gain 1 pound per week">Gain 1 pound per week</option>
 </select>

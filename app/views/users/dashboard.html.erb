@@ -10,7 +10,7 @@
     </div>
 
     <div class="image-holder"></div>
-    <div class="total"><%= @net_cal - @food_total_cals + @exercise_total_cals %></div><p>CALORIES REMAINING</p>
+    <div class="total"><%= @net_cal %></div><p>CALORIES REMAINING</p>
 
       <div class="equation">
         <div class="value">
@@ -18,18 +18,18 @@
           <span class="desc">Goal</span>
         </div>
         <div class="value">
-          <span class="num"><%= @food_total_cals %></span>
+          <span class="num">TBD</span>
           <span class="desc">Food</span>
 
         </div>
         <div class="symbol">-</div>
         <div class="value">
-          <span class="num"><%= @exercise_total_cals %></span>
+          <span class="num">TBD</span>
           <span class="desc">Exercise</span>
         </div>
         <div class="symbol">=</div>
         <div class="value">
-          <span class="num"><%= @food_total_cals - @exercise_total_cals %></span>
+          <span class="num">TBD</span>
           <span class="desc">Net</span>
         </div>
         <div class="clear"></div>

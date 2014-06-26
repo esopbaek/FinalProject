@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def calculate_BMR(profile)
-    part_1 = (10 * profile.current_weight * 0.45)
+    part_1 = (10 * (profile.current_weight/2.2046))
 
     height_in_cm = ((profile.height_ft * 12) + profile.height_in) * 2.54
     part_2 = (6.25 * height_in_cm)
@@ -13,19 +13,19 @@ module ApplicationHelper
     bmr = part_1 + part_2 - part_3
 
     if profile.gender == "male"
-      bmr = bmr + 10
+      bmr = bmr + 5
     else
       bmr = bmr - 161
     end
 
     if profile.activity_level == "Sedentary"
-      bmr = (bmr*1.252).to_int
+      bmr = (bmr*1.25).to_int
     elsif profile.activity_level == "Lightly Active"
-      bmr = (bmr*1.3985)
+      bmr = (bmr*1.4)
     elsif profile.activity_level == "Active"
-      bmr = (bmr*1.5974)
+      bmr = (bmr*1.5)
     else
-      bmr = (bmr*1.802)
+      bmr = (bmr*1.8)
     end
     bmr
   end

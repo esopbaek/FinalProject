@@ -32,17 +32,6 @@ ActiveRecord::Schema.define(version: 20140625202430) do
     t.datetime "updated_at"
   end
 
-  create_table "entries", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "food_id"
-    t.date     "entry_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "entries", ["food_id"], name: "index_entries_on_food_id", using: :btree
-  add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
-
   create_table "exercises", force: true do |t|
     t.string   "name",          null: false
     t.integer  "minutes_spent", null: false
@@ -81,8 +70,8 @@ ActiveRecord::Schema.define(version: 20140625202430) do
   end
 
   create_table "measurements", force: true do |t|
-    t.string   "name"
-    t.integer  "user_id"
+    t.string   "name",       null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
