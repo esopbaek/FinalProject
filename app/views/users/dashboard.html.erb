@@ -13,7 +13,7 @@
     <div class="image-holder">
     </div>
     
-    <div class="total"><%= @net_cal %></div><p>CALORIES REMAINING</p>
+    <div class="total"><%= @net_cal - @total_food_cals %></div><p>CALORIES REMAINING</p>
       <div class="equation">
         <div class="value">
           <div class="num"><%= @net_cal %></div>
@@ -36,9 +36,9 @@
         </div>
         <div class="clear"></div>
       </div>
-      <div>
-        <p class="progress">TBD lbs lost</p>
-      </div>
+    </div>
+    <div class="progress">
+      <p class="progress"><strong class="green">TBD</strong> lbs lost</p>
   </div>
 </div>
 </div>
@@ -56,9 +56,10 @@
 }
 
 .summary-box {
-  margin: 0 auto;
-  height: 400px;
+  margin: 50px auto;
+  height: 200px;
   width: 600px;
+  background: RGB(241,241,241);
 }
 
 div, div, ul, li, a, img {
@@ -113,12 +114,12 @@ div {
 }
 
 .total {
-
-
   color: RGB(57, 164, 54);
   font-size: 55px;
   font-family: sans-serif;
   font-weight: bold;
+  border: 1px solid RGB(241, 241, 241);
+  height: 70px;
 }
 
 .wrap {
@@ -130,6 +131,7 @@ div {
 
 .head {
   margin-top: 30px;
+  margin-bottom: 20px;
   padding: 20px;
   background: RGB(14, 64, 113);
   color: white;
@@ -137,10 +139,12 @@ div {
 }
 
 .equation {
-  margin-top: 100px;
+/*  border: 1px solid black;*/
   display: block;
   color: black;
   height: 30px;
+  width: 450px;
+  float: left;
 }
 
 .num {
@@ -149,11 +153,22 @@ div {
 }
 
 .desc {
-  font-size: 13px;
+  font-size: 11px;
 }
 
 .value, .symbol {
   float: left;
+}
+
+.value {
+/*  border: 1px solid red;*/
+  padding-right: 40px;
+  font-family: sans-serif;
+  color: RGB(83, 83, 83);
+}
+
+.symbol{
+  padding-right: 40px;
 }
 
 p {
@@ -167,12 +182,20 @@ p.progress {
   font-size: 20px;
 }
 
+.progress {
+  margin-top: ;
+
+  float: left;
+}
+
 .link {
   float :left;
   padding: 6px;
   list-style-type: none;
 }
 
-
+.green {
+  color: green;
+}
 
 </style>

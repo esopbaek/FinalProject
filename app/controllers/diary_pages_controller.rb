@@ -6,7 +6,8 @@ class DiaryPagesController < ApplicationController
   end
   
   def show
-    @page = DiaryPage.where("user_id = ? AND entry_date = ?", current_user.id, Date.today).first
+    @entry_date = DiaryPage.find(params[:id]).entry_date
+    @page = DiaryPage.where("user_id = ? AND entry_date = ?", current_user.id, @entry_date).first
     @breakfasts = meal_foods(@page, "breakfast")
     @lunches = meal_foods(@page, "lunch")
     @dinners = meal_foods(@page, "dinner")

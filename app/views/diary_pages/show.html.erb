@@ -1,5 +1,9 @@
 <div class="diary-head">
+  <% yest = DiaryPage.where("entry_date = ?", @entry_date - 1).first %>
+  <% tomo = DiaryPage.where("entry_date = ?", @entry_date + 1).first %>
+  <a href="<%= diary_page_url(yest) %>">Yesterday</a>
   <p>Your Food Diary For <%= @page.entry_date %></p>
+  <a href="<%= diary_page_url(tomo) %>">Tomorrow</a>
 </div>
 <div class="table">
 <table>
