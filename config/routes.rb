@@ -14,9 +14,6 @@ MyApp::Application.routes.draw do
   end
   resources :foods
   resources :measurements do
-    collection do
-      get :all
-    end
   end
   resources :logs, only: [:create, :destroy, :index]
   resources :diary_pages, only: [:create, :update, :edit, :show] do

@@ -18,15 +18,19 @@ class MeasurementsController < ApplicationController
   end
   
   def edit
-    
+    @measurement = Measurement.find(params[:id])
   end
   
   def update
+    @measurement = Measurement.find(params[:id])
     
+    if @measuremnt.save
+      redirect_to edit_measurement_url(params[:id])
+    end
   end
 
   def index
-    @weight_measurement = Measurement.find_by :name "weight"
+    @weight_measurement = Measurement.where("name = ? AND user_id = ?", "weight", current_user.id).first
     @additional_measurements = Measurement.where("name != (?)", "weight")
     @most_recent_weight = Log.where("measurement_id = (?)", "1").last
     @log = Log.new

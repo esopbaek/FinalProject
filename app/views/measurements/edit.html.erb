@@ -1,0 +1,120 @@
+<div class="whole-container">
+  <div class="left-entries">
+    <div class="title">Edit Previous Measurement Entries</div>
+    <div class="left-form">
+      <form action="<%= measurement_url(@measurement) %>" method="post">
+        <input
+           name="_method"
+           type="hidden"
+           value="put">
+        <input
+           name="authenticity_token"
+           type="hidden"
+           value="<%= form_authenticity_token %>">
+        <label for="measurement_edit">Measurement to edit:</label>
+        <select id="measurement_edit" name="measurement[id]">
+            <% Measurement.all.each do |measurement| %>
+              <option value=measurement.id><%= measurement.name %></option>
+            <% end %>
+        </select>
+        
+        <input type="submit" value="Change">
+      </form>
+      
+    </div>
+    <div class="left-content">
+      <table>
+        <thead>
+          <tr>
+            <td class="first_col">Measurement</td>
+            <td>Date</td>
+            <td>Amount</td>
+            <td>Delete?</td>
+          </tr>
+        </thead>
+        <tbody>
+        <% if @measurement.logs.count == 0 %>
+        <tr>
+          <td colspan="4">No measurements found.</td>
+        </tr>
+        <% else %>
+          <% @measurement.logs.each do |log| %>
+              <tr>
+                <td class="first_col"><%= log.measurement.name %></td>
+                <td><%= log.created_at.strftime("%m/%d/%Y") %></td>
+                <td><%= log.unit %> lbs</td>
+                <td>
+                  <%= button_to "Delete?", log_url(log), :method => :delete %>
+                </td>
+              </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div class="right-info">
+    <div class="weigh-yourself">
+      <div class="head"></div>
+      <div class="body"></div>
+    </div>
+    <div class="take-measurements">
+      <div class="head"></div>
+      <div class="body"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+div, p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+.title {
+  border-bottom: 3px solid RGB(224, 224, 224);
+  font-family: Arial;
+  color: RGB(14, 64, 113);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.whole-container {
+  width: 1200px;
+  height: 1000px;
+  margin: 0 auto;
+}
+
+.left-entries {
+  width: 700px;
+  border: 1px solid red;
+}
+
+.left-form {
+  margin-top: 30px;
+}
+
+.right-info {
+  float: right;
+  width: 300px;
+  border: 1px solid green;
+  height: 800px;
+}
+
+.weigh-yourself, .take-measurements {
+  width: 100%;
+}
+
+td {
+  text-align: center;
+}
+
+.first_col {
+  text_align: left;
+}
+
+</style>

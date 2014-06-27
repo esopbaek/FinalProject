@@ -19,8 +19,9 @@ class LogsController < ApplicationController
 
   def destroy
     @log = Log.find(params[:id])
+    flash.now[:alert] = 'Are you sure?'
     @log.destroy
-    redirect_to all_measurements_url
+    redirect_to edit_measurement_url(@log.measurement)
   end
 
   private
