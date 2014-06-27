@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
   
   def todays_page
-    DiaryPage.where("entry_date = ?", Date.today)
+    DiaryPage.where("user_id = ? AND entry_date = ?", current_user, Date.today).first
   end
 
   def current_user

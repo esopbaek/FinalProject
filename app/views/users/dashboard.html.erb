@@ -3,34 +3,36 @@
       Your Daily Summary
   </div>
 
-  <div class="summary">
+  <div class="wrap">
+    <div class="summary">
     <div class="buttons">
     <a href="<%= diary_page_url(todays_page) %>" class="add-food">Add Food</a>
     <a href="#" class="add-exercise">Add Exercise</a>
     </div>
 
-    <div class="image-holder"></div>
+    <div class="image-holder">
+    </div>
+    
     <div class="total"><%= @net_cal %></div><p>CALORIES REMAINING</p>
-
       <div class="equation">
         <div class="value">
-          <span class="num"><%= @net_cal %></span>
-          <span class="desc">Goal</span>
+          <div class="num"><%= @net_cal %></div>
+          <div class="desc">GOAL</div>
         </div>
         <div class="value">
-          <span class="num">TBD</span>
-          <span class="desc">Food</span>
+          <div class="num"><%= @total_food_cals %></div>
+          <div class="desc">FOOD</div>
 
         </div>
         <div class="symbol">-</div>
         <div class="value">
-          <span class="num">TBD</span>
-          <span class="desc">Exercise</span>
+          <div class="num">0</div>
+          <div class="desc">EXERCISE</div>
         </div>
         <div class="symbol">=</div>
         <div class="value">
-          <span class="num">TBD</span>
-          <span class="desc">Net</span>
+          <div class="num"><%= @total_food_cals %></div>
+          <div class="desc">NET</div>
         </div>
         <div class="clear"></div>
       </div>
@@ -38,6 +40,7 @@
         <p class="progress">TBD lbs lost</p>
       </div>
   </div>
+</div>
 </div>
 
 
@@ -53,11 +56,12 @@
 }
 
 .summary-box {
-  margin: 0 200px;
+  margin: 0 auto;
   height: 400px;
+  width: 600px;
 }
 
-div, span, ul, li, a {
+div, div, ul, li, a, img {
   margin: 0;
   padding: 0;
   border: 0;
@@ -68,6 +72,11 @@ a {
   text-decoration: none;
 }
 
+img {
+  height: 100%;
+  width: 100%;
+}
+
 div {
   margin: 0;
   padding: 0;
@@ -76,7 +85,7 @@ div {
 }
 
 .image-holder  {
-  height: 115px;
+  height: 122px;
   width: 110px;
   float: left;
   margin: 0 15px;
@@ -104,15 +113,15 @@ div {
 }
 
 .total {
-  margin-top: 15px;
-  margin-bottom: 0px;
+
+
   color: RGB(57, 164, 54);
   font-size: 55px;
   font-family: sans-serif;
   font-weight: bold;
 }
 
-.summary {
+.wrap {
   background: RGB(244, 244, 244);
   color: white;
   height: 100%;
@@ -130,15 +139,13 @@ div {
 .equation {
   margin-top: 100px;
   display: block;
-  border: 3px solid black;
   color: black;
   height: 30px;
 }
 
-.num, .group {
+.num {
   float: left;
   font-size: 20px;
-  padding: 10px;
 }
 
 .desc {
@@ -153,6 +160,7 @@ p {
   color: black;
   font-family: sans-serif;
   font-size: 10px;
+  line-height: 0.3;
 }
 
 p.progress {

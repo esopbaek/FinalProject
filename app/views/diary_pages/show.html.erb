@@ -25,7 +25,7 @@
         <td class="macro"><%= food.protein %></td>
         <td class="macro"><%= food.sodium %></td>
         <td class="macro"><%= food.sugar %></td>
-        <td class="delete"><%= button_to "remove", diary_page_food_entry_url(@page, entry_id), :method => :delete %></td>
+        <td class="delete"><%= button_to "-", diary_page_food_entry_url(@page, entry_id), :method => :delete %></td>
       </tr>
       <% end %>
     </tr>
@@ -34,12 +34,12 @@
       <td class="links">
         <a href="<%= new_diary_page_food_entry_url(@page, meal: 'breakfast') %>">Add Food</a>
       </td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
+      <td class="macro"><%= @total_breakfast_cals %></td>
+      <td class="macro"><%= @total_breakfast_carbs %></td>
+      <td class="macro"><%= @total_breakfast_fat %></td>
+      <td class="macro"><%= @total_breakfast_protein %></td>
+      <td class="macro"><%= @total_breakfast_sodium %></td>
+      <td class="macro"><%= @total_breakfast_sugar %></td>
       <td class="delete"></td>
     </tr>
 
@@ -64,7 +64,7 @@
             <td class="macro"><%= food.protein %></td>
             <td class="macro"><%= food.sodium %></td>
             <td class="macro"><%= food.sugar %></td>
-            <td class="delete"><%= button_to "remove", diary_page_food_entry_url(@page, entry_id), :method => :delete %></td>
+            <td class="delete"><%= button_to "-", diary_page_food_entry_url(@page, entry_id), :method => :delete %></td>
           </tr>
       <% end %>
       
@@ -72,12 +72,12 @@
       <td class="links">
         <a href="<%= new_diary_page_food_entry_url(@page, meal: 'lunch') %>">Add Food</a>
       </td>
-      <td class="macro first_col"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
+      <td class="macro"><%= @total_lunch_cals %></td>
+      <td class="macro"><%= @total_lunch_carbs %></td>
+      <td class="macro"><%= @total_lunch_fat %></td>
+      <td class="macro"><%= @total_lunch_protein %></td>
+      <td class="macro"><%= @total_lunch_sodium %></td>
+      <td class="macro"><%= @total_lunch_sugar %></td>
       <td class="delete"></td>
     </tr>
 
@@ -101,19 +101,19 @@
           <td class="macro"><%= food.protein %></td>
           <td class="macro"><%= food.sodium %></td>
           <td class="macro"><%= food.sugar %></td>
-          <td class="delete"><%= button_to "remove", diary_page_food_entry_url(@page, entry_id), :method => :delete %></td>
+          <td class="delete"><%= button_to "-", diary_page_food_entry_url(@page, entry_id), :method => :delete %></td>
         </tr>
     <% end %>
     <tr>
       <td class="links">
         <a href="<%= new_diary_page_food_entry_url(@page, meal: 'dinner') %>">Add Food</a>
       </td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
+      <td class="macro"><%= @total_dinner_cals %></td>
+      <td class="macro"><%= @total_dinner_carbs %></td>
+      <td class="macro"><%= @total_dinner_fat %></td>
+      <td class="macro"><%= @total_dinner_protein %></td>
+      <td class="macro"><%= @total_dinner_sodium %></td>
+      <td class="macro"><%= @total_dinner_sugar %></td>
       <td class="delete"></td>
     </tr>
 
@@ -138,7 +138,7 @@
             <td class="macro"><%= food.protein %></td>
             <td class="macro"><%= food.sodium %></td>
             <td class="macro"><%= food.sugar %></td>
-            <td class="delete"><%= button_to "remove", diary_page_food_entry_url(@page, entry_id), :method => :delete %></td>
+            <td class="delete"><%= button_to "-", diary_page_food_entry_url(@page, entry_id), :method => :delete %></td>
           </tr>
       <% end %>
 
@@ -147,12 +147,12 @@
         <a href="<%= new_diary_page_food_entry_url(@page, meal: 'snack')  %>">
           Add Food</a>
       </td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
-      <td class="macro"></td>
+      <td class="macro"><%= @total_breakfast_cals %></td>
+      <td class="macro"><%= @total_breakfast_carbs %></td>
+      <td class="macro"><%= @total_breakfast_fat %></td>
+      <td class="macro"><%= @total_breakfast_protein %></td>
+      <td class="macro"><%= @total_breakfast_sodium %></td>
+      <td class="macro"><%= @total_breakfast_sugar %></td>
       <td class="delete"></td>
     </tr>
 
@@ -163,49 +163,39 @@
 
 <div class="totals">
 
-  <table>
+  <table class="total-tabulations">
     <tr class="heading">
       <th class="total-label">Totals</th>
-      <th class="total_col"><%= @total_cals %></th>
-      <th class="total_col"><%= @total_carbs %></th>
-      <th class="total_col"><%= @total_fat %></th>
-      <th class="total_col"><%= @total_protein %></th>
-      <th class="total_col"><%= @total_sodium %></th>
-      <th class="total_col"><%= @total_sugar %></th>
+      <th class="total-col"><%= @total_cals %></th>
+      <th class="total-col"><%= @total_carbs %></th>
+      <th class="total-col"><%= @total_fat %></th>
+      <th class="total-col"><%= @total_protein %></th>
+      <th class="total-col"><%= @total_sodium %></th>
+      <th class="total-col"><%= @total_sugar %></th>
     </tr>
 
     <tr class="heading">
       <td class="total-label">Your Daily Goal</td>
-      <td class="total_col"><%= @total_cals %></td>
-      <td class="total_col"><%= @total_carbs %></td>
-      <td class="total_col"><%= @total_fat %></td>
-      <td class="total_col"><%= @total_protein %></td>
-      <td class="total_col"><%= @total_sodium %></td>
-      <td class="total_col"><%= @total_sugar %></td>
+      <td class="total-col"><%= @target_cals %></td>
+      <td class="total-col"><%= @target_carbs %></td>
+      <td class="total-col"><%= @target_fats %></td>
+      <td class="total-col"><%= @target_protein %></td>
+      <td class="total-col"><%= @target_sodium %></td>
+      <td class="total-col"><%= @target_sugar %></td>
     </tr>
 
     <tr class="heading">
       <td class="total-label">Remaining</td>
-      <td class="total_col"><%= @total_cals %></td>
-      <td class="total_col"><%= @total_carbs %></td>
-      <td class="total_col"><%= @total_fat %></td>
-      <td class="total_col"><%= @total_protein %></td>
-      <td class="total_col"><%= @total_sodium %></td>
-      <td class="total_col"><%= @total_sugar %></td>
+      <td class="remaining"><%= @target_cals - @total_cals %></td>
+      <td class="remaining"><%= @target_carbs - @total_carbs %></td>
+      <td class="remaining"><%= @target_fats - @total_fat %></td>
+      <td class="remaining"><%= @target_protein - @total_protein %></td>
+      <td class="remaining"><%= @target_sodium - @total_sodium %></td>
+      <td class="remaining"><%= @target_sugar - @total_sugar %></td>
     </tr>
 
     <tr class="heading">
       <td class="total-label"></td>
-      <td class="total_col"><%= @total_cals %></td>
-      <td class="total_col"><%= @total_carbs %></td>
-      <td class="total_col"><%= @total_fat %></td>
-      <td class="total_col"><%= @total_protein %></td>
-      <td class="total_col"><%= @total_sodium %></td>
-      <td class="total_col"><%= @total_sugar %></td>
-    </tr>
-
-    <tr class="heading">
-      <td></td>
       <td class="total-type">Calories</td>
       <td class="total-type">Carbs</td>
       <td class="total-type">Fat</td>
@@ -219,13 +209,15 @@
 
 <style>
 
-body, table, thead, tfoot, tbody, tr, td, td {
+body, table, thead, tfoot, tbody, tr, td, th {
   margin: 0;
   padding: 0;
   border: 0;
   font: inherit;
   vertical-align: baseline;
 }
+
+
 
 .diary-head {
   text-align: center;
@@ -235,19 +227,24 @@ body, table, thead, tfoot, tbody, tr, td, td {
 }
 
 .table, .totals {
-  border: 1px solid black;
+ /* border: 1px solid black;*/
   width: 690px;
   margin: 20px auto;
 }
 
+.totals {
+/*  border: 1px solid black;*/
+  height: 90px;
+}
 
 th.macro {
   background: RGB(14, 64, 113);
   color: white;
-  font-size: 12px;
   padding: 15px 10px;
   font-family: sans-serif;
 }
+
+
 
 .meal {
   text-align: left;
@@ -259,10 +256,14 @@ th.macro {
 }
 
 th, td {
-  border: 1px solid black;
+/*  border: 1px solid black;*/
+  border-bottom: 1px solid RGB(224,224,224);
   text-align: center;
-  font: serif;
-
+  font-family: Arial;
+  font-size: 12.4px;
+  padding: 4px 10px 4px 10px;
+  width: 46px;
+  
 }
 
 .first_col {
@@ -271,11 +272,15 @@ th, td {
 
 .links {
   padding-right: 140px;
-  border-bottom: 1px solid RGB(224,224,224);
+
 }
 
-.data-entry {
+.data-entry, .total-col, .remaining {
   background: RGB(244, 244, 244);
+}
+
+.totals {
+  font-weight: bold;
 }
 
 .total-type {
@@ -286,8 +291,47 @@ th, td {
   font-family: sans-serif;
 }
 
+.total-tabulations {
+  float: right;
+  margin-right: 30px;
+}
+
 .total-label {
   text-align: right;
+  border: 0;
+  width: 200px;
+}
+
+.total-label, .total-col, .remaining {
+  font-size: 15px;
+
+}
+
+.remaining {
+  color: green;
+}
+
+input[type=submit] {
+  -webkit-appearance: none;
+  border-radius: 20px;
+  border: none;
+  text-decoration: none;
+  background: red;
+  color: white;
+  padding: none;
+  margin: none;
+  width: auto;
+  height: auto;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+input[type=submit]:hover {
+  cursor: pointer;
+}
+
+table {
+  border-spacing: 1px 0;
 }
 
 </style>
