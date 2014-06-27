@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       i = -365
       while i < 365 do
         DiaryPage.create!(entry_date: Date.today + i, user_id: @user.id)
+        
         i+=1
       end
       redirect_to new_diet_profile_url

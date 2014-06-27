@@ -1,0 +1,341 @@
+<div class="diary-head">
+  <% yest = DiaryPage.where("entry_date = ?", @entry_date - 1).first %>
+  <% tomo = DiaryPage.where("entry_date = ?", @entry_date + 1).first %>
+  <a href="<%= diary_page_url(yest) %>">Yesterday</a>
+  <p>Your Food Diary For <%= @page.entry_date %></p>
+  <a href="<%= diary_page_url(tomo) %>">Tomorrow</a>
+</div>
+<div class="table">
+<table>
+  <thead>
+  </thead>
+    <tr class="heading">
+      <th class="meal first_col">Breakfast</th>
+      <th class="macro">Calories</th>
+      <th class="macro">Carbs</th>
+      <th class="macro">Fat</th>
+      <th class="macro">Protein</th>
+      <th class="macro">Sodium</th>
+      <th class="macro">Sugar</th>
+      <th class="delete"></th>
+    </tr>
+      <% @breakfasts.each do |food| %>
+      <tr class="data-entry">
+        <% entry_id = FoodEntry.where("food_id = ? AND diary_page_id = ? AND meal = ?", food.id, @page.id, "breakfast").first.id %>
+        <td class="first_col"><%= food.name %></td>
+        <td class="macro"><%= food.calories %></td>
+        <td class="macro"><%= food.carbs %></td>
+        <td class="macro"><%= food.total_fat %></td>
+        <td class="macro"><%= food.protein %></td>
+        <td class="macro"><%= food.sodium %></td>
+        <td class="macro"><%= food.sugar %></td>
+        <td class="delete"><%= button_to "-", diary_page_food_entry_url(@page, entry_id), :method => :delete %></td>
+      </tr>
+      <% end %>
+    </tr>
+  <tbody>
+    <tr>
+      <td class="links">
+        <a href="<%= new_diary_page_food_entry_url(@page, meal: 'breakfast') %>">Add Food</a>
+      </td>
+      <td class="macro"><%= @total_breakfast_cals %></td>
+      <td class="macro"><%= @total_breakfast_carbs %></td>
+      <td class="macro"><%= @total_breakfast_fat %></td>
+      <td class="macro"><%= @total_breakfast_protein %></td>
+      <td class="macro"><%= @total_breakfast_sodium %></td>
+      <td class="macro"><%= @total_breakfast_sugar %></td>
+      <td class="delete"></td>
+    </tr>
+
+    <tr class="heading">
+      <td class="meal first_col">Lunch</td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="delete"></td>
+    </tr>
+    
+        <% @lunches.each do |food| %>
+          <tr class="data-entry">
+            <% entry_id = FoodEntry.where("food_id = ? AND diary_page_id = ? AND meal = ?", food.id, @page.id, "lunch").first.id %>
+            <td class="macro first_col"><%= food.name %></td>
+            <td class="macro"><%= food.calories %></td>
+            <td class="macro"><%= food.carbs %></td>
+            <td class="macro"><%= food.total_fat %></td>
+            <td class="macro"><%= food.protein %></td>
+            <td class="macro"><%= food.sodium %></td>
+            <td class="macro"><%= food.sugar %></td>
+            <td class="delete"><%= button_to "-", diary_page_food_entry_url(@page, entry_id), :method => :delete %></td>
+          </tr>
+      <% end %>
+      
+    <tr>
+      <td class="links">
+        <a href="<%= new_diary_page_food_entry_url(@page, meal: 'lunch') %>">Add Food</a>
+      </td>
+      <td class="macro"><%= @total_lunch_cals %></td>
+      <td class="macro"><%= @total_lunch_carbs %></td>
+      <td class="macro"><%= @total_lunch_fat %></td>
+      <td class="macro"><%= @total_lunch_protein %></td>
+      <td class="macro"><%= @total_lunch_sodium %></td>
+      <td class="macro"><%= @total_lunch_sugar %></td>
+      <td class="delete"></td>
+    </tr>
+
+    <tr class="heading">
+      <td class="meal first_col">Dinner</td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="delete"></td>
+    </tr>
+      <% @dinners.each do |food| %>
+        <tr class="data-entry">
+          <% entry_id = FoodEntry.where("food_id = ? AND diary_page_id = ? AND meal = ?", food.id, @page.id, "dinner").first.id %>
+          <td class="macro first_col"><%= food.name %></td>
+          <td class="macro"><%= food.calories %></td>
+          <td class="macro"><%= food.carbs %></td>
+          <td class="macro"><%= food.total_fat %></td>
+          <td class="macro"><%= food.protein %></td>
+          <td class="macro"><%= food.sodium %></td>
+          <td class="macro"><%= food.sugar %></td>
+          <td class="delete"><%= button_to "-", diary_page_food_entry_url(@page, entry_id), :method => :delete %></td>
+        </tr>
+    <% end %>
+    <tr>
+      <td class="links">
+        <a href="<%= new_diary_page_food_entry_url(@page, meal: 'dinner') %>">Add Food</a>
+      </td>
+      <td class="macro"><%= @total_dinner_cals %></td>
+      <td class="macro"><%= @total_dinner_carbs %></td>
+      <td class="macro"><%= @total_dinner_fat %></td>
+      <td class="macro"><%= @total_dinner_protein %></td>
+      <td class="macro"><%= @total_dinner_sodium %></td>
+      <td class="macro"><%= @total_dinner_sugar %></td>
+      <td class="delete"></td>
+    </tr>
+
+    <tr class="heading">
+      <td class="meal first_col">Snack</td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="macro"></td>
+      <td class="delete"></td>
+    </tr>
+
+      <% @snacks.each do |food| %>
+          <tr class="data-entry">
+            <% entry_id = FoodEntry.where("food_id = ? AND diary_page_id = ? AND meal = ?", food.id, @page.id, "snack").first.id %>
+            <td class="macro first_col"><%= food.name %></td>
+            <td class="macro"><%= food.calories %></td>
+            <td class="macro"><%= food.carbs %></td>
+            <td class="macro"><%= food.total_fat %></td>
+            <td class="macro"><%= food.protein %></td>
+            <td class="macro"><%= food.sodium %></td>
+            <td class="macro"><%= food.sugar %></td>
+            <td class="delete"><%= button_to "-", diary_page_food_entry_url(@page, entry_id), :method => :delete %></td>
+          </tr>
+      <% end %>
+
+    <tr>
+      <td class="links">
+        <a href="<%= new_diary_page_food_entry_url(@page, meal: 'snack')  %>">
+          Add Food</a>
+      </td>
+      <td class="macro"><%= @total_breakfast_cals %></td>
+      <td class="macro"><%= @total_breakfast_carbs %></td>
+      <td class="macro"><%= @total_breakfast_fat %></td>
+      <td class="macro"><%= @total_breakfast_protein %></td>
+      <td class="macro"><%= @total_breakfast_sodium %></td>
+      <td class="macro"><%= @total_breakfast_sugar %></td>
+      <td class="delete"></td>
+    </tr>
+
+
+  </tbody>
+</table>
+</div>
+
+<div class="totals">
+
+  <table class="total-tabulations">
+    <tr class="heading">
+      <th class="total-label">Totals</th>
+      <th class="total-col"><%= @total_cals %></th>
+      <th class="total-col"><%= @total_carbs %></th>
+      <th class="total-col"><%= @total_fat %></th>
+      <th class="total-col"><%= @total_protein %></th>
+      <th class="total-col"><%= @total_sodium %></th>
+      <th class="total-col"><%= @total_sugar %></th>
+    </tr>
+
+    <tr class="heading">
+      <td class="total-label">Your Daily Goal</td>
+      <td class="total-col"><%= @target_cals %></td>
+      <td class="total-col"><%= @target_carbs %></td>
+      <td class="total-col"><%= @target_fats %></td>
+      <td class="total-col"><%= @target_protein %></td>
+      <td class="total-col"><%= @target_sodium %></td>
+      <td class="total-col"><%= @target_sugar %></td>
+    </tr>
+
+    <tr class="heading">
+      <td class="total-label">Remaining</td>
+      <td class="remaining"><%= @target_cals - @total_cals %></td>
+      <td class="remaining"><%= @target_carbs - @total_carbs %></td>
+      <td class="remaining"><%= @target_fats - @total_fat %></td>
+      <td class="remaining"><%= @target_protein - @total_protein %></td>
+      <td class="remaining"><%= @target_sodium - @total_sodium %></td>
+      <td class="remaining"><%= @target_sugar - @total_sugar %></td>
+    </tr>
+
+    <tr class="heading">
+      <td class="total-label"></td>
+      <td class="total-type">Calories</td>
+      <td class="total-type">Carbs</td>
+      <td class="total-type">Fat</td>
+      <td class="total-type">Protein</td>
+      <td class="total-type">Sodium</td>
+      <td class="total-type">Sugar</td>
+    </tr>
+  </table>
+
+</div>
+
+<style>
+
+body, table, thead, tfoot, tbody, tr, td, th {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+
+
+.diary-head {
+  text-align: center;
+  color: RGB(15,68,111);
+  font-size: 20px;
+  border-bottom: 3px solid RGB(224,224,224);
+}
+
+.table, .totals {
+ /* border: 1px solid black;*/
+  width: 690px;
+  margin: 20px auto;
+}
+
+.totals {
+/*  border: 1px solid black;*/
+  height: 90px;
+}
+
+th.macro {
+  background: RGB(14, 64, 113);
+  color: white;
+  padding: 15px 10px;
+  font-family: sans-serif;
+}
+
+
+
+.meal {
+  text-align: left;
+  color: RGB(14, 64, 113);
+  font-size: 20px;
+  font-family: sans-serif;
+  width: 300px;
+  font-weight: bold;
+}
+
+th, td {
+/*  border: 1px solid black;*/
+  border-bottom: 1px solid RGB(224,224,224);
+  text-align: center;
+  font-family: Arial;
+  font-size: 12.4px;
+  padding: 4px 10px 4px 10px;
+  width: 46px;
+  
+}
+
+.first_col {
+  text-align: left;
+}
+
+.links {
+  padding-right: 140px;
+
+}
+
+.data-entry, .total-col, .remaining {
+  background: RGB(244, 244, 244);
+}
+
+.totals {
+  font-weight: bold;
+}
+
+.total-type {
+  background: RGB(14, 64, 113);
+  color: white;
+  font-size: 12px;
+  padding: 15px 10px;
+  font-family: sans-serif;
+}
+
+.total-tabulations {
+  float: right;
+  margin-right: 30px;
+}
+
+.total-label {
+  text-align: right;
+  border: 0;
+  width: 200px;
+}
+
+.total-label, .total-col, .remaining {
+  font-size: 15px;
+
+}
+
+.remaining {
+  color: green;
+}
+
+input[type=submit] {
+  -webkit-appearance: none;
+  border-radius: 20px;
+  border: none;
+  text-decoration: none;
+  background: red;
+  color: white;
+  padding: none;
+  margin: none;
+  width: auto;
+  height: auto;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+input[type=submit]:hover {
+  cursor: pointer;
+}
+
+table {
+  border-spacing: 1px 0;
+}
+
+</style>

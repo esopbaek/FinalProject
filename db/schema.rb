@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627154028) do
+ActiveRecord::Schema.define(version: 20140627180131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cardio_exercises", force: true do |t|
+    t.string   "name",        null: false
+    t.integer  "minutes"
+    t.integer  "cals_burned"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "diary_pages", force: true do |t|
     t.date     "entry_date", null: false
@@ -41,13 +49,24 @@ ActiveRecord::Schema.define(version: 20140627154028) do
     t.datetime "updated_at"
   end
 
-  create_table "exercises", force: true do |t|
-    t.string   "name",          null: false
-    t.integer  "minutes_spent", null: false
-    t.integer  "cals_burned",   null: false
+  create_table "exercise_diary_pages", force: true do |t|
+    t.date     "exercise_entry_date"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "exercise_diary_pages", ["user_id"], name: "index_exercise_diary_pages_on_user_id", using: :btree
+
+  create_table "exercise_entries", force: true do |t|
+    t.integer  "exercise_diary_page_id"
+    t.integer  "cardio_exercise_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "exercise_entries", ["cardio_exercise_id"], name: "index_exercise_entries_on_cardio_exercise_id", using: :btree
+  add_index "exercise_entries", ["exercise_diary_page_id"], name: "index_exercise_entries_on_exercise_diary_page_id", using: :btree
 
   create_table "food_entries", force: true do |t|
     t.integer  "diary_page_id"

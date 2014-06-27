@@ -1,0 +1,2 @@
+module ExerciseDiaryPagesHelper
+end

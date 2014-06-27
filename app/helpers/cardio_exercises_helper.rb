@@ -1,0 +1,2 @@
+module CardioExercisesHelper
+end
