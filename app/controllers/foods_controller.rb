@@ -18,4 +18,6 @@ class FoodsController < ApplicationController
   def destroy
   end
 
+  def index
+  end
 end
