@@ -19,7 +19,6 @@ class UsersController < ApplicationController
       end
       redirect_to new_diet_profile_url
     else
-      fail
       flash.now[:errors] = @user.errors.full_messages
       render :new
     end
