@@ -23,9 +23,8 @@ class MeasurementsController < ApplicationController
   
   def update
     @measurement = Measurement.find(params[:id])
-    
-    if @measuremnt.save
-      redirect_to edit_measurement_url(params[:id])
+    if @measurement.save
+      redirect_to edit_measurement_url(params[:measurement][:id])
     end
   end
 

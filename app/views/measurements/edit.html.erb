@@ -14,7 +14,7 @@
         <label for="measurement_edit">Measurement to edit:</label>
         <select id="measurement_edit" name="measurement[id]">
             <% Measurement.all.each do |measurement| %>
-              <option value=measurement.id><%= measurement.name %></option>
+              <option value="<%= measurement.id %>"><%= measurement.name %></option>
             <% end %>
         </select>
         
@@ -22,14 +22,15 @@
       </form>
       
     </div>
+    <%= render "layouts/errors" %>
     <div class="left-content">
       <table>
         <thead>
           <tr>
-            <td class="first_col">Measurement</td>
-            <td>Date</td>
-            <td>Amount</td>
-            <td>Delete?</td>
+            <th class="first-col">Measurement</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Delete?</th>
           </tr>
         </thead>
         <tbody>
@@ -40,7 +41,7 @@
         <% else %>
           <% @measurement.logs.each do |log| %>
               <tr>
-                <td class="first_col"><%= log.measurement.name %></td>
+                <td class="first-col"><%= log.measurement.name %></td>
                 <td><%= log.created_at.strftime("%m/%d/%Y") %></td>
                 <td><%= log.unit %> lbs</td>
                 <td>
@@ -52,69 +53,206 @@
       </tbody>
       </table>
     </div>
+    <div class="add-entry">
+      <div class="add-entry-header">
+        <h3>Add New Entry</h3> 
+      </div>
+      <div class="add-form">
+        <form action="<%= logs_url %>" method="post">
+          <input
+             name="authenticity_token"
+             type="hidden"
+             value="<%= form_authenticity_token %>">
+          <input
+             name="log[measurement_id]"
+             type="hidden"
+             value="<%= @measurement.id %>">
+          <label for="log-date">Date:</label>
+          <input type="date" name="log[created_at]" value="<%= Date.today %>">
+          <label for="log-unit">Amount:</label>
+          <input type="text" name="log[unit]">
+      
+          <input type="submit" value="Add New Entry">
+        </form>
+      </div>
+    </div>
   </div>
   
   <div class="right-info">
     <div class="weigh-yourself">
-      <div class="head"></div>
-      <div class="body"></div>
+      <div class="head"><h3>Weigh Yourself</h3></div>
+      <div class="body"><p>To help track your progress, you should record your weight periodically. We suggest once a week because your weight fluctuates daily due to uncontrollable factors like water. Try to always weigh yourself at the same time of day - we suggest early in the morning before breakfast.</p></div>
     </div>
     <div class="take-measurements">
-      <div class="head"></div>
-      <div class="body"></div>
+      <div class="head"><h3>Take Your Measurements</h3></div>
+      <div class="body"><p>Taking your measurements can be an even better gauge of your progress because when you burn fat and build heavier muscle, your weight may not change or even increase even though your body is tighter and smaller. We suggest taking your measurements every 2-4 weeks.</p></div>
     </div>
   </div>
 </div>
 
 <style>
 
-div, p {
+div, p, h3 {
   margin: 0;
   padding: 0;
   border: 0;
   font: inherit;
 }
 
+label > p {
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
 .title {
-  border-bottom: 3px solid RGB(224, 224, 224);
+  border-bottom: 2px solid RGB(224, 224, 224);
   font-family: Arial;
   color: RGB(14, 64, 113);
   font-size: 20px;
   font-weight: bold;
 }
 
+label {
+  font-weight: bold;
+  font-size: 14px;
+  font-family: Arial;
+}
+
 .whole-container {
-  width: 1200px;
+  width: 1020px;
   height: 1000px;
-  margin: 0 auto;
+  margin: 30px auto;
 }
 
 .left-entries {
   width: 700px;
-  border: 1px solid red;
+/*  border: 1px solid red;*/
+  height: 1000px;
+  float: left;
+}
+
+.left-content {
+  margin-top:20px;
 }
 
 .left-form {
-  margin-top: 30px;
+  margin-top: 20px;
+  height: 40px;
+  width: 370px;
 }
 
 .right-info {
   float: right;
   width: 300px;
-  border: 1px solid green;
+/*  border: 1px solid green;*/
   height: 800px;
+  margin-top: 23px;
 }
 
 .weigh-yourself, .take-measurements {
   width: 100%;
 }
 
-td {
-  text-align: center;
+table {
+  border-spacing: 1px 1px;
+  width: 600px;
 }
 
-.first_col {
-  text_align: left;
+td {
+  text-align: center;
+  background: RGB(244, 244, 244);
+  border-bottom: 1px solid RGB(224, 224, 224);
+  font-size: 14px;
+}
+
+.first-col, th.first-col {
+  text-align: left;
+}
+
+thead {
+  background: RGB(10, 63, 115);
+  color: white;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 14px;
+}
+
+th{
+  padding: 10px 20px 10px 20px;
+}
+
+.add-entry-header {
+  padding: 10px 5px;
+  border-bottom: 1px solid RGB(224, 224, 224);
+  color: RGB(14, 64, 114);
+}
+
+.add-form {
+  margin-top: 20px;
+/*  border: 1px solid red;*/
+  width: 550px;
+}
+
+h3 {
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+input[type=submit] {
+  -webkit-appearance: none;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  color: blue;
+  background: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+select {
+  width: 120px;
+  margin-top: 8px;
+}
+
+input[value="Change"], input[value="Add New Entry"] {
+  -webkit-appearance: none;
+  -webkit-linear-gradient(top, #a5b8da, #7089b3);
+  padding: ;
+  border: 1px solid black;
+  margin: 0;
+  background: RGB(80, 171, 66);
+  color: white;
+  padding: 8px 25px;
+  border-radius: 5px;
+  float: right;
+}
+
+.right-info {
+  width: 300px;
+  float: right;
+}
+
+.weigh-yourself, .take-measurements {
+  background: RGB(244, 244, 244);
+}
+
+.take-measurements {
+  margin-top: 30px;
+}
+
+.head {
+  font-size: 15px;
+  border-bottom: 1px solid RGB(224, 224, 224);
+  color: RGB(13,64,106);
+  padding: 15px;
+}
+
+.body {
+  font-size: 12px;
+  font-family: sans-serif;
+  padding: 15px;
 }
 
 </style>

@@ -1,7 +1,6 @@
 class LogsController < ApplicationController
 
   def index
-
   end
 
   def create
@@ -11,6 +10,7 @@ class LogsController < ApplicationController
       redirect_to measurements_url
     else
       flash.now[:errors] = @log.errors.full_messages
+      redirect_to edit_measurement_url(@log.measurement)
     end
   end
 
@@ -26,6 +26,6 @@ class LogsController < ApplicationController
 
   private
   def log_params
-    params.require(:log).permit(:unit, :measurement_id)
+    params.require(:log).permit(:unit, :measurement_id, :created_at)
   end
 end
