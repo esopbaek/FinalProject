@@ -2,12 +2,11 @@ class DietProfilesController < ApplicationController
   include ApplicationHelper
 
   def create
-    current_user.measurements.build(name: "weight", user_id: current_user.id)
     @profile = DietProfile.new(profile_params)
     @profile.user_id = current_user.id
     if @profile.save
-      weight = Measurement.find_by user_id: current_user.id
-      weight.logs.build(measurement_id: 1, unit: @profile.current_weight, user_id: current_user.id)
+      weight = current_user.measurements.first
+      Log.create!(measurement_id: weight.id, amount: @profile.current_weight)
       weight.save
       @age = calculate_age(@profile)
       SocialProfile.create(age: @age, gender: @profile.gender, user_id: current_user.id)

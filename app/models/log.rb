@@ -1,5 +1,4 @@
 class Log < ActiveRecord::Base
   belongs_to :measurement
-  
-  validates :unit, presence: true
+  validates :amount, presence: true
 end

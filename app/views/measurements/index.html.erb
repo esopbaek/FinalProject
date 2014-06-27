@@ -13,11 +13,11 @@
          <input
             name="log[measurement_id]"
             type="hidden"
-            value="1">
-        <input type="text" name="log[unit]">lbs
+            value="<%= @weight_measurement.id %>">
+        <input type="text" name="log[amount]">lbs
       </form>
       <% if @most_recent_weight %>
-      <i>Last recorded weight: <%= @most_recent_weight.unit %> lbs on <%= @most_recent_weight.created_at.strftime("%d %b. %Y") %></i>
+      <i>Last recorded weight: <%= @most_recent_weight.amount %> lbs on <%= @most_recent_weight.created_at.strftime("%d %b. %Y") %></i>
       <% end %>
     </div>
 
@@ -37,7 +37,7 @@
             <tr>
               <td><%= measurement.name %></td>
               <td><%= measurement.logs.last.nil? ? 
-                    "None." : "#{measurement.logs.last.unit} on #{measurement.created_at.strftime('%m/%d/%Y')}" %></td>
+                    "None." : "#{measurement.logs.last.amount} on #{measurement.created_at.strftime('%m/%d/%Y')}" %></td>
               <td>
                 <form action="<%= logs_url %>" method="post">
                   <input
@@ -49,7 +49,7 @@
                       name="log[measurement_id]"
                       type="hidden"
                       value="<%= measurement.id %>">
-                  <input type="text" name="log[unit]">
+                  <input type="text" name="log[amount]">
                 </form>
               </td>
             </tr>

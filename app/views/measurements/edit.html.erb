@@ -13,7 +13,7 @@
            value="<%= form_authenticity_token %>">
         <label for="measurement_edit">Measurement to edit:</label>
         <select id="measurement_edit" name="measurement[id]">
-            <% Measurement.all.each do |measurement| %>
+            <% @measurements.each do |measurement| %>
               <option value="<%= measurement.id %>"><%= measurement.name %></option>
             <% end %>
         </select>
@@ -43,7 +43,7 @@
               <tr>
                 <td class="first-col"><%= log.measurement.name %></td>
                 <td><%= log.created_at.strftime("%m/%d/%Y") %></td>
-                <td><%= log.unit %> lbs</td>
+                <td><%= log.amount %> lbs</td>
                 <td>
                   <%= button_to "Delete?", log_url(log), :method => :delete %>
                 </td>
@@ -69,8 +69,8 @@
              value="<%= @measurement.id %>">
           <label for="log-date">Date:</label>
           <input type="date" name="log[created_at]" value="<%= Date.today %>">
-          <label for="log-unit">Amount:</label>
-          <input type="text" name="log[unit]">
+          <label for="log-amount">Amount:</label>
+          <input type="text" name="log[amount]">
       
           <input type="submit" value="Add New Entry">
         </form>

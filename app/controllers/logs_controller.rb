@@ -5,7 +5,7 @@ class LogsController < ApplicationController
 
   def create
     @log = Log.new(log_params)
-    @log.user_id = current_user.id
+    @log.measurement_id = params[:log][:measurement_id]
     if @log.save
       redirect_to measurements_url
     else
@@ -26,6 +26,6 @@ class LogsController < ApplicationController
 
   private
   def log_params
-    params.require(:log).permit(:unit, :measurement_id, :created_at)
+    params.require(:log).permit(:amount, :measurement_id, :created_at)
   end
 end

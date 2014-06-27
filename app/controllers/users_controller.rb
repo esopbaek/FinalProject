@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
-      @user.measurements.create!(name: "weight", user_id: @user.id)
+      Measurement.create(name: "weight", user_id: @user.id, unit: "lbs")
       i = -365
       while i < 365 do
         DiaryPage.create!(entry_date: Date.today + i, user_id: @user.id)
@@ -50,8 +50,8 @@ class UsersController < ApplicationController
     @total_food_cals = @total_lunch_cals + @total_dinner_cals + @total_breakfast_cals + @total_snack_cals
 
     @weight = current_user.measurements.first
-    @starting_weight = @weight.logs.first.unit
-    @current_weight = @weight.logs.last.unit
+    @starting_weight = @weight.logs.first.amount
+    @current_weight = @weight.logs.last.amount
     
     @progress = @starting_weight - @current_weight
     if signed_in?

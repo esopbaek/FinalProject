@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626213834) do
+ActiveRecord::Schema.define(version: 20140627154028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,20 +89,20 @@ ActiveRecord::Schema.define(version: 20140626213834) do
 
   create_table "logs", force: true do |t|
     t.integer  "measurement_id"
-    t.integer  "unit"
-    t.integer  "user_id"
+    t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "logs", ["measurement_id"], name: "index_logs_on_measurement_id", using: :btree
 
   create_table "measurements", force: true do |t|
     t.string   "name",       null: false
-    t.integer  "user_id",    null: false
+    t.string   "unit"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
-
-  add_index "measurements", ["user_id"], name: "index_measurements_on_user_id", using: :btree
 
   create_table "social_profiles", force: true do |t|
     t.integer  "age",                     null: false
