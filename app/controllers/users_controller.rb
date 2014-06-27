@@ -7,12 +7,11 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-
   def create
     @user = User.new(user_params)
-    @user.measurements.build(name: "weight", user_id: @user.id)
     if @user.save
       sign_in(@user)
+      @user.measurements.create!(name: "weight", user_id: @user.id)
       i = -365
       while i < 365 do
         DiaryPage.create!(entry_date: Date.today + i, user_id: @user.id)
@@ -20,6 +19,7 @@ class UsersController < ApplicationController
       end
       redirect_to new_diet_profile_url
     else
+      fail
       flash.now[:errors] = @user.errors.full_messages
       render :new
     end
@@ -61,8 +61,6 @@ class UsersController < ApplicationController
       render 'static_pages/home'
     end
   end
-
-
 
 
   private

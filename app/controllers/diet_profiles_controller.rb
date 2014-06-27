@@ -2,6 +2,7 @@ class DietProfilesController < ApplicationController
   include ApplicationHelper
 
   def create
+    current_user.measurements.build(name: "weight", user_id: current_user.id)
     @profile = DietProfile.new(profile_params)
     @profile.user_id = current_user.id
     if @profile.save
