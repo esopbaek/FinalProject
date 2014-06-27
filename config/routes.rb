@@ -20,8 +20,8 @@ MyApp::Application.routes.draw do
   end
   resources :logs, only: [:create, :destroy, :index]
   resources :diary_pages, only: [:create, :update, :edit, :show] do
-    resources :food_entries, only: [:create, :new]
+    resources :food_entries, only: [:create, :new, :destroy]
   end
-  
+
   root to: 'sessions#new'
 end

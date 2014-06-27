@@ -2,18 +2,30 @@
 
 <h2>Select Foods</h2>
 <div class="select_food">
-<% @foods.each do |food| %>
   <form action="<%= diary_page_food_entries_url(@page) %>" method="post">
     <input
        name="authenticity_token"
        type="hidden"
        value="<%= form_authenticity_token %>">
     <input
-       name="food_entry[diary_page_id]"
+       name="food_entries[diary_page_id]"
        type="hidden"
        value="<%= @page.id %>">
-  <input type="checkbox" name="food_entry[food_id]" value="<%= food.id %>"><%= food.name %><br>
-
+    <input
+       name="food_entries[meal]"
+       type="hidden"
+       value="<%= params[:meal] %>">
+    <input
+       name="food_entries[food_ids][]"
+       type="hidden"
+       value="">
+<% @foods.each do |food| %>
+  <input 
+    id="food-<%= food.id %>" 
+    type="checkbox" 
+    name="diary_page[food_ids][]" 
+    value="<%= food.id %>">
+  <label for="food-<%= food.id %>"><%= food.name %></label>
 <% end %>
 <input type="submit" value="Choose Foods">
 </form>

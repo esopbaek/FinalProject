@@ -1,4 +1,11 @@
 module ApplicationHelper
+  
+  def meal_foods(page, meal)
+    FoodEntry.where("meal = ? AND diary_page_id = ?", meal, page.id).map {|entry| Food.find(entry.food_id) }
+  end
+  
+  
+  
   def calculate_age(diet_profile)
     (Date.today - diet_profile.d_o_b).to_int/365
   end

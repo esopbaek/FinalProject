@@ -6,18 +6,29 @@ class FoodEntriesController < ApplicationController
   end
   
   def create
-    @entry = FoodEntry.new(food_entry_params)
     @page = DiaryPage.find(params[:diary_page_id])
-    if @entry.save
+    
+    params.require(:diary_page)["food_ids"].each do |id|
+      food = @page.food_entries.new(food_id: id, meal: params[:food_entries][:meal])
+    end
+    
+    if @page.save
       redirect_to diary_page_url(@page)
-      fail
     else
       flash.now[:errors] = @entry.errors.full_messages
     end
   end
   
+  def destroy
+    @page = DiaryPage.find(params[:diary_page_id])
+    @entry = FoodEntry.find(params[:id])
+    @entry.destroy
+    redirect_to diary_page_url(params[:diary_page_id])
+  end
+  
   private
   def food_entry_params
-    params.require(:food_entry).permit(:diary_page_id, :food_id)
+    params.require(:food_entries).permit(:food_ids)
   end
+  
 end
