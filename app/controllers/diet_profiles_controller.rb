@@ -5,6 +5,9 @@ class DietProfilesController < ApplicationController
     @profile = DietProfile.new(profile_params)
     @profile.user_id = current_user.id
     if @profile.save
+      weight = Measurement.find_by user_id: current_user.id
+      weight.logs.build(measurement_id: 1, unit: @profile.current_weight, user_id: current_user.id)
+      weight.save
       @age = calculate_age(@profile)
       SocialProfile.create(age: @age, gender: @profile.gender, user_id: current_user.id)
       render :email

@@ -19,6 +19,8 @@ class LogsController < ApplicationController
 
   def destroy
     @log = Log.find(params[:id])
+    @log.destroy
+    redirect_to all_measurements_url
   end
 
   private
