@@ -34,6 +34,7 @@ class DietProfilesController < ApplicationController
     @fats = (@net_cal*0.3/9).to_int
     @protein = (@net_cal*0.2/4).to_int
 
+    @projected_loss = calculate_projected_loss(@profile)
     @cals_burned = calculate_calories_burned(@profile)
   end
 

@@ -3,8 +3,7 @@ module ApplicationHelper
   def meal_foods(page, meal)
     FoodEntry.where("meal = ? AND diary_page_id = ?", meal, page.id).map {|entry| Food.find(entry.food_id) }
   end
-  
-  
+
   
   def calculate_age(diet_profile)
     (Date.today - diet_profile.d_o_b).to_int/365
@@ -34,7 +33,7 @@ module ApplicationHelper
     else
       bmr = (bmr*1.8)
     end
-    bmr
+    bmr.round(-1)
   end
 
   def calculate_net_cals(profile)
@@ -56,8 +55,27 @@ module ApplicationHelper
     end
     net_cal
   end
+  
+  def calculate_projected_loss(profile)
+    if profile.goal_rate == "Lose 2 pounds per week"
+      projected_loss = 10
+    elsif profile.goal_rate == "Lose 1.5 pounds per week"
+      projected_loss = 7.5
+    elsif profile.goal_rate == "Lose 1 pounds per week"
+      projected_loss = 5
+    elsif profile.goal_rate == "Lose 0.5 pounds per week"
+      projected_loss = 2.5
+    elsif profile.goal_rate == "Maintain my current weight"
+      projected_loss = 0
+    elsif profile.goal_rate == "Gain 0.5 pounds per week"
+      projected_loss = -2.5
+    else
+      projected_loss = -5
+    end
+    projected_loss
+  end
 
   def calculate_calories_burned(profile)
-    (0.04 * (profile.workouts_per_week * profile.mins_per_workout)) * profile.current_weight
+    ((0.04 * (profile.workouts_per_week * profile.mins_per_workout)) * profile.current_weight).to_int.round(-1)
   end
 end

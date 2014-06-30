@@ -1,1 +1,13 @@
 <h1>All foods</h1>
+
+<form action="<%= search_url %>" method="get">
+
+<input type="text" name="query" value="<%= params[:query] %>">
+  
+</form>
+
+<ul>
+  <% @results.each do |result| %>
+    <li><%= result.name %></li>
+  <% end %>
+</ul>

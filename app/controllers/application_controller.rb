@@ -2,12 +2,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   # Expose these methods to the views
-  helper_method :current_user, :signed_in?, :todays_page
+  helper_method :current_user, :signed_in?, :todays_page, :todays_exercise_page
 
   private
   
   def todays_page
     DiaryPage.where("user_id = ? AND entry_date = ?", current_user, Date.today).first
+  end
+  
+  def todays_exercise_page
+    ExerciseDiaryPage.where("user_id =? AND exercise_entry_date = ?", current_user, Date.today).first
   end
 
   def current_user
@@ -34,6 +38,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_signed_out!
-    redirect_to user_url(current_user) if signed_in?
+    redirect_to dashboard_users_url if signed_in?
   end
 end

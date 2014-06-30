@@ -2,7 +2,7 @@
   <% yest = DiaryPage.where("entry_date = ?", @entry_date - 1).first %>
   <% tomo = DiaryPage.where("entry_date = ?", @entry_date + 1).first %>
   <a href="<%= diary_page_url(yest) %>">Yesterday</a>
-  <p>Your Food Diary For <%= @page.entry_date %></p>
+  <p>Your Food Diary For <%= @page.entry_date.strftime('%a %d %b %Y') %></p>
   <a href="<%= diary_page_url(tomo) %>">Tomorrow</a>
 </div>
 <div class="table">
@@ -19,7 +19,7 @@
       <th class="macro">Sugar</th>
       <th class="delete"></th>
     </tr>
-      <% @breakfasts.each do |food| %>
+      <% @breakfasts.reverse.each do |food| %>
       <tr class="data-entry">
         <% entry_id = FoodEntry.where("food_id = ? AND diary_page_id = ? AND meal = ?", food.id, @page.id, "breakfast").first.id %>
         <td class="first_col"><%= food.name %></td>
@@ -32,7 +32,7 @@
         <td class="delete"><%= button_to "-", diary_page_food_entry_url(@page, entry_id), :method => :delete %></td>
       </tr>
       <% end %>
-    </tr>
+
   <tbody>
     <tr>
       <td class="links">
@@ -58,7 +58,7 @@
       <td class="delete"></td>
     </tr>
     
-        <% @lunches.each do |food| %>
+        <% @lunches.reverse.each do |food| %>
           <tr class="data-entry">
             <% entry_id = FoodEntry.where("food_id = ? AND diary_page_id = ? AND meal = ?", food.id, @page.id, "lunch").first.id %>
             <td class="macro first_col"><%= food.name %></td>
@@ -95,7 +95,7 @@
       <td class="macro"></td>
       <td class="delete"></td>
     </tr>
-      <% @dinners.each do |food| %>
+      <% @dinners.reverse.each do |food| %>
         <tr class="data-entry">
           <% entry_id = FoodEntry.where("food_id = ? AND diary_page_id = ? AND meal = ?", food.id, @page.id, "dinner").first.id %>
           <td class="macro first_col"><%= food.name %></td>
@@ -132,7 +132,7 @@
       <td class="delete"></td>
     </tr>
 
-      <% @snacks.each do |food| %>
+      <% @snacks.reverse.each do |food| %>
           <tr class="data-entry">
             <% entry_id = FoodEntry.where("food_id = ? AND diary_page_id = ? AND meal = ?", food.id, @page.id, "snack").first.id %>
             <td class="macro first_col"><%= food.name %></td>

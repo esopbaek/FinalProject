@@ -9,7 +9,8 @@ class FoodsController < ApplicationController
   def edit
   end
   
-  def new
+  def search
+    @results = Food.search_by_name(params[:query])
   end
   
   def update

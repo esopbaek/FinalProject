@@ -1,0 +1,29 @@
+<h2>sup2</h2>
+
+<h2>Select Exercises</h2>
+<div class="select_exercise">
+  <form action="<%= exercise_diary_page_exercise_entries_url(@page) %>" method="post">
+    <input
+       name="authenticity_token"
+       type="hidden"
+       value="<%= form_authenticity_token %>">
+    <input
+       name="exercise_entries[exercise_diary_page_id]"
+       type="hidden"
+       value="<%= @page.id %>">
+    <input
+       name="exercise_entries[cardio_exercise_ids][]"
+       type="hidden"
+       value="">
+<% @exercises.each do |exercise| %>
+  <input 
+    id="exercise-<%= exercise.id %>" 
+    type="checkbox" 
+    name="exercise_diary_page[exercise_ids][]" 
+    value="<%= exercise.id %>">
+  <label for="exercise-<%= exercise.id %>"><%= exercise.name %></label>
+<% end %>
+<input type="submit" value="Choose Exercises">
+</form>
+
+</div>

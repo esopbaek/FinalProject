@@ -7,13 +7,13 @@
     <div class="summary">
     <div class="buttons">
     <a href="<%= diary_page_url(todays_page) %>" class="add-food">Add Food</a>
-    <a href="#" class="add-exercise">Add Exercise</a>
+    <a href="<%= exercise_diary_page_url(todays_exercise_page) %>" class="add-exercise">Add Exercise</a>
     </div>
 
     <div class="image-holder">
     </div>
     
-    <div class="total"><%= @net_cal - @total_food_cals %></div><p>CALORIES REMAINING</p>
+    <div class="total"><%= @net_cal - (@total_food_cals - @total_exercise_cals) %></div><p>CALORIES REMAINING</p>
       <div class="equation">
         <div class="value">
           <div class="num"><%= @net_cal %></div>
@@ -26,12 +26,12 @@
         </div>
         <div class="symbol">-</div>
         <div class="value">
-          <div class="num">0</div>
+          <div class="num"><%= @total_exercise_cals %></div>
           <div class="desc">EXERCISE</div>
         </div>
         <div class="symbol">=</div>
         <div class="value">
-          <div class="num"><%= @total_food_cals %></div>
+          <div class="num"><%= @total_food_cals - @total_exercise_cals %></div>
           <div class="desc">NET</div>
         </div>
         <div class="clear"></div>

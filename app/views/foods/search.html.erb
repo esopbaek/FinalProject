@@ -1,0 +1,33 @@
+<form action="<%= search_url %>" method="get">
+
+<input type="text" name="query" value="<%= params[:query] %>">
+  
+</form>
+<div class="all-content">
+  <div class="search-results">
+    <ul>
+      <% @results.each do |result| %>
+        <li><%= result.name %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="show-food">
+  </div>
+</div>
+
+<script>
+
+// $(document).ready(function() {
+//   $('div').click(function() {
+//     $(this).fadeOut('slow');
+//   });
+// });
+
+</script>
+
+<style>
+.search-results {
+  border: 1px solid black;
+  height: 90px;
+}
+</style>

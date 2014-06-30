@@ -57,7 +57,6 @@ class DiaryPagesController < ApplicationController
     @target_protein = (@target_cals*0.2/4).to_int
     @target_sodium = 2300
     @target_sugar = (@target_cals * 0.15/4).to_int
-    
   end
   
   def edit

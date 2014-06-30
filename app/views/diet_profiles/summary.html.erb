@@ -46,7 +46,7 @@
 
   <tr>
     <td><strong>Calories Burned/Week</strong></td>
-    <td class="red"><%= @cals_burned.to_int %> Calories / Week</td>
+    <td class="red"><%= @cals_burned %> Calories / Week</td>
   </tr>
 
   <tr>
@@ -64,6 +64,6 @@
 <p>If you follow this plan...</p>
 
 <p><strong>Your projected weight loss is <span class="red"><%= @profile.goal_rate %></span></strong></p>
-<p><strong>You should lose <span class="red">10</span> by <span class="red"><%= @progress_date %></span></strong></p>
+<p><strong>You should lose <span class="red"><%= @projected_loss %> lbs</span> by <span class="red"><%= @progress_date %></span></strong></p>
 
 <a href="<%= dashboard_users_url %>">Get Started Now!</a>

@@ -15,7 +15,7 @@ class FoodEntriesController < ApplicationController
     if @page.save
       redirect_to diary_page_url(@page)
     else
-      flash.now[:errors] = @entry.errors.full_messages
+      flash.now[:errors] = @page.errors.full_messages
     end
   end
   
@@ -24,6 +24,9 @@ class FoodEntriesController < ApplicationController
     @entry = FoodEntry.find(params[:id])
     @entry.destroy
     redirect_to diary_page_url(params[:diary_page_id])
+  end
+  
+  def search
   end
   
   private
