@@ -51,6 +51,8 @@ class UsersController < ApplicationController
     @current_weight = @weight.logs.last.amount
     
     @progress = @starting_weight - @current_weight
+    
+    @posts = Post.where("user_id = ?", current_user.id)
     if signed_in?
       render :dashboard
     else

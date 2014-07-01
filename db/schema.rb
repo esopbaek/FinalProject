@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627180131) do
+ActiveRecord::Schema.define(version: 20140630192104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20140627180131) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "comments", force: true do |t|
+    t.text     "comment",    null: false
+    t.integer  "user_id",    null: false
+    t.integer  "post_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
 
   create_table "diary_pages", force: true do |t|
     t.date     "entry_date", null: false
@@ -106,6 +116,16 @@ ActiveRecord::Schema.define(version: 20140627180131) do
     t.integer  "sugar",                  default: 0
   end
 
+  create_table "likes", force: true do |t|
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "likes", ["likeable_id"], name: "index_likes_on_likeable_id", using: :btree
+
   create_table "logs", force: true do |t|
     t.integer  "measurement_id"
     t.integer  "amount"
@@ -118,10 +138,19 @@ ActiveRecord::Schema.define(version: 20140627180131) do
   create_table "measurements", force: true do |t|
     t.string   "name",       null: false
     t.string   "unit"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
+
+  create_table "posts", force: true do |t|
+    t.text     "content",    null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "social_profiles", force: true do |t|
     t.integer  "age",                     null: false

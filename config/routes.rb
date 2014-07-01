@@ -25,6 +25,15 @@ MyApp::Application.routes.draw do
     resources :exercise_entries, only: [:create, :new, :destroy]
   end
   
+  resources :posts, only: [:create, :destroy] do
+    resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create]
+  end
+  
+  resources :comments, only: [:destroy] do
+    resources :likes, only: [:create, :destroy]
+  end
+
   get '/search', to: "foods#search", as: "search"
 
   root to: 'sessions#new'

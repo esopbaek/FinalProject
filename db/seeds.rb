@@ -12,5 +12,8 @@ Food.create!({name: "water", calories: "0", serving_size: "1 unit"})
 Food.create!({name: "soup", calories: "100", serving_size: "1 unit", carbs: "30", protein: "10", total_fat: "20", sodium: "1000", sugar: "10"})
 Food.create!({name: "vegetables", calories: "50", serving_size: "1 unit", carbs: "10", total_fat: "1", sodium: "500", sugar: "2"})
 
+CardioExercise.create!({name: "walking", cals_burned: "100", minutes: "30"})
+CardioExercise.create!({name: "running", cals_burned: "200", minutes: "30"})
+
 
 

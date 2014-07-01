@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
-  has_one :diet_profile
-  has_one :social_profile
-  has_many :measurements
-  has_many :diary_pages
-  has_many :exercise_diary_pages
+  has_one :diet_profile, dependent: :destroy
+  has_one :social_profile, dependent: :destroy
+  has_many :measurements, dependent: :destroy
+  has_many :diary_pages, dependent: :destroy
+  has_many :exercise_diary_pages, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   attr_reader :password
   validates :password_digest, :presence => true
