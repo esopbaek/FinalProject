@@ -1,0 +1,23 @@
+<h1>Foods Index View</h1>
+
+<div class="content">
+  <div class="form group">
+    <h3>Search our food database by name:</h3>
+    <form>
+    <input type="text" name="query">
+    </form>
+  </div>
+
+  <div class="bottom">
+    <div class="results">
+      <ul>
+        <% foods.each(function(food) { %>
+          <li class="list" data-food_id="<%= food.id %>"><%= food.get("name") %></li>
+        <% }); %>
+      </ul>
+    </div>
+
+    <div class="nutrition-label">
+    </div>
+  </div>
+</div>

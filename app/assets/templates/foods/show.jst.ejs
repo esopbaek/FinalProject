@@ -1,0 +1,90 @@
+<h3><%= food.escape("name") %></h1>
+
+<div class="wrap">
+  <header class="group">
+    <span class="serving-size">Servings: <%= food.get("serving_size") %></span>
+    <span class="servings-per">Servings per Container:
+              <%= food.get("servings_per_container") %></span>
+  </header>
+  <div class="all-nutrients group">
+    <div class="left-nutrients">
+      <span class="labels">
+        <ul>
+          <li><bold>Calories</bold></li>
+          <li><bold>Total Fat</bold></li>
+          <li>Saturated</li>
+          <li>Polyunsaturated</li>
+          <li>Monounsaturated</li>
+          <li>Trans</li>
+          <li><bold>Cholesterol</bold></li>
+        </ul>
+      </span>
+      <span class="quantities">
+        <ul>
+          <li><%= food.get("calories") %></li>
+          <li><%= food.get("total_fat") %> g</li>
+          <li><%= food.get("saturated") %> g</li>
+          <li><%= food.get("polyunsaturated") %> g</li>
+          <li><%= food.get("monounsaturated") %> g</li>
+          <li><%= food.get("trans") %> g</li>
+          <li><%= food.get("cholesterol") %> mg</li>
+        </ul>
+      </span>
+    </div>
+    <div class="right-nutrients">
+      <span class="labels">
+        <ul>
+          <li><bold>Sodium</bold></li>
+          <li><bold>Potassium</bold></li>
+          <li><bold>Total Carbs</bold></li>
+          <li><bold>Dietary Fiber</bold></li>
+          <li><bold>Sugars</bold></li>
+          <li><bold>Protein</bold></li>
+        </ul>
+      </span>
+      <span class="quantities">
+        <ul>
+          <li><%= food.get("sodium") %> mg</li>
+          <li><%= food.get("potassium") %> mg</li>
+          <li><%= food.get("carbs") %> g</li>
+          <li><%= food.get("fiber") %> g</li>
+          <li><%= food.get("sugar") %> g</li>
+          <li><%= food.get("protein") %> g</li>
+        </ul>
+      </span>
+    </div>
+  </div>
+  <div class="all-vitamins group">
+    <div class="left-vitamins">
+      <span class="labels">
+        <ul>
+          <li><bold>Vitamin A</bold></li>
+          <li><bold>Vitamin C</bold></li>
+        </ul>
+      </span>
+      <span class="quantities">
+        <ul>
+          <li><%= food.get("vitamin_a") %> %</li>
+          <li><%= food.get("vitamin_c") %> %</li>
+        </ul>
+      </span>
+    </div>
+    <div class="right-vitamins">
+      <span class="labels">
+        <ul>
+          <li><bold>Calcium</bold></li>
+          <li><bold>Iron</bold></li>
+        </ul>
+      </span>
+      <span class="quantities">
+        <ul>
+          <li><%= food.get("calcium") %> %</li>
+          <li><%= food.get("iron") %> %</li>
+        </ul>
+      </span>
+    </div>
+  </div>
+  <footer>
+    <p>*Percent Daily Values are based on a 2000 calorie diet. Your daily values may be higher or lower depending on your calorie needs.</p>
+  </footer>
+</div>

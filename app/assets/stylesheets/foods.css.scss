@@ -1,3 +1,97 @@
 // Place all the styles related to the Foods controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1, div, h3, ul, li, span, header, footer {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+li {
+  list-style: none;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+h1 {
+  color: pink;
+  font-size: 50px;
+}
+
+.content {
+  border: 3px solid black;
+  height: 400px;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.form {
+}
+
+.bottom {
+  margin-top: 10px;
+  height: 330px;
+}
+
+.results {
+  float: left;
+  border: 1px solid black;
+  width: 400px;
+  height: 100%;
+}
+
+li.list {
+  border-bottom: RGB solid RGB(244, 244, 244);
+  color: RGB(11, 94, 177);
+  padding: 10px 10px;
+}
+
+li.list:hover {
+  color: orange;
+  background: RGB(241, 241, 241);
+}
+
+.nutrition-label {
+  float: right;
+  border: 1px solid black;
+  height: 100%;
+  width: 400px;
+}
+
+// nutrition-label
+bold {
+  font-weight: bold;
+}
+
+.wrap {
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+header, div.all-nutrients, div.all-vitamins, footer{
+  border-bottom: 3px solid black;
+}
+
+.all-nutrients {
+  border: 1px solid red;
+}
+
+.all-vitamins {
+  border: 2px solid green;
+}
+
+.labels, .left-nutrients, .left-vitamins {
+  float: left;
+}
+
+.quantities, .right-nutrients, .right-vitamins {
+  float: right;
+}
