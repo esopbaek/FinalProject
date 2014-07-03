@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>MyApp</title>
-    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
@@ -11,7 +11,7 @@
     <ul>
       <li>Signed in as: <%= current_user.username %></li>
       <li><%= button_to "Sign Out", session_url, :method => :delete %></li>
-      <li><a href="<%= dashboard_users_url %>">Home</a></li>
+      <li><a href="<%= dashboard_url %>">Home</a></li>
     </ul>
     <% else %>
     <p>
@@ -23,7 +23,7 @@
       <% if signed_in? %>
     <div class="nav">MY HOME
       <ul>
-        <li class="link"><a href="<%= dashboard_users_url %>">Home</a></li>
+        <li class="link"><a href="<%= dashboard_url %>">Home</a></li>
         <li class="link"><a href="<%= goals_diet_profile_url %>">Goals</a></li>
         <li class="link"><a href="<%= measurements_url %>">Check-in</a></li>
         <li class="link"><a href="<%= social_profile_url %>">Profile</a></li>

@@ -1,5 +1,3 @@
-
-
 json.array!(@foods) do |food|
   json.(food, :id, :name, :calories, :total_fat, :saturated, :polyunsaturated,
   :monounsaturated, :trans, :cholesterol, :sodium, :potassium, :carbs, :fiber,

@@ -1,3 +1,355 @@
 // Place all the styles related to the Measurements controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//edit
+
+div, p, h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+label > p {
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.title {
+  border-bottom: 2px solid RGB(224, 224, 224);
+  font-family: Arial;
+  color: RGB(14, 64, 113);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+label {
+  font-weight: bold;
+  font-size: 14px;
+  font-family: Arial;
+}
+
+.whole-container {
+  width: 1020px;
+  height: 1000px;
+  margin: 30px auto;
+}
+
+.left-entries {
+  width: 700px;
+/*  border: 1px solid red;*/
+  height: 1000px;
+  float: left;
+}
+
+.left-content {
+  margin-top:20px;
+}
+
+.left-form {
+  margin-top: 20px;
+  height: 40px;
+  width: 370px;
+}
+
+.right-info {
+  float: right;
+  width: 300px;
+/*  border: 1px solid green;*/
+  height: 800px;
+  margin-top: 23px;
+}
+
+.weigh-yourself, .take-measurements {
+  width: 100%;
+}
+
+table {
+  border-spacing: 1px 1px;
+  width: 600px;
+}
+
+td {
+  text-align: center;
+  background: RGB(244, 244, 244);
+  border-bottom: 1px solid RGB(224, 224, 224);
+  font-size: 14px;
+}
+
+.first-col, th.first-col {
+  text-align: left;
+}
+
+thead {
+  background: RGB(10, 63, 115);
+  color: white;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 14px;
+}
+
+th{
+  padding: 10px 20px 10px 20px;
+}
+
+.add-entry-header {
+  padding: 10px 5px;
+  border-bottom: 1px solid RGB(224, 224, 224);
+  color: RGB(14, 64, 114);
+}
+
+.add-form {
+  margin-top: 20px;
+/*  border: 1px solid red;*/
+  width: 550px;
+}
+
+h3 {
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+input[type=submit] {
+  -webkit-appearance: none;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  color: blue;
+  background: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+select {
+  width: 120px;
+  margin-top: 8px;
+}
+
+input[value="Change"], input[value="Add New Entry"] {
+  -webkit-appearance: none;
+  padding: 5px;
+  border: 1px solid black;
+  margin: 0;
+  background: RGB(80, 171, 66);
+  color: white;
+  padding: 8px 25px;
+  border-radius: 5px;
+  float: right;
+}
+
+.right-info {
+  width: 300px;
+  float: right;
+}
+
+.weigh-yourself, .take-measurements {
+  background: RGB(244, 244, 244);
+}
+
+.take-measurements {
+  margin-top: 30px;
+}
+
+.head {
+  font-size: 15px;
+  border-bottom: 1px solid RGB(224, 224, 224);
+  color: RGB(13,64,106);
+  padding: 15px;
+}
+
+.body {
+  font-size: 12px;
+  font-family: sans-serif;
+  padding: 15px;
+}
+
+// index
+
+
+div, p, table, form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+.check-in {
+  text-align: left;
+  margin: 50px auto 0;
+  border-bottom: 3px solid gray;
+  width: 900px;
+}
+
+.form {
+  border-bottom: 30px;
+}
+
+.content {
+  margin: 0 auto;
+  height: 1000px;
+  width: 900px;
+/*  border: 1px solid green;*/
+}
+
+.other-measures {
+  margin-top: 30px;
+}
+
+.weight-update-and-table {
+  width: 500px;
+/*  border: 1px solid black;*/
+  float: left;
+}
+
+
+thead{
+  background: RGB(10, 63, 115);
+  color: white;
+}
+
+th {
+/*  border: 1px solid black;*/
+  height: 30px;
+}
+
+td {
+/*  border: 1px solid black;*/
+  height: 30px;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+table {
+  width: 500px;
+}
+
+.other-measures {
+/*  border: 1px solid black;*/
+  float: left;
+}
+
+.info {
+  float: right;
+/*  border: 1px solid black;*/
+  width: 300px;
+  background: RGB(245, 245, 245);
+
+  margin-top: -3px;
+}
+
+.info-header {
+  border-bottom: 1px solid RGB(224, 224, 224);
+  color: RGB(14, 64, 116);
+  font-size: 15px;
+  font-weight: bold;
+  font-family: Arial;
+  padding: 7px;
+}
+
+.body-text > p{
+  padding: 7px;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+//new
+
+h2, div, table, tr, td, p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+th {
+  color: white;
+  font-weight: bold;
+  background: RGB(10, 63, 115);
+}
+
+td {
+/*  border: 1px solid black;*/
+  background: RGB(244, 244, 244);
+}
+
+.h3 {
+  text-align: center;
+  margin: 0 auto;
+/*  border: 1px solid black;*/
+  padding: 30px, 0, 20px, 20px;
+  font-size: 30px;
+  width: 700px;
+  border-bottom: 1px solid RGB(224, 224, 224);
+}
+
+h2 {
+  font-family: sans-serif;
+  margin-top: 30px;
+  color: RGB(10, 62, 113);
+}
+
+.parent {
+  width: 700px;
+/*  border: 1px solid green;*/
+  height: 200px;
+  margin: 0 auto;
+}
+
+.add-measurements {
+  float: left;
+  margin-top: 50px;
+  display: block;
+/*  border: 1px solid black;*/
+  width: 300px;
+  height: 100%;
+}
+
+div.measurements-info{
+  float: right;
+  margin-top: 50px;
+  display: block;
+/*  border: 1px solid black;*/
+  background: RGB(244, 244, 244);
+  width: 400px;
+  height: 100%;
+}
+
+.measurements-info-head > p{
+  color: RGB(14, 64, 113);
+  font-weight: bold;
+  font-size: 14px;
+  font-family: sans-serif;
+  padding: 20px;
+  background: RGB(244,244,244);
+  border-bottom: 1px solid RGB(224, 224, 224);
+}
+
+.measurements-info-body > p {
+  background: RGB(244,244,244);
+  font-family: sans-serif;
+  font-size: 14px;
+  padding: 10px;
+}
+
+table {
+  width: 200px;
+/*  border: 1px solid red;*/
+}
+
+.header-add-another {
+  bottom-border: 1px solid RGB (224,224,224);
+}
+
+.body-add-another {
+  bottom-border: 1px solid RGB (224,224,224);
+}
+
+.add-another {
+  margin-top:80px;
+  color: RGB(14,75,165);
+  font-size: 20px;
+}
+

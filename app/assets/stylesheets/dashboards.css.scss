@@ -1,0 +1,327 @@
+// Place all the styles related to the Dashboards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+div, ul, li, a, img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  color: inherit;
+  background: transparent;
+}
+
+input[type="text"], input[name="post[content]"], input[value="Share"], input[name="comment[comment]"], input[value="Like"], input[value="Delete"],
+button,
+textarea {
+  display: inline-block;
+  box-sizing: content-box;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  vertical-align: baseline;
+  background: transparent;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.all-content {
+  width: 600px;
+  font-family: sans-serif;
+  margin: 50px auto;
+  height: 1000px;
+}
+
+.feed-header {
+  margin-top: 30px;
+  padding: 10px;
+  background: RGB(14, 64, 113);
+  color: white;
+  font-family: sans-serif;
+}
+
+.feed-form {
+  background: RGB(245, 245, 245);
+  padding: 10px 10px;
+  height: 70px;
+  margin: auto;
+}
+
+.post-block {
+  font-family: sans-serif;
+  font-size: 14px;
+  border-bottom: 1px solid RGB(229, 229, 229);
+  padding: 20px 10px;
+}
+
+.post-block > .photo {
+  border: 1px solid red;
+  float: left;
+  width: 48px;
+  height: 48px;
+}
+
+.post-block > .post-info {
+  float: right;
+  width: 500px;
+}
+
+.post-author, .post-content, .links, .post-likes {
+  margin-bottom: 5px;
+}
+
+.post-block > .post-info > .post-author {
+  color: RGB(1, 116, 191);
+  font-weight: bold;
+}
+
+.post-block > .post-info > .links {
+}
+
+input[value="Like"]:hover, input[value="Delete"]:hover {
+  cursor: pointer;
+  display: inline-block;
+  color: orange;
+}
+
+form[class="like"], form[class="delete"] {
+  width: 25px;
+  display: inline-block;
+  color: RGB(1, 116, 191);
+}
+
+.post-block > .post-info > .links > a {
+  color: RGB(1, 116, 191);  
+}
+
+.post-block > .post-info > .links > a:hover, .comment-links {
+  color: orange;
+}
+
+form[class="like"]:hover {
+  color: orange;
+}
+
+time {
+  font-size: 12px;
+  color: RGB(153, 153, 153);
+}
+
+input[name="post[content]"] {
+  margin-top: 20px;
+  width: 490px;
+  height: 30px;
+  background: white;
+  border: 1px solid RGB(230, 230, 230);
+}
+
+input[value="Share"] {
+  color: white;
+  background: RGB(102, 194, 90);
+  border-radius: 5px;
+  border: 1px solid RGB(67, 128, 59);
+  padding: 5px 10px;
+  font-size: 12px;
+  font-family: sans-serif;
+} 
+
+div.comment-block {
+  padding: 5px 0;
+  border-bottom: 1px solid RGB(229,229,229);
+  
+}
+
+div.comment-block > .comment-photo {
+  float: left;
+  height: 30px;
+  width: 30px;
+  border: 1px solid RGB(230, 230, 230);
+}
+
+div.comment-block > div.comment-info {
+  float: right;
+  width: 450px;
+}
+
+div.comment-block > div.comment-info > div.comment-content > span.blue,
+div.comment-block > div.comment-info > div.comment-content > span.blue:visited
+{
+  text-decoration: none;
+  color: RGB(1, 116, 191);  
+}
+
+div.comment-block > div.comment-info > div.comment-content > span.blue:hover {
+  color: orange;
+}
+
+div.comment-block > div.comment-info > div.comment-links {
+  color: RGB(1, 116, 191);  
+}
+
+.summary-box {
+  height: 200px;
+  width: 100%;
+  background: RGB(241,241,241);
+}
+
+.news_feed {
+
+  height: 200px;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.the-form {
+  padding: 10px 5px;
+}
+
+input[name="comment[comment]"] {
+  width: 490px;
+  height: 20px;
+  background: white;
+  border: 1px solid RGB(230, 230, 230);
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+.image-holder  {
+  height: 122px;
+  width: 110px;
+  float: left;
+  margin: 0 15px;
+  border: 2px solid black;
+  background: RGB(224,224,224);
+}
+
+.nav {
+  margin-top: 20px;
+  background: RGB(12, 94, 177);
+  height: 50px;
+  color: white;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.add-food, .add-exercise {
+  float: right;
+  margin: 10px;
+  padding: 12px 17px;
+  border-radius: 4px;
+  border: 1px solid black;
+  font-size: 12px;
+  font-family: sans-serif;
+  background: green;
+  color: white;
+}
+
+.total {
+  color: RGB(57, 164, 54);
+  font-size: 55px;
+  font-family: sans-serif;
+  font-weight: bold;
+  border: 1px solid RGB(241, 241, 241);
+  height: 70px;
+}
+
+.outer-wrap {
+  background: RGB(244, 244, 244);
+  color: white;
+  height: 100%;
+  display: block;
+}
+
+.head {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: RGB(14, 64, 113);
+  color: white;
+  font-family: sans-serif;
+}
+
+.equation {
+/*  border: 1px solid black;*/
+  display: block;
+  color: black;
+  height: 30px;
+  width: 450px;
+  float: left;
+}
+
+.num {
+  float: left;
+  font-size: 20px;
+}
+
+.desc {
+  font-size: 11px;
+}
+
+.value, .symbol {
+  float: left;
+}
+
+.value {
+/*  border: 1px solid red;*/
+  padding-right: 40px;
+  font-family: sans-serif;
+  color: RGB(83, 83, 83);
+}
+
+.symbol{
+  padding-right: 40px;
+}
+
+p {
+  color: black;
+  font-family: sans-serif;
+  font-size: 10px;
+  line-height: 0.3;
+}
+
+p.progress {
+  font-size: 20px;
+}
+
+.progress {
+
+  float: left;
+}
+
+.link {
+  float :left;
+  padding: 6px;
+  list-style-type: none;
+}
+
+.green {
+  color: green;
+}

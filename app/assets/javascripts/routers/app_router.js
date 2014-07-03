@@ -1,6 +1,17 @@
 window.App.Routers.AppRouter = Backbone.Router.extend({
   routes: {
-    "foods/database": "foodsIndex",
+    "foods": "foodsIndex",
+    "dashboard": "dashboardShow",
+  },
+  
+  dashboardShow: function() {
+    var dashboard = new App.Models.Dashboard();
+    dashboard.fetch();
+    var showView = new App.Views.Dashboard({
+      model: dashboard
+    }); 
+    
+    this._swapView(showView);
   },
 
   foodsIndex: function() {

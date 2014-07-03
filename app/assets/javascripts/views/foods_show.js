@@ -5,7 +5,7 @@ App.Views.FoodsShow = Backbone.View.extend({
     this.model = options.model
   },
 
-  render: function(model) {
+  render: function() {
     var renderedContent = this.template({
       food: this.model
     });

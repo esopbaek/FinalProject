@@ -1,0 +1,133 @@
+<div class="all-content group">
+  <div class="summary-box group">
+    <div class="head">
+        Your Daily Summary
+    </div>
+
+    <div class="wrap">
+      <div class="summary">
+      <div class="buttons">
+      <a href="<%= diary_page_url(todays_page) %>" class="add-food">Add Food</a>
+      <a href="<%= exercise_diary_page_url(todays_exercise_page) %>" class="add-exercise">Add Exercise</a>
+      </div>
+
+      <div class="image-holder">
+      </div>
+    
+      <div class="total"><%= @cals_remaining %></div><p>CALORIES REMAINING</p>
+        <div class="equation">
+          <div class="value">
+            <div class="num"><%= @net_cal %></div>
+            <div class="desc">GOAL</div>
+          </div>
+          <div class="value">
+            <div class="num"><%= @total_food_cals %></div>
+            <div class="desc">FOOD</div>
+
+          </div>
+          <div class="symbol">-</div>
+          <div class="value">
+            <div class="num"><%= @total_exercise_cals %></div>
+            <div class="desc">EXERCISE</div>
+          </div>
+          <div class="symbol">=</div>
+          <div class="value">
+            <div class="num"><%= @total_cals_consumed %></div>
+            <div class="desc">NET</div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="progress">
+        <p class="progress"><strong class="green"><%= @progress %></strong> lbs lost</p>
+    </div>
+  </div>
+  <div class="news-feed">
+    <div class="feed-header">
+      News Feed
+    </div>
+    <div class="feed-form">
+      <form action="<%= posts_url %>" method="post">
+        <input
+           name="authenticity_token"
+           type="hidden"
+           value="<%= form_authenticity_token %>">
+        
+        <input type="textarea" name="post[content]" placeholder="What's on your mind?">
+        <input type="submit" value="Share">
+      </form>
+    </div> 
+    <div class="feed-posts">
+        <% @posts.reverse.each do |post| %>
+        <div class="post-block group">
+          <div class="photo"></div>
+          <div class='post-info'>
+            <div class="post-author"><%= post.user.username %></div>
+            <div class="post-content"><%= post.content %></div>
+            <div class="links">
+              <form class="like" action="<%= post_likes_url(post) %>" 
+                method="post">
+                <input
+                   name="authenticity_token"
+                   type="hidden"
+                   value="<%= form_authenticity_token %>">
+                <input type="submit" value="Like">
+              </form> - 
+              <a href="#">Comment</a> - 
+              <time><%= time_ago_in_words(post.created_at) %></time>
+            </div>
+            <% if !post.likes.blank? %>
+              <div class="post-likes"><p>Somebody liked this.</p></div>
+            <% end %>
+            
+            <% post.comments.each do |comment| %>
+            <div class="comment-block group">
+              <div class="comment-photo"></div>
+              <div class="comment-info">
+                 <div class="comment-content"><span class="blue"><%= link_to comment.user.username, social_profile_url %></span> <%= comment.comment %></div>
+                <div class="comment-links">
+                  <time><%= time_ago_in_words(post.created_at) %></time> -  
+                    <form class="like" 
+                          action="<%= comment_likes_url(comment) %>"
+                          method="post">
+                      <input
+                       name="authenticity_token"
+                       type="hidden"
+                       value="<%= form_authenticity_token %>">
+                       <input type="submit" value="Like">
+                    </form> - 
+                    <form class="delete" 
+                          action="<%= comment_url(comment) %>"
+                          method="post">
+                      <input
+                       name="authenticity_token"
+                       type="hidden"
+                       value="<%= form_authenticity_token %>">
+                      <input
+                         name="_method"
+                         type="hidden"
+                         value="delete">
+                      <input type="submit" value="Delete">
+                   </form>
+                </div>
+              </div>
+            </div>
+            <% end %>
+            <div class="comment-form">
+              <div class="comment-photo"></div>
+              <div class="the-form">
+                <form action="<%= post_comments_url(post) %>" method="post">
+            <input
+               name="authenticity_token"
+               type="hidden"
+               value="<%= form_authenticity_token %>">
+              <input type="textarea" name="comment[comment]" placeholder="Write a comment...">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>
