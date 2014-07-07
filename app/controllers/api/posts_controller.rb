@@ -6,16 +6,16 @@ class Api::PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
     @comments = @post.comments
     render "show"
   end
   
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.new(post_params)
     
     if @post.save
-      redirect_to dashboard_url
+      head :ok
     else
       flash[:errors] = @post.errors.full_messages
       #some crazy shit

@@ -1,11 +1,11 @@
-class CommentsController < ApplicationController
+class Api::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.post_id = params[:post_id]
     @comment.user_id = current_user.id
     
     if @comment.save
-      redirect_to dashboard_users_url
+      redirect_to dashboard_url
     else
       flash[:errors] = @comment.errors.full_messages
     end
@@ -13,7 +13,13 @@ class CommentsController < ApplicationController
   
   def index
     @comments = Comment.where("post_id = ?", params[:post_id])
+    render "index"
   end
+
+  def show
+    @comment = Comment.find(params[:id])
+    render "show"
+  end  
   
   def destroy
     @comment = Comment.find(params[:id])

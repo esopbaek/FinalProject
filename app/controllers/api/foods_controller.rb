@@ -1,4 +1,14 @@
 class Api::FoodsController < ApplicationController
+  
+  def index
+    @foods = Food.all
+    render json: @foods
+  end
+
+  def show
+    @food = Food.find(params[:id])
+    render json: @food
+  end
 
   def new
   end
@@ -10,9 +20,10 @@ class Api::FoodsController < ApplicationController
   end
 
   def database
-    # @results = Food.search_by_name(params[:query])
-    @foods = Food.all
-    render "index"
+    results = Food.search_results("banana")
+    parsed_results = JSON.parse(RestClient.get(results))
+    @matching_foods = parsed_results["hits"].collect { |result| result["fields"] }
+    render json: @matching_foods
   end
 
   def update

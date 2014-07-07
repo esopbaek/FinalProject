@@ -1,17 +1,150 @@
-<form action="<%= search_url %>" method="get">
+<!-- <form class="group" action="<%= search_url %>" method="get">
 
 <input type="text" name="query" value="<%= params[:query] %>">
-  
+
 </form>
-<div class="all-content">
+<div class="all-content group">
   <div class="search-results">
     <ul>
       <% @results.each do |result| %>
-        <li><%= result.name %></li>
+        <li class="food" data_id="<%= result.id %>"><%= result.name %></li>
       <% end %>
     </ul>
   </div>
   <div class="show-food">
+
+  </div>
+</div> -->
+
+<div class="content">
+  <div class="form group">
+    <h3>Search our food database by name:</h3>
+      <form class="group" action="<%= search_url %>" method="get">
+      <input type="text" name="query" value="<%= params[:query] %>">
+      </form>
+  </div>
+
+  <div class="bottom">
+    <div class="results">
+      <ul>
+        <% if @results.length > 0 %>
+        <%  @results.each do |result| %>
+          <li class="list" data-food_id="<%= result.id %>"><%= result.name %></li>
+        <% end %>
+        <% else %>
+          <li class="none">No items match your search, try again.</li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="nutrition-label">
+    </div>
+    
   </div>
 </div>
 
+<script>
+
+$( document ).ready(function() {
+  $( ".list" ).click(function(event) {
+    event.preventDefault();
+    console.log(event.currentTarget);
+    var id = $(event.currentTarget).data("food_id")
+    var food = App.Collections.foods.getOrFetch(id);
+    
+    var showView = new App.Views.FoodsShow({
+      model: food
+    })
+    $(".nutrition-label").html(showView.render().$el)
+    var button = $(".nutrition-label > div")
+    button.click(function() {
+      
+    })
+  })
+})
+
+</script>
+
+<style>
+
+
+h1, div, h3, ul, li, span, header, footer {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+li {
+  list-style: none;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+h1 {
+  color: pink;
+  font-size: 50px;
+}
+
+.content {
+  border: 3px solid black;
+  height: 400px;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.form {
+}
+
+.bottom {
+  margin-top: 10px;
+  height: 330px;
+}
+
+.results {
+  float: left;
+  border: 1px solid black;
+  width: 400px;
+  height: 100%;
+  overflow: scroll;
+}
+
+li.list {
+  border-bottom: RGB solid RGB(244, 244, 244);
+  color: RGB(11, 94, 177);
+  padding: 10px 10px;
+}
+
+li.list:hover {
+  color: orange;
+  background: RGB(241, 241, 241);
+}
+
+.nutrition-label {
+  float: right;
+  border: 1px solid black;
+  height: 100%;
+  width: 400px;
+}
+
+
+.all-content {
+  border: 1px solid black;
+}
+
+.search-results {
+  float:left;
+  border: 1px solid black;
+}
+
+.show-food {
+  float: right;
+  border: 1px solid green;
+}
+
+</style>

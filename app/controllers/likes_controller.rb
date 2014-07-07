@@ -11,7 +11,7 @@ class LikesController < ApplicationController
     end
     
     if @like.save
-      redirect_to dashboard_users_url
+      redirect_to dashboard_url
     else
       flash[:errors] = @like.errors.full_messages 
     end
@@ -20,6 +20,6 @@ class LikesController < ApplicationController
   def destroy
     @like = Like.find(params[:id])
     @like.destroy
-    redirect_to dashboard_users_url
+    redirect_to dashboard_url
   end
 end

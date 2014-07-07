@@ -33,3 +33,9 @@ group :production do
 end
 gem 'bcrypt', '~> 3.1.7'
 gem "pg_search"
+
+gem "addressable"
+gem "rest-client"
+gem "nokogiri"
+gem "highcharts-rails", "~> 3.0.0"
+gem 'lazy_high_charts'

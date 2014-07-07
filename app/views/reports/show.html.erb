@@ -1,0 +1,53 @@
+<div class="nav group">
+  <ul>
+    <li class="linkylinks"><a class="nav" href="<%= dashboard_url %>">MY HOME</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= diary_page_url(todays_page) %>">FOOD</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= exercise_diary_page_url(todays_exercise_page) %>">EXERCISE</a></li>
+    <li class="linkylinks selected"><a class="nav" href="<%= reports_url %>">REPORTS</a></li>
+    <li class="linkylinks"><a class="nav" href="#">COMMUNITY</a></li>   
+    <li class="linkylinks"><a class="nav" href="#">BLOG</a></li>
+  </ul>
+</div>
+
+<div class="nav2 group">
+  <ul>
+    <li class="linkylinks"><a class="g nav" href="<%= reports_url %>">       
+      </a></li>  
+  </ul>
+</div>
+
+<div class="report">
+  <h2>Charts and Reports</h2>
+
+  <form action="<%= reports_url %>" method="get">
+    <label>Choose a report:</label>
+    <select name="measurement_id">
+      <%= @measurements.each do |measurement| %>
+        <option value="<%= measurement.id %>"><%= measurement.name %></option>
+      <% end %>
+    </select>
+  
+    <input type="submit" value="Submit">
+  </form>
+
+  <% if @chart %>
+  <%= high_chart("container", @chart) %>
+  <% end %>
+</div>
+
+
+<style>
+
+h2 {
+  color: RGB(27, 62, 113);
+  border-bottom: 1px solid RGB(220, 220, 220);
+  font-size: 50px;
+  text-align: center;
+}
+
+.report {
+  padding: 10px 10px;
+}
+
+</style>
+

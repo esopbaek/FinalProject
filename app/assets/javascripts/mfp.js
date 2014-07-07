@@ -10,48 +10,76 @@ window.App = {
   }
 };
 
-Backbone.CompositeView = Backbone.View.extend({
-  addSubview: function (selector, subview) {
-    var selectorSubview =
-    this.subviews[selector] || (subviews[selector] = 0);
-    this.subviews(selector).push(subview);
+Backbone.CompositeView = function(options) {
+  this.children = _([]);
+  this.bindings = _([]);
+  Backbone.View.apply(this, [options]);
+};
+_.extend(Backbone.CompositeView.prototype, Backbone.View.prototype, {
+  leave: function() {
+    this.unbind();
+    this.unbindFromAll();
+    this.remove();
+    this._leaveChildren();
+    this._removeFromParent();
   },
-
-  renderSubviews: function (selector, subview) {
-    this.$(selector).append(subview.$el);
-    // Bind events in case `subview` has previously been removed from
-    // DOM.
-    subview.delegateEvents();
+  bindTo: function(source, event, callback) {
+    source.bind(event, callback, this);
+    this.bindings.push({ source: source, event: event, callback: callback });
   },
-
-  remove: function () {
-    Backbone.View.prototype.remove.call(this);
-    _(this.subviews()).each(function (subviews) {
-      _(subviews).each(function (subview) { subview.remove(); });
+  unbindFromAll: function() {
+    this.bindings.each(function(binding) {
+    binding.source.unbind(binding.event, binding.callback);
+    });
+    this.bindings = _([]);
+  },
+  renderChild: function(view) {
+    view.render();
+    this.children.push(view);
+    view.parent = this;
+  },
+  renderChildInto: function(view, container) {
+    this.renderChild(view);
+    $(container).empty().append(view.el);
+  },
+  appendChild: function(view) {
+    this.renderChild(view);
+    $(this.el).append(view.el);
+  },
+  appendChildTo: function (view, container) {
+    this.renderChild(view);
+    $(container).append(view.el);
+  },
+  prependChild: function(view) {
+    this.renderChild(view);
+    $(this.el).prepend(view.el);
+  },
+  prependChildTo: function (view, container) {
+    this.renderChild(view);
+    $(container).prepend(view.el);
+  },
+  insertChildAfter: function (view, container) {
+    this.renderChild(view);
+    $(view.el).insertAfter(container)
+  },
+  
+  _leaveChildren: function() {
+    this.children.chain().clone().each(function(view) {
+      if (view.leave)
+        view.leave();
     });
   },
-
-  removeSubview: function (selector, subview) {
-    subview.remove();
-
-    var subviews = this.subviews(selector);
-    subviews.splice(subviews.indexOf(subview), 1);
+  _removeFromParent: function() {
+    if (this.parent)
+    this.parent._removeChild(this);
   },
-
-  subviews: function (selector) {
-    // Map of selectors to subviews that live inside that selector.
-    // Optionally pass a selector and I'll initialize/return an array
-    // of subviews for the sel.
-    this._subviews = this._subviews || {};
-
-    if (!selector) {
-      return this._subviews;
-    } else {
-      this._subviews[selector] = this._subviews[selector] || [];
-      return this._subviews[selector];
-    }
+  _removeChild: function(view) {
+    var index = this.children.indexOf(view);
+    this.children.splice(index, 1);
   }
 });
+
+Backbone.CompositeView.extend = Backbone.View.extend;
 
 
 $(App.initialize);

@@ -1,3 +1,27 @@
+    <div class="nav group">
+      <ul>
+        <li class="linkylinks"><a class="nav" href="<%= dashboard_url %>">MY HOME</a></li>
+        <li class="linkylinks"><a class="nav" href="<%= goals_diet_profile_url %>">GOALS</a></li>
+        <li class="linkylinks"><a class="nav" href="<%= measurements_url %>">CHECK-IN</a></li>
+        <li class="linkylinks"><a class="nav" href="<%= social_profile_url %>">PROFILE</a></li>
+        <li class="linkylinks"><a class="nav" href="<%= reports_url %>">REPORTS</a></li>   
+        <li class="linkylinks"><a class="nav" href="#">My Blog</a></li>
+        <li class="linkylinks"><a class="nav" href="#">Friends</a></li>
+      </ul>
+    </div>
+
+<div class="nav2 group">
+  <ul>
+    <li class="linkylinks"><a class="nav" href="<%= dashboard_url %>">MY HOME</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= goals_diet_profile_url %>">GOALS</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= measurements_url %>">CHECK-IN</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= social_profile_url %>">PROFILE</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= reports_url %>">REPORTS</a></li>   
+    <li class="linkylinks"><a class="nav" href="#">My Blog</a></li>
+    <li class="linkylinks"><a class="nav" href="#">Friends</a></li>
+  </ul>
+</div>
+
 <div class="h3"><h2>Track Additional Measurements</h2></div>
 
 <%= render "layouts/errors" %>
@@ -29,7 +53,10 @@
              type="hidden"
              value="<%= form_authenticity_token %>">
           <label>Description:</label>
-            <input type="text" name="measurement[name]" placeholder="(i.e. '%Body Fat')">
+            <input type="text" name="measurement[name]" placeholder="(i.e. 'Body Fat')">
+            <br>
+          <label>Unit:</label>
+            <input type="text" name="measurement[unit]" placeholder="(i.e. 'lbs')">
       </div>
         <input type="submit" value="Add Measurement">
         <a href="<%= measurements_url %>">Cancel</a>
@@ -48,7 +75,119 @@
     </div>
   </div>
 </div>
+
 <style>
+
+h2, div, table, tr, td, p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+th {
+  color: white;
+  font-weight: bold;
+  background: RGB(10, 63, 115);
+}
+
+td {
+/*  border: 1px solid black;*/
+  background: RGB(244, 244, 244);
+}
+
+.h3 {
+  text-align: center;
+  margin: 0 auto;
+/*  border: 1px solid black;*/
+  padding: 30px, 0, 20px, 20px;
+  font-size: 30px;
+  width: 700px;
+  border-bottom: 1px solid RGB(224, 224, 224);
+}
+
+h2 {
+  font-family: sans-serif;
+  margin-top: 30px;
+  color: RGB(10, 62, 113);
+}
+
+
+.parent {
+  width: 700px;
+/*  border: 1px solid green;*/
+  height: 200px;
+  margin: 0 auto;
+}
+
+.add-measurements {
+  float: left;
+  margin-top: 50px;
+  display: block;
+/*  border: 1px solid black;*/
+  width: 300px;
+  height: 100%;
+}
+
+div.measurements-info{
+  float: right;
+  margin-top: 50px;
+  display: block;
+/*  border: 1px solid black;*/
+  background: RGB(244, 244, 244);
+  width: 400px;
+  height: 100%;
+}
+
+.measurements-info-head > p{
+  color: RGB(14, 64, 113);
+  font-weight: bold;
+  font-size: 14px;
+  font-family: sans-serif;
+  padding: 20px;
+  background: RGB(244,244,244);
+  border-bottom: 1px solid RGB(224, 224, 224);
+}
+
+.measurements-info-body > p {
+  background: RGB(244,244,244);
+  font-family: sans-serif;
+  font-size: 12px;
+  padding: 10px;
+}
+
+table {
+  width: 200px;
+/*  border: 1px solid red;*/
+}
+
+.header-add-another {
+  bottom-border: 1px solid RGB (224,224,224);
+}
+
+.body-add-another {
+  bottom-border: 1px solid RGB (224,224,224);
+}
+
+.add-another {
+  margin-top:80px;
+  color: RGB(14,75,165);
+  font-size: 20px;
+  margin-bottom: 5px;;
+}
+
+input[value="Add Measurement"] {
+  text-decoration: none;
+  border: 1px solid grey;
+  border-radius: 3px;
+  width: 160px;
+  height: 33px;
+  color: white;
+  font-size: 12px;
+  background: RGB(88, 188, 70);
+  margin-top: 5px;
+}
+
 
 </style>
 

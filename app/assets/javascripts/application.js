@@ -16,6 +16,8 @@
 //= require underscore
 //= require backbone
 //= require marked
+//= require humanized_time_span
+//= require highcharts
 //= require mfp
 //= require_tree ./models
 //= require_tree ./collections

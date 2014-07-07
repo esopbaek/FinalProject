@@ -11,7 +11,7 @@
     <ul>
       <li>Signed in as: <%= current_user.username %></li>
       <li><%= button_to "Sign Out", session_url, :method => :delete %></li>
-      <li><a href="<%= dashboard_url %>">Home</a></li>
+      <li><a class="nav" href="<%= dashboard_url %>">Home</a></li>
     </ul>
     <% else %>
     <p>
@@ -21,16 +21,7 @@
   <% end %>
 
       <% if signed_in? %>
-    <div class="nav">MY HOME
-      <ul>
-        <li class="link"><a href="<%= dashboard_url %>">Home</a></li>
-        <li class="link"><a href="<%= goals_diet_profile_url %>">Goals</a></li>
-        <li class="link"><a href="<%= measurements_url %>">Check-in</a></li>
-        <li class="link"><a href="<%= social_profile_url %>">Profile</a></li>
-        <li class="link"><a href="#">My Blog</a></li>
-        <li class="link"><a href="#">Friends</a></li>
-      </ul>
-    </div>
+    
       <% end %>
 
 
@@ -48,45 +39,66 @@
   clear: both;
 }
 
+li {
 
-div, div, ul, li, a, img {
+}
+
+body, div.nav, div, ul, li, a, img {
   margin: 0;
   padding: 0;
   border: 0;
   font: inherit;
 }
 
-a {
+a.nav {
   text-decoration: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
 }
+
+a.nav:visited { text-decoration: none; color:white; }
 
 img {
   height: 100%;
   width: 100%;
 }
 
-div {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-}
 
-
-.nav {
-  margin-top: 20px;
-  background: RGB(12, 94, 177);
-  height: 50px;
+div.nav {
+  background: RGB(25, 116, 190);
   color: white;
-  font-weight: bold;
   font-family: sans-serif;
+  padding-left: 200px;
+}
+
+div.nav2 {
+  color: white;
+  font-family: sans-serif;
+  padding-left: 200px;
+  background: RGB(27, 62, 113);
+}
+
+li.selected {
+  background: RGB(27, 62, 113);
 }
 
 
-.link {
+li.linkylinks {
   float :left;
   padding: 6px;
   list-style-type: none;
+  color: white;
+  padding: 13px 26px;
+}
+
+li.linkylinks:visited {
+  color: white;
+}
+
+li.linkylinks:hover {
+    background: RGB(27, 62, 113);
 }
 
 

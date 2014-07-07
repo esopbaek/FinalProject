@@ -1,8 +1,4 @@
-<style>
-.red {
-  color: red;
-}
-</style>
+
 <%= render "layouts/errors" %>
 <h2>Your Suggested Fitness And Nutrition Goals</h3>
 
@@ -67,3 +63,9 @@
 <p><strong>You should lose <span class="red"><%= @projected_loss %> lbs</span> by <span class="red"><%= @progress_date %></span></strong></p>
 
 <a href="<%= dashboard_url %>">Get Started Now!</a>
+
+<style>
+.red {
+  color: red;
+}
+</style>

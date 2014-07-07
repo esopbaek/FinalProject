@@ -1,3 +1,25 @@
+<div class="nav group">
+  <ul>
+    <li class="linkylinks"><a class="nav" href="<%= dashboard_url %>">MY HOME</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= diary_page_url(todays_page) %>">FOOD</a></li>
+    <li class="linkylinks selected"><a class="nav" href="<%= exercise_diary_page_url(todays_exercise_page) %>">EXERCISE</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= reports_url %>">REPORTS</a></li>
+    <li class="linkylinks"><a class="nav" href="#">COMMUNITY</a></li>   
+    <li class="linkylinks"><a class="nav" href="#">BLOG</a></li>
+  </ul>
+</div>
+
+<div class="nav2 group">
+  <ul>
+    <li class="linkylinks"><a class="nav" href="<%= exercise_diary_page_url(todays_exercise_page) %>">Exercise Diary</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= exercise_diary_page_url(todays_exercise_page) %>">Database</a></li>
+    <li class="linkylinks"><a class="nav" href="#">My Exercises</a></li>
+    <li class="linkylinks"><a class="nav" href="#">Settings</a></li>   
+  </ul>
+</div>
+
+
+
 <div class="diary-head">
   <% yest = ExerciseDiaryPage.where("exercise_entry_date = ?", @entry_date - 1).first %>
   <% tomo = ExerciseDiaryPage.where("exercise_entry_date = ?", @entry_date + 1).first %>
@@ -59,7 +81,7 @@
 
 <style>
 
-body, table, thead, tfoot, tbody, tr, td, th {
+table, thead, tfoot, tbody, tr, td, th {
   margin: 0;
   padding: 0;
   border: 0;
@@ -67,9 +89,12 @@ body, table, thead, tfoot, tbody, tr, td, th {
   vertical-align: baseline;
 }
 
-
+tr.data-entry {
+      background: RGB(240, 240, 240);
+}
 
 .diary-head {
+  margin-top: 30px;
   text-align: center;
   color: RGB(15,68,111);
   font-size: 20px;
@@ -85,6 +110,7 @@ body, table, thead, tfoot, tbody, tr, td, th {
 .totals {
 /*  border: 1px solid black;*/
   height: 90px;
+  width: 300px;
 }
 
 th.macro {
@@ -94,11 +120,10 @@ th.macro {
   font-family: sans-serif;
 }
 
-
-
 .meal {
   text-align: left;
   color: RGB(14, 64, 113);
+  
   font-size: 20px;
   font-family: sans-serif;
   width: 300px;
@@ -115,3 +140,9 @@ th, td {
   width: 46px;
   
 }
+
+table {
+  border-spacing: 1px 0;
+}
+
+</style>

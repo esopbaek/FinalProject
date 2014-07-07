@@ -1,90 +1,179 @@
-<table class="nutrition-goals">
-  <tr>
-    <td>Nutrition Goals</td>
-    <td>Goals</td>
-  </tr>
+<div class="nav group">
+  <ul>
+    <li class="linkylinks selected"><a class="nav" href="<%= dashboard_url %>">MY HOME</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= diary_page_url(todays_page) %>">FOOD</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= exercise_diary_page_url(todays_exercise_page) %>">EXERCISE</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= reports_url %>">REPORTS</a></li>
+    <li class="linkylinks"><a class="nav" href="#">COMMUNITY</a></li>   
+    <li class="linkylinks"><a class="nav" href="#">BLOG</a></li>
+  </ul>
+</div>
+<div class="nav2 group">
+  <ul>
+    <li class="linkylinks"><a class="nav" href="<%= dashboard_url %>">Home</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= goals_diet_profile_url %>">Goals</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= measurements_url %>">Check-in</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= social_profile_url %>">Profile</a></li>
+    <li class="linkylinks"><a class="nav" href="#">MyBlog</a></li>   
+  </ul>
+</div>
 
-  <tr>
+<div class="all-tables group">
+  <div class="left">
+  <div class="nutrition group">
+  <table class="nutrition-goals">
+    <tr>
+      <th>Nutrition Goals</th>
+      <th>Goals</th>
+    </tr>
 
-    <td><strong>Net Calories Consumed*/Day</strong></td>
-    <td class="red"><%= @net_cal %> Calories/Day</td>
-  </tr>
+    <tr>
 
-  <tr>
-    <td>Carbs/Day</td>
-    <td><%= @carbs %> g</td>
-  </tr>
+      <td><strong>Net Calories Consumed*/Day</strong></td>
+      <td class="red"><%= @net_cal %> Calories/Day</td>
+    </tr>
 
-  <tr>
-    <td>Fat/Day</td>
-    <td><%= @fats %> g</td>
-  </tr>
+    <tr>
+      <td>Carbs/Day</td>
+      <td><%= @carbs %> g</td>
+    </tr>
 
-  <tr>
-    <td>Protein/Day</td>
-    <td><%= @protein %> g</td>
-  </tr>
-</table>
+    <tr>
+      <td>Fat/Day</td>
+      <td><%= @fats %> g</td>
+    </tr>
 
-<br>
+    <tr>
+      <td>Protein/Day</td>
+      <td><%= @protein %> g</td>
+    </tr>
+  </table>
+  </div>
 
-<table class="fitness-goals">
-  <tr>
-    <td>Fitness Goals</td>
-    <td>Goals</td>
-  </tr>
 
-  <tr>
-    <td><strong>Calories Burned/Week</strong></td>
-    <td class="red"><%= @cals_burned %> Calories / Week</td>
-  </tr>
+  <div class="fitness">
+  <table class="fitness-goals">
+    <tr>
+      <th>Fitness Goals</th>
+      <th>Goals</th>
+    </tr>
 
-  <tr>
-    <td>Workouts/Week</td>
-    <td><%= @profile.workouts_per_week  %> workouts</td>
-  </tr>
+    <tr>
+      <td><strong>Calories Burned/Week</strong></td>
+      <td class="red"><%= @cals_burned %> Calories / Week</td>
+    </tr>
 
-  <tr>
-    <td>Minutes/Workout</td>
-    <td><%= @profile.mins_per_workout  %> minutes</td>
-  </tr>
-</table>
-<br>
+    <tr>
+      <td>Workouts/Week</td>
+      <td><%= @profile.workouts_per_week  %> workouts</td>
+    </tr>
 
-<table class="diet-profile">
-  <tr>
-    <td>Your Diet Profile</td>
-    <td>Target</td>
-  </tr>
+    <tr>
+      <td>Minutes/Workout</td>
+      <td><%= @profile.mins_per_workout  %> minutes</td>
+    </tr>
+  </table>
+  </div>
+  </div>
+  <div class="right">
+  <table class="diet-profile">
+    <tr>
+      <th>Your Diet Profile</th>
+      <th>Target</th>
+    </tr>
 
-  <tr>
-    <td><strong>Calories Burned</strong></td>
-  </tr>
+    <tr>
+      <td colspan="2"><strong>Calories Burned</strong></td>
+    </tr>
 
-  <tr>
-    <td>From Normal Daily Activity</td>
-    <td><%= @BMR  %> cal/day</td>
-  </tr>
+    <tr>
+      <td>From Normal Daily Activity</td>
+      <td><%= @BMR  %> cal/day</td>
+    </tr>
 
-  <tr>
-    <td><strong>Net Calories Consumed*</strong></td>
-  </tr>
+    <tr>
+      <td colspan="2"><strong>Net Calories Consumed*</strong></td>
+    </tr>
 
-  <tr>
-    <td>Your Daily Goal</td>
-    <td><%= @net_cal%> cal/day</td>
-  </tr>
+    <tr>
+      <td>Your Daily Goal</td>
+      <td><%= @net_cal%> cal/day</td>
+    </tr>
 
-  <tr>
-    <td>Daily Calorie Defecit</td>
-    <td class="red"><%= @cal_deficit %> calories</td>
-  </tr>
+    <tr>
+      <td>Daily Calorie Defecit</td>
+      <td class="red"><%= @cal_deficit %> calories</td>
+    </tr>
 
-  <tr>
-    <td>Projected Weight Loss</td>
-    <td class="red"><%= @projected_loss %></td>
-  </tr>
-</table>
-<br>
-<a href="<%= edit_diet_profile_url %>">Change Goals</a>
+    <tr>
+      <td>Projected Weight Loss</td>
+      <td class="red"><%= @projected_loss %></td>
+    </tr>
+  </table>
 
+  </div>
+</div>
+
+<div class="edit group"><a href="<%= edit_diet_profile_url %>">Change Goals</a></div>
+
+<style>
+
+.all-tables {
+  font-family: sans-serif;
+  width: 600px;
+  margin: 50px auto;
+}
+
+.fitness > table > tbody > tr > th, .nutrition > table > tbody > tr > th, .right > table > tbody > tr > th   {
+  color: white;
+  font-size: 16px;
+  background: RGB(27,62,113);
+  text-align: left;
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+td {
+  background: RGB(244,244,244);
+  font-size: 12px;
+  padding: 4px;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.fitness > table {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.red {
+  color: red;
+}
+
+.edit {
+  margin: 0 auto;
+  border: 1px solid grey;
+  text-align: center;
+  width: 120px;
+  background: green;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.edit > a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+table {
+  border-spacing: 1px 0;
+}
+
+</style>

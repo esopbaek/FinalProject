@@ -11,25 +11,24 @@ window.App.Views.FoodsIndex = Backbone.CompositeView.extend({
     "click li.list": "showNutrition"
   },
 
-  render: function(coll) {
-    var renderedContent = this.template({ foods: coll });
+  render: function() {
+    var renderedContent = this.template({ foods: this.collection });
     this.$el.html(renderedContent);
     return this;
   },
 
   submit: function (event) {
     event.preventDefault();
-    var params = $(event.currentTarget).serializeJSON();
-    var filteredcoll = new App.Collections.Foods();
-    var filtered = _.where(this.collection.toJSON(), {name: params["query"]});
-    filteredcoll.set(filtered)
-    this.render(filteredcoll)
+    var params = $(event.currentTarget).serializeJSON()["query"];
+    App.Collections.foods.fetch({data: {query: encodeURI(params)}});
+    this.render();
   },
 
   showNutrition: function (event) {
     event.preventDefault;
     var params = $(event.currentTarget);
-    var model = App.Collections.foods.get(params.data("food_id"));
+    var model = App.Collections.foods.findWhere({item_id: params.data("food_id")});
+    
     var showView = new App.Views.FoodsShow({
       model: model
     });

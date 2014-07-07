@@ -3,6 +3,7 @@ App.Views.FoodsShow = Backbone.View.extend({
 
   initialize: function(options) {
     this.model = options.model
+    this.listenTo(this.model, "sync", this.render)
   },
 
   render: function() {

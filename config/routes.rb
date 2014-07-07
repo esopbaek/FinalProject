@@ -30,10 +30,11 @@ MyApp::Application.routes.draw do
   resources :comments, only: [:destroy] do
     resources :likes, only: [:create, :destroy]
   end
+  
+  resource :reports, only: [:show]
 
-  get '/search', to: "foods#search", as: "search"
-
-  root to: 'sessions#new'
+  root to: 'site#root'
+  post '/diary_pages/:diary_page_id/food_entries/createtemp', to: 'food_entries#createtemp', as: 'temp_food_entries'
 
   namespace :api, defaults: {format: :json} do
     resources :foods do
@@ -43,13 +44,14 @@ MyApp::Application.routes.draw do
     end
     
     resource :dashboard, :only => [:show]
-    resources :posts, only: [:index, :create, :destroy] do
+    resources :posts, only: [:index, :create, :destroy, :show] do
       resources :likes, only: [:create, :destroy]
-      resources :comments, only: [:create]
+      resources :comments, only: [:index]
     end
-    resources :posts, only: [:create, :destroy, :index, :show] do
-      resources :likes, only: [:create, :destroy]
-      resources :comments, only: [:create, :show]
+    resources :comments, :only => [:create, :destroy, :show]
+    
+    resources :diary_pages, only: [:create, :update, :edit, :show] do
+      resources :food_entries, only: [:create, :new, :destroy]
     end
   end
 end

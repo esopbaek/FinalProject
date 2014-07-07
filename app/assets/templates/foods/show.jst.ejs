@@ -1,10 +1,10 @@
-<h3><%= food.escape("name") %></h1>
+<h3><%= food.get("name") %></h1>
 
 <div class="wrapper">
   <header class="group">
-    <span class="serving-size">Servings: <%= food.get("serving_size") %></span>
+    <span class="serving-size">Servings: <%= food.get("serving_size_qty") %> <%= food.get("serving_size") || "N/A" %> <!-- <%= food.get("serving_size_unit") || "N/A" %></span> -->
     <span class="servings-per">Servings per Container:
-              <%= food.get("servings_per_container") %></span>
+              <%= food.get("servings_per_container") || "N/A" %></span>
   </header>
   <div class="all-nutrients group">
     <div class="left-nutrients">
@@ -21,13 +21,13 @@
       </span>
       <span class="quantities">
         <ul>
-          <li><%= food.get("calories") %></li>
-          <li><%= food.get("total_fat") %> g</li>
-          <li><%= food.get("saturated") %> g</li>
-          <li><%= food.get("polyunsaturated") %> g</li>
-          <li><%= food.get("monounsaturated") %> g</li>
-          <li><%= food.get("trans") %> g</li>
-          <li><%= food.get("cholesterol") %> mg</li>
+          <li><%= food.get("calories") || 0 %></li>
+          <li><%= food.get("total_fat") || 0 %> g</li>
+          <li><%= food.get("saturated") || 0 %> g</li>
+          <li><%= food.get("polyunsaturated") || 0 %> g</li>
+          <li><%= food.get("monounsaturated") || 0 %> g</li>
+          <li><%= food.get("trans") || 0 %> g</li>
+          <li><%= food.get("cholesterol") || 0 %> mg</li>
         </ul>
       </span>
     </div>
@@ -44,12 +44,12 @@
       </span>
       <span class="quantities">
         <ul>
-          <li><%= food.get("sodium") %> mg</li>
-          <li><%= food.get("potassium") %> mg</li>
-          <li><%= food.get("carbs") %> g</li>
-          <li><%= food.get("fiber") %> g</li>
-          <li><%= food.get("sugar") %> g</li>
-          <li><%= food.get("protein") %> g</li>
+          <li><%= food.get("sodium") || 0 %> mg</li>
+          <li><%= food.get("potassium") || 0 %> mg</li>
+          <li><%= food.get("carbs") || 0 %> g</li>
+          <li><%= food.get("fiber") || 0 %> g</li>
+          <li><%= food.get("sugar") || 0 %> g</li>
+          <li><%= food.get("protein") || 0 %> g</li>
         </ul>
       </span>
     </div>
@@ -64,8 +64,8 @@
       </span>
       <span class="quantities">
         <ul>
-          <li><%= food.get("vitamin_a") %> %</li>
-          <li><%= food.get("vitamin_c") %> %</li>
+          <li><%= food.get("vitamin_a") || 0 %> %</li>
+          <li><%= food.get("vitamin_c") || 0 %> %</li>
         </ul>
       </span>
     </div>
@@ -78,8 +78,8 @@
       </span>
       <span class="quantities">
         <ul>
-          <li><%= food.get("calcium") %> %</li>
-          <li><%= food.get("iron") %> %</li>
+          <li><%= food.get("calcium") || 0 %></li>
+          <li><%= food.get("iron") || 0 %></li>
         </ul>
       </span>
     </div>
@@ -88,3 +88,53 @@
     <p>*Percent Daily Values are based on a 2000 calorie diet. Your daily values may be higher or lower depending on your calorie needs.</p>
   </footer>
 </div>
+
+<!--just for rails demo. get rid of this shit -->
+<button data-food_id="<%= food.id %>">Add To Diary</button>
+
+</script>
+
+
+<style>
+
+bold {
+  font-weight: bold;
+}
+
+li {
+  list-style: none;
+}
+
+.wrapper {
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+header, div.all-nutrients, div.all-vitamins, footer{
+  border-bottom: 3px solid black;
+}
+
+.all-nutrients {
+  border-top: 1px solid black;
+}
+
+.all-vitamins {
+}
+
+.labels, .left-nutrients, .left-vitamins {
+  float: left;
+}
+
+.quantities, .right-nutrients, .right-vitamins {
+  float: right;
+}
+
+button {
+  background: green;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+</style>

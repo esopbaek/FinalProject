@@ -1,4 +1,22 @@
-<h2>sup2</h2>
+<div class="nav group">
+  <ul>
+    <li class="linkylinks"><a class="nav" href="<%= dashboard_url %>">MY HOME</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= diary_page_url(todays_page) %>">FOOD</a></li>
+    <li class="linkylinks selected"><a class="nav" href="<%= exercise_diary_page_url(todays_exercise_page) %>">EXERCISE</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= reports_url %>">REPORTS</a></li>
+    <li class="linkylinks"><a class="nav" href="#">COMMUNITY</a></li>   
+    <li class="linkylinks"><a class="nav" href="#">BLOG</a></li>
+  </ul>
+</div>
+
+<div class="nav2 group">
+  <ul>
+    <li class="linkylinks"><a class="nav" href="<%= exercise_diary_page_url(todays_exercise_page) %>">Exercise Diary</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= exercise_diary_page_url(todays_exercise_page) %>">Database</a></li>
+    <li class="linkylinks"><a class="nav" href="#">My Exercises</a></li>
+    <li class="linkylinks"><a class="nav" href="#">Settings</a></li>   
+  </ul>
+</div>
 
 <h2>Select Exercises</h2>
 <div class="select_exercise">
@@ -22,6 +40,7 @@
     name="exercise_diary_page[exercise_ids][]" 
     value="<%= exercise.id %>">
   <label for="exercise-<%= exercise.id %>"><%= exercise.name %></label>
+  <br>
 <% end %>
 <input type="submit" value="Choose Exercises">
 </form>

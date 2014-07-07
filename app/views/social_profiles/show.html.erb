@@ -1,3 +1,24 @@
+<div class="nav group">
+  <ul>
+    <li class="linkylinks selected"><a class="nav" href="<%= dashboard_url %>">MY HOME</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= diary_page_url(todays_page) %>">FOOD</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= exercise_diary_page_url(todays_exercise_page) %>">EXERCISE</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= reports_url %>">REPORTS</a></li>
+    <li class="linkylinks"><a class="nav" href="#">COMMUNITY</a></li>   
+    <li class="linkylinks"><a class="nav" href="#">BLOG</a></li>
+  </ul>
+</div>
+
+<div class="nav2 group">
+  <ul>
+    <li class="linkylinks"><a class="nav" href="<%= dashboard_url %>">Home</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= goals_diet_profile_url %>">Goals</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= measurements_url %>">Check-in</a></li>
+    <li class="linkylinks"><a class="nav" href="<%= social_profile_url %>">Profile</a></li>
+    <li class="linkylinks"><a class="nav" href="#">MyBlog</a></li>   
+  </ul>
+</div>
+
 <div id="profile-body">
   <div class="block1">
     <div id="profile-head"><h2><%= current_user.username %>'s profile</h2></div>

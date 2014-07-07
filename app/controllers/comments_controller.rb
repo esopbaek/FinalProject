@@ -5,16 +5,16 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     
     if @comment.save
-      redirect_to dashboard_users_url
+      redirect_to dashboard_url
     else
       flash[:errors] = @comment.errors.full_messages
     end
   end
-  
+
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to dashboard_users_url
+    redirect_to dashboard_url
   end
   
   private

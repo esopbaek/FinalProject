@@ -5,6 +5,11 @@ class DiaryPagesController < ApplicationController
     
   end
   
+  def index
+    @diary_pages = DiaryPage.all
+    render "index"
+  end
+  
   def show
     @entry_date = DiaryPage.find(params[:id]).entry_date
     @page = DiaryPage.where("user_id = ? AND entry_date = ?", current_user.id, @entry_date).first
@@ -57,6 +62,8 @@ class DiaryPagesController < ApplicationController
     @target_protein = (@target_cals*0.2/4).to_int
     @target_sodium = 2300
     @target_sugar = (@target_cals * 0.15/4).to_int
+    @yest = DiaryPage.where("entry_date = ?", @entry_date - 1).first
+    @tomo = DiaryPage.where("entry_date = ?", @entry_date + 1).first
   end
   
   def edit
