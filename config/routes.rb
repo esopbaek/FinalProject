@@ -33,7 +33,7 @@ MyApp::Application.routes.draw do
   
   resource :reports, only: [:show]
 
-  root to: 'site#root'
+  root to: 'dashboards#show'
   post '/diary_pages/:diary_page_id/food_entries/createtemp', to: 'food_entries#createtemp', as: 'temp_food_entries'
 
   namespace :api, defaults: {format: :json} do
