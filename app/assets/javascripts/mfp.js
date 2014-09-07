@@ -62,7 +62,7 @@ _.extend(Backbone.CompositeView.prototype, Backbone.View.prototype, {
     this.renderChild(view);
     $(view.el).insertAfter(container)
   },
-  
+
   _leaveChildren: function() {
     this.children.chain().clone().each(function(view) {
       if (view.leave)

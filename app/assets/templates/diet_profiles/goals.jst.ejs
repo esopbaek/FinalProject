@@ -1,19 +1,19 @@
 <div class="nav group">
   <ul>
-    <li class="linkylinks selected"><a class="nav" href="<%= dashboard_url %>">MY HOME</a></li>
-    <li class="linkylinks"><a class="nav" href="<%= diary_page_url(todays_page) %>">FOOD</a></li>
-    <li class="linkylinks"><a class="nav" href="<%= exercise_diary_page_url(todays_exercise_page) %>">EXERCISE</a></li>
-    <li class="linkylinks"><a class="nav" href="<%= reports_url %>">REPORTS</a></li>
+    <li class="linkylinks selected"><a class="nav" href="#">MY HOME</a></li>
+    <li class="linkylinks"><a class="nav" href="#">FOOD</a></li>
+    <li class="linkylinks"><a class="nav" href="#">EXERCISE</a></li>
+    <li class="linkylinks"><a class="nav" href="#">REPORTS</a></li>
     <li class="linkylinks"><a class="nav" href="#">COMMUNITY</a></li>
     <li class="linkylinks"><a class="nav" href="#">BLOG</a></li>
   </ul>
 </div>
 <div class="nav2 group">
   <ul>
-    <li class="linkylinks"><a class="nav" href="<%= dashboard_url %>">Home</a></li>
-    <li class="linkylinks"><a class="nav" href="<%= goals_diet_profile_url %>">Goals</a></li>
-    <li class="linkylinks"><a class="nav" href="<%= measurements_url %>">Check-in</a></li>
-    <li class="linkylinks"><a class="nav" href="<%= social_profile_url %>">Profile</a></li>
+    <li class="linkylinks"><a class="nav" href="#">Home</a></li>
+    <li class="linkylinks"><a class="nav" href="#">Goals</a></li>
+    <li class="linkylinks"><a class="nav" href="#">Check-in</a></li>
+    <li class="linkylinks"><a class="nav" href="#">Profile</a></li>
     <li class="linkylinks"><a class="nav" href="#">MyBlog</a></li>
   </ul>
 </div>
@@ -30,22 +30,22 @@
     <tr>
 
       <td><strong>Net Calories Consumed*/Day</strong></td>
-      <td class="red"><%= @net_cal %> Calories/Day</td>
+      <td class="red"><%= dietProfile.get("netCal") %> Calories/Day</td>
     </tr>
 
     <tr>
       <td>Carbs/Day</td>
-      <td><%= @carbs %> g</td>
+      <td><%= dietProfile.get("carbs") %> g</td>
     </tr>
 
     <tr>
       <td>Fat/Day</td>
-      <td><%= @fats %> g</td>
+      <td><%= dietProfile.get("fats") %> g</td>
     </tr>
 
     <tr>
       <td>Protein/Day</td>
-      <td><%= @protein %> g</td>
+      <td><%= dietProfile.get("protein") %> g</td>
     </tr>
   </table>
   </div>
@@ -60,17 +60,17 @@
 
     <tr>
       <td><strong>Calories Burned/Week</strong></td>
-      <td class="red"><%= @cals_burned %> Calories / Week</td>
+      <td class="red"><%= dietProfile.get("calsBurned") %> Calories / Week</td>
     </tr>
 
     <tr>
       <td>Workouts/Week</td>
-      <td><%= @profile.workouts_per_week  %> workouts</td>
+      <td><%= dietProfile.get("workouts_per_week") %> workouts</td>
     </tr>
 
     <tr>
       <td>Minutes/Workout</td>
-      <td><%= @profile.mins_per_workout  %> minutes</td>
+      <td><%= dietProfile.get("mins_per_workout") %> minutes</td>
     </tr>
   </table>
   </div>
@@ -88,7 +88,7 @@
 
     <tr>
       <td>From Normal Daily Activity</td>
-      <td><%= @BMR  %> cal/day</td>
+      <td><%= dietProfile.get("bmr") %> cal/day</td>
     </tr>
 
     <tr>
@@ -97,26 +97,98 @@
 
     <tr>
       <td>Your Daily Goal</td>
-      <td><%= @net_cal %> cal/day</td>
+      <td><%= dietProfile.get("netCal") %> cal/day</td>
     </tr>
 
     <tr>
       <td>Daily Calorie Defecit</td>
-      <td class="red"><%= @cal_deficit %> calories</td>
+      <td class="red"><%= dietProfile.get("calDeficit") %> calories</td>
     </tr>
 
     <tr>
       <td>Projected Weight Loss</td>
-      <td class="red"><%= @projected_loss %></td>
+      <td class="red"><%= dietProfile.get("projectedLoss") %></td>
     </tr>
   </table>
 
   </div>
 </div>
 
-<div class="edit group"><a href="<%= edit_diet_profile_url %>">Change Goals</a></div>
+<div class="edit group"><a href="#">Change Goals</a></div>
 
 <style>
+
+/* NAVBAR */
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+li {
+
+}
+
+body, div.nav, div, ul, li, a, img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+a.nav {
+  text-decoration: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+
+a.nav:visited { text-decoration: none; color:white; }
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+
+div.nav {
+  background: RGB(25, 116, 190);
+  color: white;
+  font-family: sans-serif;
+  padding-left: 200px;
+}
+
+div.nav2 {
+  color: white;
+  font-family: sans-serif;
+  padding-left: 200px;
+  background: RGB(27, 62, 113);
+}
+
+li.selected {
+  background: RGB(27, 62, 113);
+}
+
+
+li.linkylinks {
+  float :left;
+  padding: 6px;
+  list-style-type: none;
+  color: white;
+  padding: 13px 26px;
+}
+
+li.linkylinks:visited {
+  color: white;
+}
+
+li.linkylinks:hover {
+    background: RGB(27, 62, 113);
+}
+
+/* PAGE CONTENT */
 
 .all-tables {
   font-family: sans-serif;

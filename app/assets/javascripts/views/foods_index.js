@@ -28,7 +28,7 @@ window.App.Views.FoodsIndex = Backbone.CompositeView.extend({
     event.preventDefault;
     var params = $(event.currentTarget);
     var model = App.Collections.foods.findWhere({item_id: params.data("food_id")});
-    
+
     var showView = new App.Views.FoodsShow({
       model: model
     });

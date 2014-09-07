@@ -31,7 +31,7 @@ window.App.Views.NewsFeedView = Backbone.CompositeView.extend({
     var feedHeader = this.$(".feed-header")
     this.insertChildAfter(postsNew, feedHeader)
   },
-  
+
   renderList: function() {
     var postsList = new window.App.Views.PostsIndex({
       collection: App.Collections.posts
@@ -101,7 +101,7 @@ window.App.Views.PostsShow = Backbone.CompositeView.extend({
     var that = this;
     var renderedContent = JST['posts/details']({ post: this.model });
     this.$('.post-details').html(renderedContent);
-    
+
     this.model.comments().each(function(comment) {
       var commentsShow = new App.Views.CommentsShow({
         model: comment
