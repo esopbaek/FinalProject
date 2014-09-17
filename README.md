@@ -16,5 +16,6 @@ See the app live at http://www.yourfitnesspal.pw
 * Add blogging platform
 * jQuery calendar for navigating through diary pages
 * Add the ability to create own food for a "MyFoods" page
-
+* OAuth login
+* AWS for uploading pics
 
