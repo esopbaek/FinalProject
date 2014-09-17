@@ -81,5 +81,3 @@ _.extend(Backbone.CompositeView.prototype, Backbone.View.prototype, {
 
 Backbone.CompositeView.extend = Backbone.View.extend;
 
-
-$(App.initialize);

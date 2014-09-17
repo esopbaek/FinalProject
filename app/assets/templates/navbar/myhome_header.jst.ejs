@@ -1,20 +1,26 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>MyApp</title>
-    <%= stylesheet_link_tag "application" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway">
-  </head>
-  <body>
-    <%= render "layouts/header" %>
-    <%= yield %>
-  </body>
-</html>
+<div class="nav group">
+  <ul>
+    <li class="linkylinks selected"><a class="nav" href="#">MY HOME</a></li>
+    <li class="linkylinks"><a class="nav" href="#">FOOD</a></li>
+    <li class="linkylinks"><a class="nav" href="#">EXERCISE</a></li>
+    <li class="linkylinks"><a class="nav" href="#">REPORTS</a></li>
+    <li class="linkylinks"><a class="nav" href="#">COMMUNITY</a></li>
+    <li class="linkylinks"><a class="nav" href="#">BLOG</a></li>
+  </ul>
+</div>
+<div class="nav2 group">
+  <ul>
+    <li class="linkylinks"><a class="nav" href="#dashboard">Home</a></li>
+    <li class="linkylinks"><a class="nav" href="#goals">Goals</a></li>
+    <li class="linkylinks"><a class="nav" href="#">Check-in</a></li>
+    <li class="linkylinks"><a class="nav" href="#">Profile</a></li>
+    <li class="linkylinks"><a class="nav" href="#">MyBlog</a></li>
+  </ul>
+</div>
 
 <style>
 
+/* NAVBAR */
 
 .group:after {
   content: "";
@@ -83,8 +89,5 @@ li.linkylinks:visited {
 li.linkylinks:hover {
     background: RGB(27, 62, 113);
 }
-
-
-
 
 </style>

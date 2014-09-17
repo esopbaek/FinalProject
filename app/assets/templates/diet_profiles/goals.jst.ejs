@@ -1,22 +1,4 @@
-<div class="nav group">
-  <ul>
-    <li class="linkylinks selected"><a class="nav" href="#">MY HOME</a></li>
-    <li class="linkylinks"><a class="nav" href="#">FOOD</a></li>
-    <li class="linkylinks"><a class="nav" href="#">EXERCISE</a></li>
-    <li class="linkylinks"><a class="nav" href="#">REPORTS</a></li>
-    <li class="linkylinks"><a class="nav" href="#">COMMUNITY</a></li>
-    <li class="linkylinks"><a class="nav" href="#">BLOG</a></li>
-  </ul>
-</div>
-<div class="nav2 group">
-  <ul>
-    <li class="linkylinks"><a class="nav" href="#">Home</a></li>
-    <li class="linkylinks"><a class="nav" href="#">Goals</a></li>
-    <li class="linkylinks"><a class="nav" href="#">Check-in</a></li>
-    <li class="linkylinks"><a class="nav" href="#">Profile</a></li>
-    <li class="linkylinks"><a class="nav" href="#">MyBlog</a></li>
-  </ul>
-</div>
+<%= JST["navbar/myhome_header"]() %>
 
 <div class="all-tables group">
   <div class="left">
@@ -49,7 +31,6 @@
     </tr>
   </table>
   </div>
-
 
   <div class="fitness">
   <table class="fitness-goals">
@@ -114,80 +95,9 @@
   </div>
 </div>
 
-<div class="edit group"><a href="#">Change Goals</a></div>
+<div class="edit group"><a href="#goals/edit">Change Goals</a></div>
 
 <style>
-
-/* NAVBAR */
-
-.group:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-li {
-
-}
-
-body, div.nav, div, ul, li, a, img {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-}
-
-a.nav {
-  text-decoration: none;
-  background: transparent;
-  font-size: 14px;
-  font-weight: bold;
-  color: white;
-}
-
-a.nav:visited { text-decoration: none; color:white; }
-
-img {
-  height: 100%;
-  width: 100%;
-}
-
-
-div.nav {
-  background: RGB(25, 116, 190);
-  color: white;
-  font-family: sans-serif;
-  padding-left: 200px;
-}
-
-div.nav2 {
-  color: white;
-  font-family: sans-serif;
-  padding-left: 200px;
-  background: RGB(27, 62, 113);
-}
-
-li.selected {
-  background: RGB(27, 62, 113);
-}
-
-
-li.linkylinks {
-  float :left;
-  padding: 6px;
-  list-style-type: none;
-  color: white;
-  padding: 13px 26px;
-}
-
-li.linkylinks:visited {
-  color: white;
-}
-
-li.linkylinks:hover {
-    background: RGB(27, 62, 113);
-}
-
 /* PAGE CONTENT */
 
 .all-tables {

@@ -3,7 +3,7 @@ window.App.Views.GoalsEdit = Backbone.View.extend({
 
   initialize: function(options) {
     this.model = options.model;
-    // this.listenTo(this.model, "sync add change", this.render)
+    this.listenTo(this.model, "sync", this.render)
   },
 
   events: {
@@ -24,10 +24,13 @@ window.App.Views.GoalsEdit = Backbone.View.extend({
     var params = $(event.currentTarget).serializeJSON();
     var profile = this.model;
     profile.set(params["profile"]);
-    profile.save({}, {
+    profile.save([], {
       success: function() {
         Backbone.history.navigate("/", { trigger: true });
-      }
+      },
+	  error: function() {
+		  alert("FEAFEs")
+	  }
     })
   }
 })

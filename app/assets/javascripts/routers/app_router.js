@@ -4,7 +4,8 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
     "dashboard": "dashboardShow",
     "foods/diary": "foodDiaryShow",
     "goals": "goalsShow",
-    "goals/edit": "goalsEdit"
+    "goals/edit": "goalsEdit",
+	"checkin": "checkIn"
   },
 
   foodsIndex: function() {
@@ -28,7 +29,7 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
   },
 
   goalsShow: function() {
-    var profile = new App.Models.DietProfile();
+    var profile = new App.Models.GoalProfile();
     profile.fetch();
     var goalsView = new App.Views.GoalsShow({
       model: profile
@@ -44,10 +45,19 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
     });
     this._swapView(goalsEditView);
   },
-
-  foodDiaryShow: function() {
-
+  
+  checkIn: function() {
+	  var measurement = new App.Models.Measurement();
+	  measurement.fetch();
+	  var checkinView = new App.Views.MeasurementsIndex({
+	  	model: measurement
+	  });
+	  this._swapView(checkinView)
   },
+
+  // foodDiaryShow: function() {
+  // 	  var diaryShow = new App.Models.
+  // },
 
   _swapView: function (newView) {
     if (this.currentView) {

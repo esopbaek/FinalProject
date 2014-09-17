@@ -80,6 +80,11 @@ class Api::DietProfilesController < ApplicationController
     @profile = DietProfile.find(current_user.diet_profile)
     render "show"
   end
+  
+  def show
+    @profile = DietProfile.find(current_user.diet_profile)
+    render "show"
+  end
 
   def update
     @profile = DietProfile.find(current_user.diet_profile)
@@ -93,7 +98,7 @@ class Api::DietProfilesController < ApplicationController
   private
   def profile_params
     params.require(:profile).permit(:current_weight, :goal_weight,
-    :height_ft, :height_in, :gender, :activity_level, :user_id, :date, :d_o_b,
+    :height_ft, :height_in, :gender, :activity_level, :d_o_b,
     :goal_rate, :workouts_per_week, :mins_per_workout)
   end
 end

@@ -1,24 +1,75 @@
-<h1>Sign In</h1>
-<%= render "layouts/errors" %>
-<form action="<%= session_url %>" method="post">
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
+<h1>YourFitnessPal</h1>
+<button id="demo">DEMO USER</button>
+<div class="sign-in">
+	<h2>Sign In</h2>
+	<%= render "layouts/errors" %>
+	<form id="login" action="<%= session_url %>" method="post">
+	  <input
+	     name="authenticity_token"
+	     type="hidden"
+	     value="<%= form_authenticity_token %>">
 
-  <label for="user_username">Username</label>
-  <input
-     id="user_username"
-     name="user[username]"
-     type="text">
-  <br>
+	  <label for="user_username">Username</label>
+	  <input
+	     id="user_username"
+	     name="user[username]"
+	     type="text">
+	  <br>
 
-  <label for="user_password">Password</label>
-  <input
-     id="user_password"
-     name="user[password]"
-     type="password">
-  <br>
+	  <label for="user_password">Password</label>
+	  <input
+	     id="user_password"
+	     name="user[password]"
+	     type="password">
+	  <br>
 
-  <input type="submit" value="Log in">
-</form>
+	  <input type="submit" value="Log in">
+	</form>
+</div>
+
+<script>
+
+$(document).ready(function() {
+	$("button#demo").click(function() {
+		$("input#user_username").val("demo@welcome.com");
+		$("input#user_password").val("password")
+	})
+})
+
+</script>
+
+<style>
+
+button {
+	-webkit-appearance: none;
+	display: block;
+	margin: 0 auto;
+	color: green;
+	padding: 13px;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+h1 {
+	font-family: "Raleway", sans-serif;
+	font-size: 80px;
+	margin: 30px;
+}
+
+h2 {
+	font-size: 35px;
+}
+
+div.sign-in {
+	margin: 30px auto;
+	border: 1px solid black;
+	width: 300px;
+	border-radius: 10px;
+	padding: 15px;
+}
+
+div.sign-in form#login, div.sign-in h2, h1 {
+	text-align: center;
+}
+
+</style>

@@ -49,12 +49,13 @@ MyApp::Application.routes.draw do
       resources :comments, only: [:index]
     end
     resources :comments, :only => [:create, :destroy, :show]
-
+    resources :measurements
+    resources :logs, only: [:create, :destroy, :index]
     resources :diary_pages, only: [:create, :update, :edit, :show] do
       resources :food_entries, only: [:create, :new, :destroy]
     end
 
-    resource :diet_profile, :only => [:create, :new, :show, :update, :edit] do
+    resource :diet_profile, :only => [:create, :new, :show, :update, :edit, :index] do
       collection do
         get :summary
         get :goals

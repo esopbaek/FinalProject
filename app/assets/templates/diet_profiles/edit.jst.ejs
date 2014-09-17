@@ -1,8 +1,9 @@
+<%= JST["navbar/myhome_header"]() %>
+
 <form>
 
 <label>Current Weight:</label>
 <input type="text" name="profile[current_weight]" value="<%= profile.get("current_weight") %>">lbs
-<% debugger %>
 <br>
 
 <label>Goal Weight:</label>
@@ -20,7 +21,7 @@
 <br>
 
 <label>Date Of Birth:</label>
-<input type="date" name="profile[d_o_b]" value="<%= profile.get("d_o_b") ? "" : profile.get("d_o_b") %>"
+<input type="date" name="profile[d_o_b]" value="<%= profile.get("d_o_b") %>"
 <br>
 
 <p><strong>How would you describe your normal daily activities?</strong></p>
@@ -70,3 +71,11 @@ Very Active: Spend most of the day doing heavy physical activity (e.g. bike mess
 
 <input type="submit" value="Save and Continue">
 </form>
+
+<style>
+
+form {
+	margin: 10px;
+}
+
+</style>

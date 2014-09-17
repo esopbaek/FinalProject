@@ -1,0 +1,22 @@
+<div id="header">
+<% if signed_in? %>
+<ul>
+  <li>Signed in as: <%= current_user.username %></li>
+  <li><%= button_to "Sign Out", session_url, :method => :delete %></li>
+  <li><a class="nav" href="<%= dashboard_url %>">Home</a></li>
+</ul>
+<% else %>
+<p>
+  <%= link_to "Sign In", new_session_url %> or
+  <%= link_to "Sign up", new_user_url %>
+</p>
+<% end %>
+</div>
+
+<style>
+
+div#header {
+	border: 1px solid black;
+}
+
+</style>

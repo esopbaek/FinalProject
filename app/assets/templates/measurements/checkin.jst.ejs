@@ -1,0 +1,117 @@
+<div class="check-in"><h2>Check-In</h2></div>
+
+<div class="content">
+  <div class="weight-update-and-table">
+    <div class="weight-update">
+      <h3>Enter today's weight: </h3>
+      <form>
+         <input
+            name="log[measurement_id]"
+            type="hidden"
+            value="<%= 2 %>">
+        <input type="text" name="log[amount]">lbs
+      </form>
+      <i>Last recorded weight: <%= measurements.get("most_recent_weight") %> lbs on 
+		  <%= "TBD" %></i>
+    </div>
+	
+	</div>
+</div>
+
+<style>
+
+.check-in > h2, .weight-update > h3 {
+  color: RGB();
+}
+
+td.measurement {
+  background: RGB(244, 244, 244);
+}
+
+div, p, table, form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+.check-in {
+  text-align: left;
+  margin: 50px auto 0;
+  border-bottom: 3px solid gray;
+  width: 900px;
+}
+
+.form {
+  border-bottom: 30px;
+}
+
+.content {
+  margin: 0 auto;
+  height: 1000px;
+  width: 900px;
+/*  border: 1px solid green;*/
+}
+
+.other-measures {
+  margin-top: 30px;
+}
+
+.weight-update-and-table {
+  width: 500px;
+/*  border: 1px solid black;*/
+  float: left;
+}
+
+
+thead{
+  background: RGB(10, 63, 115);
+  color: white;
+}
+
+th {
+/*  border: 1px solid black;*/
+  height: 30px;
+}
+
+td {
+/*  border: 1px solid black;*/
+  height: 30px;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+table {
+  width: 500px;
+}
+
+.other-measures {
+/*  border: 1px solid black;*/
+  float: left;
+}
+
+.info {
+  float: right;
+/*  border: 1px solid black;*/
+  width: 300px;
+  background: RGB(245, 245, 245);
+
+  margin-top: -3px;
+}
+
+.info-header {
+  border-bottom: 1px solid RGB(224, 224, 224);
+  color: RGB(14, 64, 116);
+  font-size: 15px;
+  font-weight: bold;
+  font-family: Arial;
+  padding: 7px;
+}
+
+.body-text > p{
+  padding: 7px;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+</style>
