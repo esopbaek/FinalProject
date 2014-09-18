@@ -26,7 +26,7 @@ class FoodEntriesController < ApplicationController
     @page.food_entries.new(food_id: params[:food_id], meal: params[:meal])
     
     if @page.save
-      redirect_to diary_page_url(@page)
+      render json: @page
     else
       flash.now[:errors] = @page.errors.full_messages
     end

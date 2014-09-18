@@ -54,34 +54,16 @@ $( document ).ready(function() {
     console.log(event.currentTarget);
     var food_id = $(event.currentTarget).data("food_id")
     var meal = $(".content").data("meal")
+	var page_id = $(".content").data("page_id")
     var food = App.Collections.foods.getOrFetch(food_id);
     
     var showView = new App.Views.FoodsShow({
-      model: food
+		meal: meal,
+     	model: food,
+		pageId: page_id
     })
     
     $(".nutrition-label").html(showView.render().$el)
-    
-    $("body").on("click", "button", (function(event) {
-      var id = $(this).data("food_id")
-      var meal = $(".content").data("meal")
-      var page_id = $(".content").data("page_id")
-      $.ajax({
-        type: 'post',
-        data: {
-          food_id: id,
-          meal: meal
-        },
-        url: "createtemp",
-        dataType: 'json',
-        success: function() {
-          alert(window.location);
-        },
-        error: function(resp) {
-          window.location.href = "/diary_pages/" + page_id;
-        }
-      });
-    }))
   })
 })
 

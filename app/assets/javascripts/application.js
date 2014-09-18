@@ -18,6 +18,7 @@
 //= require marked
 //= require humanized_time_span
 //= require highcharts
+//= require shepherd.min
 //= require mfp
 //= require_tree ./models
 //= require_tree ./collections

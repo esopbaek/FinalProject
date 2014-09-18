@@ -27,18 +27,22 @@
 	</form>
 </div>
 
-<script>
-
-$(document).ready(function() {
-	$("button#demo").click(function() {
-		$("input#user_username").val("demo@welcome.com");
-		$("input#user_password").val("password")
-	})
-})
-
-</script>
-
 <style>
+
+html {
+	height: 100%;
+}
+
+body {
+	background: url(<%= asset_path 'running.jpeg' %>) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	height: 100%;
+  	min-height: 100%;
+}
+
 
 button {
 	-webkit-appearance: none;
@@ -52,7 +56,7 @@ button {
 
 h1 {
 	font-family: "Raleway", sans-serif;
-	font-size: 80px;
+	font-size: 70px;
 	margin: 30px;
 }
 
@@ -62,10 +66,11 @@ h2 {
 
 div.sign-in {
 	margin: 30px auto;
-	border: 1px solid black;
+	border: 1px solid grey;
 	width: 300px;
 	border-radius: 10px;
 	padding: 15px;
+
 }
 
 div.sign-in form#login, div.sign-in h2, h1 {
