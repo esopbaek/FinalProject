@@ -1,6 +1,5 @@
 class SiteController < ApplicationController
-  def root
-    @foods = Food.all
-    render "root"
-  end
+  before_action :require_signed_in!
+
+  def root; end
 end

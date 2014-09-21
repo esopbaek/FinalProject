@@ -2,7 +2,8 @@ window.App.Views.Dashboard = Backbone.CompositeView.extend({
   className: "all-content",
   
   render: function() {
-    this.renderSummary()
+		this.renderLayout();
+    this.renderSummary();
     this.renderFeed();
     return this
   },

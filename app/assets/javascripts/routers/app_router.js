@@ -1,13 +1,13 @@
 window.App.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "foods": "foodsIndex",
-    "dashboard": "dashboardShow",
+    "": "dashboardShow",
     "foods/diary": "foodDiaryShow",
     "goals": "goalsShow",
     "goals/edit": "goalsEdit",
-	"checkin": "checkIn"
+		"checkin": "checkIn"
   },
-
+	
   foodsIndex: function() {
     var indexView = new App.Views.FoodsIndex({
       collection: App.Collections.foods
