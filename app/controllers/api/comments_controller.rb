@@ -3,9 +3,8 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.post_id = params[:post_id]
     @comment.user_id = current_user.id
-    
     if @comment.save
-      redirect_to dashboard_url
+      render "show"
     else
       flash[:errors] = @comment.errors.full_messages
     end

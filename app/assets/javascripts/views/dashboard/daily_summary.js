@@ -1,6 +1,6 @@
 window.App.Views.DailySummaryView = Backbone.CompositeView.extend({
   template: JST["dashboard/daily_summary"],
-  className: 'daily-summary group',
+  className: 'summary-box group',
   initialize: function() {
     this.listenTo(this.model, "sync", this.render)
   },

@@ -1,6 +1,8 @@
 class Api::PostsController < ApplicationController
+  wrap_parameters false
+  
   def index
-    @posts = Post.where("user_id = ?", current_user.id)
+    @posts = Post.includes(:comments).where("user_id = ?", current_user.id)
     render "index"
   end
   
@@ -13,9 +15,10 @@ class Api::PostsController < ApplicationController
   
   def create
     @post = current_user.posts.new(post_params)
-    
+    @user = @post.user
+    @comments = @post.comments
     if @post.save
-      head :ok
+      render "show"
     else
       flash[:errors] = @post.errors.full_messages
       #some crazy shit

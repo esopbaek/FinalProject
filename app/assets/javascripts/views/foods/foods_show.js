@@ -36,8 +36,6 @@ App.Views.FoodsShow = Backbone.View.extend({
           dataType: 'json',
           success: function(page) {
 			window.location.href = "/diary_pages/" + page.id;
-          },
-          error: function() {
           }
 	  });
   }

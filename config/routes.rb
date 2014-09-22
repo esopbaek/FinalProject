@@ -46,9 +46,9 @@ MyApp::Application.routes.draw do
     resource :dashboard, :only => [:show]
     resources :posts, only: [:index, :create, :destroy, :show] do
       resources :likes, only: [:create, :destroy]
-      resources :comments, only: [:index]
+      resources :comments, only: [:index, :create, :show]
     end
-    resources :comments, :only => [:create, :destroy, :show]
+    resources :comments, :only => [:destroy]
     resources :measurements
     resources :logs, only: [:create, :destroy, :index]
     resources :diary_pages, only: [:create, :update, :edit, :show] do

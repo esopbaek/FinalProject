@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
+  wrap_parameters false
+  
   def index
-    @posts = Post.where("user_id = ?", current_user.id)
+    @posts = Post.where("user_id = ?", current_user.id).includes(:comments)
   end
   
   def create

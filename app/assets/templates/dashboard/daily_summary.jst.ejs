@@ -1,46 +1,48 @@
-<div class="summary-box group">
-  <div class="head">
-      Your Daily Summary
-  </div>
 
-  <div class="outer-wrap">
-    <div class="summary">
-    <div class="buttons">
-    <a href="#" class="add-food">Add Food</a>
-    <a href="#" class="add-exercise">Add Exercise</a>
-    </div>
-
-    <div class="image-holder">
-    </div>
-
-    <div class="total"><%= dashboard.get("calsRemaining") %></div><p>CALORIES REMAINING</p>
-      <div class="equation">
-        <div class="value">
-          <div class="num"><%= dashboard.get("netCals") %></div>
-          <div class="desc">GOAL</div>
-        </div>
-        <div class="value">
-          <div class="num"><%= dashboard.get("totalFoodCals") %></div>
-          <div class="desc">FOOD</div>
-
-        </div>
-        <div class="symbol">-</div>
-        <div class="value">
-          <div class="num"><%= dashboard.get("totalExerciseCals") %></div>
-          <div class="desc">EXERCISE</div>
-        </div>
-        <div class="symbol">=</div>
-        <div class="value">
-          <div class="num"><%= dashboard.get("totalCalsConsumed") %></div>
-          <div class="desc">NET</div>
-        </div>
-        <div class="clear"></div>
-      </div>
-    </div>
-    <div class="progress">
-      <p class="progress"><strong class="green"><%= dashboard.get("progress") %></strong> lbs lost</p>
-  </div>
+<div class="head">
+    Your Daily Summary
 </div>
+
+<div class="wrap group">
+  <div class="summary">
+  <div class="buttons">
+  <a href="#" class="add-food">Add Food</a>
+  <a href="#" class="add-exercise">Add Exercise</a>
+  </div>
+
+  <div class="image-holder">
+  </div>
+
+  <div class="total"><%= dashboard.get("calsRemaining") %></div><p>CALORIES REMAINING</p>
+    <div class="equation">
+      <div class="value">
+        <div class="num"><%= dashboard.get("netCals") %></div>
+        <div class="desc">GOAL</div>
+      </div>
+      <div class="value">
+        <div class="num"><%= dashboard.get("totalFoodCals") %></div>
+        <div class="desc">FOOD</div>
+
+      </div>
+      <div class="symbol">-</div>
+      <div class="value">
+        <div class="num"><%= dashboard.get("totalExerciseCals") %></div>
+        <div class="desc">EXERCISE</div>
+      </div>
+      <div class="symbol">=</div>
+      <div class="value">
+        <div class="num"><%= dashboard.get("totalCalsConsumed") %></div>
+        <div class="desc">NET</div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="progress">
+    <p class="progress"><strong class="green"><%= dashboard.get("progress") %></strong> lbs lost</p>
+</div>
+
+
+
 
 <style>
 
@@ -52,8 +54,7 @@ div, ul, li, a, img {
   vertical-align: baseline;
 }
 
-
-input[type="text"], input[name="post[content]"], input[value="Share"], input[name="comment[comment]"], input[value="Like"], input[value="Delete"],
+input[type="text"], textarea, input[value="Share"], input[name="comment[comment]"], input[value="Like"], input[value="Delete"],
 button,
 textarea {
   display: inline-block;
@@ -80,6 +81,7 @@ ul {
 }
 
 .image-holder, .photo {
+  background: white;
   background-size: contain;
 }
 
@@ -97,13 +99,6 @@ ul {
   color: white;
   font-family: sans-serif;
 }
-
-
-
-
-
-
-
 
 .feed-form {
   background: RGB(245, 245, 245);
@@ -172,7 +167,7 @@ time {
   color: RGB(153, 153, 153);
 }
 
-input[name="post[content]"] {
+textarea[name="post[content]"] {
   margin-top: 20px;
   width: 490px;
   height: 30px;
@@ -216,7 +211,7 @@ div.comment-block > div.comment-info > div.comment-content > span.blue:visited
 }
 
 div.comment-block > div.comment-info > div.comment-content > span.blue:hover {
-  color: orange;
+  color: orange;.
 }
 
 div.comment-block > div.comment-info > div.comment-links {
@@ -241,7 +236,7 @@ div.comment-block > div.comment-info > div.comment-links {
   padding: 10px 5px;
 }
 
-input[name="comment[comment]"] {
+textarea[name="comment[comment]"] {
   width: 490px;
   height: 20px;
   background: white;
@@ -312,6 +307,7 @@ div {
 }
 
 .equation {
+/*  border: 1px solid black;*/
   display: block;
   color: black;
   height: 30px;
@@ -333,6 +329,7 @@ div {
 }
 
 .value {
+/*  border: 1px solid red;*/
   padding-right: 40px;
   font-family: sans-serif;
   color: RGB(83, 83, 83);
@@ -371,6 +368,6 @@ p.progress {
 .news-feed {
   margin-top: 10px;
 }
-
 </style>
+
 
