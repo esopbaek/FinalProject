@@ -2,7 +2,7 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
   routes: {
 		"": "dashboardShow",
     "foods": "foodsIndex",
-    "foods/Diary": "foodDiaryShow",
+    "foods/diary/:id": "foodDiaryShow",
     "goals": "goalsShow",
     "goals/edit": "goalsEdit",
 		"checkin": "checkIn"
@@ -12,11 +12,6 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
     var indexView = new App.Views.FoodsIndex({
       collection: App.Collections.foods
     });
-    // if (this.currentView) {
-    //   this.currentView.remove();
-    // }
-    //   this.currentView = indexView;
-    // $("body").html(indexView.render(indexView.collection).$el);
 		var foodHeaderView = new App.Views.FoodHeader();
 		this._swapHeaderView(foodHeaderView);
     this._swapView(indexView)
@@ -63,9 +58,14 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 	  this._swapView(checkinView)
   },
 
-  foodDiaryShow: function() {
-		var
-  	var diaryShow = new App.Views.FoodDiaryShow({});
+  foodDiaryShow: function(id) {
+		var page = App.Collections.foodDiaryPages.getOrFetch(id);
+		page.fetch({wait: true});
+		
+  	var diaryShow = new App.Views.FoodDiaryShow({
+  		model: page
+  	});
+		
 		var foodHeaderView = new App.Views.FoodHeader();
 		this._swapHeaderView(foodHeaderView);
    	this._swapView(diaryShow);

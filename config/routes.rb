@@ -62,6 +62,12 @@ MyApp::Application.routes.draw do
     
     resources :diary_pages, only: [:create, :update, :edit, :show] do
       resources :food_entries, only: [:create, :new, :destroy]
+      member do
+        get :breakfasts
+        get :lunches
+        get :dinners
+        get :snacks
+      end
     end
 
   end

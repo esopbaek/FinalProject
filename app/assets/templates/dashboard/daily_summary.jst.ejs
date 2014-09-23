@@ -5,14 +5,19 @@
 <div class="wrap group">
   <div class="summary">
   <div class="buttons">
-  <a href="#foods/Diary" class="add-food">Add Food</a>
+  <a href="#foods/diary/<%= dashboard.get("todaysPageId") %>" class="add-food">Add Food</a>
   <a href="#" class="add-exercise">Add Exercise</a>
   </div>
 
   <div class="image-holder">
   </div>
 
+	<% if (dashboard.get("calsRemaining") < 0) { %>  
+		      <div class="total"><span class="red"><%= dashboard.get("calsRemaining") %></span></div><p>CALORIES REMAINING</p>
+		<% } else { %>
   <div class="total"><%= dashboard.get("calsRemaining") %></div><p>CALORIES REMAINING</p>
+	<% } %>
+	
     <div class="equation">
       <div class="value">
         <div class="num"><%= dashboard.get("netCals") %></div>

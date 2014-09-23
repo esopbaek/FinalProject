@@ -4,5 +4,5 @@ json.totalFoodCals(@total_food_cals)
 json.totalExerciseCals(@total_exercise_cals)
 json.totalCalsConsumed(@total_cals_consumed)
 json.progress(@progress)
+json.todaysPageId(@todays_page_id)
 
-json.posts(@posts)

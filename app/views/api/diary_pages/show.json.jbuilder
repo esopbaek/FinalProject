@@ -1,8 +1,7 @@
+
+
 json.entryDate(@entry_date)
 json.breakfasts(@breakfasts)
-json.lunches(@lunches)
-json.dinners(@dinners)
-json.snacks(@snacks)
 
 json.totalLunchCals(@total_lunch_cals)
 json.totalLunchCarbs(@total_lunch_carbs)
@@ -41,7 +40,7 @@ json.totalSugar(@total_sugar)
 
 json.targetCals(@target_cals)
 json.targetCarbs(@target_carbs)
-json.targetFat(@target_fat)
+json.targetFat(@target_fats)
 json.targetProtein(@target_protein)
 json.targetSodium(@target_sodium)
 json.targetSugar(@target_sugar)

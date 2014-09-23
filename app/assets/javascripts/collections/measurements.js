@@ -7,7 +7,7 @@ window.App.Collections.Measurements = Backbone.Collection.extend({
     if (measurement = this.get(id)) {
       measurement.fetch();
     } else {
-      measurement = new App.Models.Food();
+      measurement = new App.Models.Measurements({id: id});
       measurement.fetch({
         success: function () { measurements.add(measurement); }
       });

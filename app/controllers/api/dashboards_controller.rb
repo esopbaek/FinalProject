@@ -2,6 +2,7 @@ class Api::DashboardsController < ApplicationController
   include ApplicationHelper
   
   def show
+    @todays_page_id = todays_page.id
     @profile = current_user.diet_profile
     @net_cal = calculate_net_cals(@profile)
     @breakfasts = meal_foods(todays_page, "breakfast")

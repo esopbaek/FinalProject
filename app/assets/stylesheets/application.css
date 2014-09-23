@@ -38,6 +38,10 @@ body {
 	min-width: 100%;
 }
 
+span.red {
+	color: red;
+}
+
 /* DASHBOARD SHOW */
 
 textarea, input[value="Share"], input[name="comment[comment]"], input[value="Like"], input[value="Delete"],

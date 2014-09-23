@@ -9,6 +9,7 @@ class Api::DiaryPagesController < ApplicationController
     @diary_pages = DiaryPage.all
     render "index"
   end
+
   
   def show
     @entry_date = DiaryPage.find(params[:id]).entry_date
@@ -64,6 +65,35 @@ class Api::DiaryPagesController < ApplicationController
     @tomo = DiaryPage.where("entry_date = ?", @entry_date + 1).first
     render "show"
   end
+  
+  def lunches
+    @entry_date = DiaryPage.find(params[:id]).entry_date
+    @page = DiaryPage.where("user_id = ? AND entry_date = ?", current_user.id, @entry_date).first
+    @lunches = meal_foods(@page, "lunch")
+    render "lunches"
+  end
+  
+  def dinners
+    @entry_date = DiaryPage.find(params[:id]).entry_date
+    @page = DiaryPage.where("user_id = ? AND entry_date = ?", current_user.id, @entry_date).first
+    @dinners = meal_foods(@page, "dinner")
+    render "dinners"    
+  end
+  
+  def snacks
+    @entry_date = DiaryPage.find(params[:id]).entry_date
+    @page = DiaryPage.where("user_id = ? AND entry_date = ?", current_user.id, @entry_date).first
+    @snacks = meal_foods(@page, "snack")
+    render "snacks"
+  end
+  
+  def breakfasts
+    @entry_date = DiaryPage.find(params[:id]).entry_date
+    @page = DiaryPage.where("user_id = ? AND entry_date = ?", current_user.id, @entry_date).first
+    @breakfasts = meal_foods(@page, "breakfast")
+    render "breakfasts"
+  end
+
   
   def edit
     

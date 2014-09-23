@@ -1,0 +1,1 @@
+window.App.Models.Dinner = Backbone.Model.extend({});

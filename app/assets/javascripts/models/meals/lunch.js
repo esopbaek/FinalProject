@@ -1,0 +1,1 @@
+window.App.Models.Lunch = Backbone.Model.extend({});
