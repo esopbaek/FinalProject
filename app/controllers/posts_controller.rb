@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  wrap_parameters false
+
   
   def index
     @posts = Post.where("user_id = ?", current_user.id).includes(:comments)
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to dashboard_url
+    render json: {}
   end
   
   private

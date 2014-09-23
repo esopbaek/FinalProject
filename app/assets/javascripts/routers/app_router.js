@@ -1,8 +1,8 @@
 window.App.Routers.AppRouter = Backbone.Router.extend({
   routes: {
+		"": "dashboardShow",
     "foods": "foodsIndex",
-    "": "dashboardShow",
-    "foods/diary": "foodDiaryShow",
+    "foods/Diary": "foodDiaryShow",
     "goals": "goalsShow",
     "goals/edit": "goalsEdit",
 		"checkin": "checkIn"
@@ -17,6 +17,8 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
     // }
     //   this.currentView = indexView;
     // $("body").html(indexView.render(indexView.collection).$el);
+		var foodHeaderView = new App.Views.FoodHeader();
+		this._swapHeaderView(foodHeaderView);
     this._swapView(indexView)
 
   },
@@ -24,7 +26,9 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
   dashboardShow: function() {
     App.Models.dashboard.fetch();
     App.Collections.posts.fetch();
+		var homeHeaderView = new App.Views.MyHomeHeader();
     var dashboardView = new App.Views.Dashboard();
+		this._swapHeaderView(homeHeaderView);
     this._swapView(dashboardView);
   },
 
@@ -34,6 +38,8 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
     var goalsView = new App.Views.GoalsShow({
       model: profile
     });
+		var homeHeaderView = new App.Views.MyHomeHeader();
+		this._swapHeaderView(homeHeaderView);
     this._swapView(goalsView);
   },
 
@@ -43,6 +49,8 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
     var goalsEditView = new App.Views.GoalsEdit({
       model: profile
     });
+		var homeHeaderView = new App.Views.MyHomeHeader();
+		this._swapHeaderView(homeHeaderView);
     this._swapView(goalsEditView);
   },
   
@@ -55,15 +63,27 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 	  this._swapView(checkinView)
   },
 
-  // foodDiaryShow: function() {
-  // 	  var diaryShow = new App.Models.
-  // },
-
+  foodDiaryShow: function() {
+		var
+  	var diaryShow = new App.Views.FoodDiaryShow({});
+		var foodHeaderView = new App.Views.FoodHeader();
+		this._swapHeaderView(foodHeaderView);
+   	this._swapView(diaryShow);
+  },
+	
+  _swapHeaderView: function (newHeaderView) {
+    if (this.currentHeaderView) {
+      this.currentHeaderView.remove();
+    }
+      this.currentHeaderView = newHeaderView;
+    $("div.specific-headers").html(newHeaderView.render().$el);
+  },
+	
   _swapView: function (newView) {
     if (this.currentView) {
       this.currentView.remove();
     }
       this.currentView = newView;
-    $("body").html(newView.render().$el);
+    $("div.main").html(newView.render().$el);
   }
 });

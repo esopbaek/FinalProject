@@ -1,7 +1,7 @@
 window.App.Views.PostsIndex = Backbone.CompositeView.extend({
   className: 'feed-posts',
   initialize: function() {
-    this.listenTo(this.collection, "sync add", this.render)
+    this.listenTo(this.collection, "sync add remove", this.render)
   },
 
   render: function() {

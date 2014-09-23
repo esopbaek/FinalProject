@@ -1,8 +1,8 @@
-
 <div class="photo"></div>
 <div class='post-info'>
   <div class="post-author"><%= post.get("user").username %></div>
   <div class="post-content"><%= post.escape("content") %></div>
+	<div data-post_id="<%= post.id %>" class="delete-post">X</div>
   <div class="links">
     <form class="like">
       <input type="submit" value="Like">
@@ -12,4 +12,3 @@
   </div>
   <div class="post-likes"><p>Somebody liked this.</p></div>
 </div>
-

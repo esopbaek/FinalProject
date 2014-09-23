@@ -11,8 +11,6 @@ window.App.Views.CommentsNew = Backbone.CompositeView.extend({
   },
 	
   createComment: function(event) {
-		var that = this;
-		
 		event.preventDefault();
 		var params = $(event.currentTarget).serializeJSON()["comment"];
     this.model.comments().create({"comment": params}, {wait: true})

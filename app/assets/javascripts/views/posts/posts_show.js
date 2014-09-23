@@ -2,18 +2,18 @@ window.App.Views.PostsShow = Backbone.CompositeView.extend({
   className: 'post-block group',
   initialize: function() {
     _.bindAll(this, "renderDetails");
-    this.listenTo(this.model, "sync", this.render)
-		this.listenTo(this.model.comments(), "sync add", this.render)
+    this.listenTo(this.model, "sync", this.render);
+		this.listenTo(this.model.comments(), "sync add remove", this.render);
     this.model.on("add change", this.renderDetails);
   },
+	events: {
+		"click div.delete-post": "deletePost"
+	},
+	
   render: function() {
-    // this.renderLayout();
     this.renderDetails();
     this.renderCommentForm();
     return this;
-  },
-  renderLayout: function() {
-    this.$el.html(JST['posts/show']());
   },
   renderDetails: function() {
     var that = this;
@@ -31,5 +31,10 @@ window.App.Views.PostsShow = Backbone.CompositeView.extend({
     var commentForm = new App.Views.CommentsNew({ model: this.model });
     var commentFormContainer = this.$('.post-info');
     this.appendChildTo(commentForm, commentFormContainer);
-  }
+  },
+	
+	deletePost: function(event) {
+		event.preventDefault();
+		this.model.destroy()
+	}
 });
