@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707181255) do
+ActiveRecord::Schema.define(version: 20140923194150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(version: 20140707181255) do
     t.integer  "trans",                  default: 0
     t.integer  "cholesterol",            default: 0
     t.integer  "sodium",                 default: 0
-    t.integer  "potassium",              default: 0
     t.integer  "carbs",                  default: 0
     t.integer  "fiber",                  default: 0
     t.integer  "vitamin_a",              default: 0

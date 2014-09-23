@@ -7,7 +7,7 @@ window.App.Views.FoodsIndex = Backbone.CompositeView.extend({
   },
 
   events: {
-    "submit form": "submit",
+    "submit form.search": "submit",
     "click li.list": "showNutrition"
   },
 
@@ -18,9 +18,23 @@ window.App.Views.FoodsIndex = Backbone.CompositeView.extend({
   },
 
   submit: function (event) {
+		var that = this;
+		
     event.preventDefault();
-    var params = $(event.currentTarget).serializeJSON()["query"];
-    var weight = new App.Models.Log(params["log"])
-    this.render();
-  }
+    var query = $(event.currentTarget).serializeJSON()["query"];
+		App.Collections.searchResults.fetch({
+			data: {
+				query: query
+			}, 
+			success: function(collection) {
+				collection.each(function(food) {
+					var showView = new App.Views.foodsShow({
+						model: food
+					})
+					that.appendChildTo(showView, that.$("div.results ul"))
+				})
+			}
+		});
+	}
+	
 });

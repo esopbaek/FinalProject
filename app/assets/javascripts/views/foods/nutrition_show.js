@@ -1,4 +1,4 @@
-App.Views.FoodsShow = Backbone.View.extend({
+App.Views.NutritionShow = Backbone.View.extend({
   template: JST["foods/show"],
 
   initialize: function(options) {

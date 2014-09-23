@@ -37,7 +37,7 @@ MyApp::Application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :foods do
       collection do
-        get 'database'
+        get 'search'
       end
     end
 
