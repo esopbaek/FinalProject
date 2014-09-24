@@ -1,16 +1,19 @@
 window.App.Routers.AppRouter = Backbone.Router.extend({
   routes: {
 		"": "dashboardShow",
-    "foods": "foodsIndex",
-    "foods/diary/:id": "foodDiaryShow",
+    "diary/:id": "foodDiaryShow",
+    "foods/:meal/:id": "foodsIndex",
     "goals": "goalsShow",
     "goals/edit": "goalsEdit",
 		"checkin": "checkIn"
   },
 	
-  foodsIndex: function() {
+	
+  foodsIndex: function(meal, id) {
     var indexView = new App.Views.FoodsIndex({
-      collection: App.Collections.foods
+      collection: App.Collections.foods,
+			meal: meal,
+			pageId: id
     });
 		var foodHeaderView = new App.Views.FoodHeader();
 		this._swapHeaderView(foodHeaderView);

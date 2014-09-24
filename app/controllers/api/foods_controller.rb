@@ -1,3 +1,5 @@
+require 'uri'
+
 class Api::FoodsController < ApplicationController
 
   def index
@@ -14,6 +16,12 @@ class Api::FoodsController < ApplicationController
   end
 
   def create
+    @food = Food.new(food_params)
+    if @food.save
+      render "show"
+    else
+      render json: {}
+    end
   end
 
   def edit
@@ -33,7 +41,12 @@ class Api::FoodsController < ApplicationController
   def update
   end
 
-  def destroy
+  private
+  
+  def food_params
+    params.require(:food).permit(:name, :calories, :total_fat,:saturated,:polyunsaturated, :monounsaturated,:trans, 
+:cholesterol, :sodium, :carbs, :fiber, :vitamin_a, :vitamin_c, :calcium, :iron, :created_at, :updated_at,
+ :serving_size, :servings_per_container, :brand, :meal, :protein, :sugar, :serving_size_qty)
   end
-
+  
 end

@@ -1,11 +1,9 @@
-App.Views.NutritionShow = Backbone.View.extend({
+window.App.Views.NutritionShow = Backbone.View.extend({
   template: JST["foods/show"],
 
   initialize: function(options) {
-    this.model = options.model;
-	this.meal = options.meal;
-	this.pageId = options.pageId;
-    this.listenTo(this.model, "sync", this.render)
+		this.meal = options.meal;
+		this.pageId = options.pageId;
   },
   
   events: {
@@ -21,22 +19,25 @@ App.Views.NutritionShow = Backbone.View.extend({
   },
   
   addToDiary: function(event) {
+		this.render();
+		var that = this;
 	  event.preventDefault();
-	  var foodId = this.model.id;
+		App.Collections.foods.fetch({wait: true});
+		var food = App.Collections.foods.where({name: this.model.get("name"), brand: this.model.get("brand")})[0]
+		debugger
+	  var foodId = food.id
 	  var meal = this.meal;
 	  var pageId = this.pageId;
-	  console.log(foodId + meal + pageId);
 	  $.ajax({
           type: 'post',
           data: {
+						diary_page_id: that.pageId,
             food_id: foodId,
             meal: meal
           },
-		  url: "/diary_pages/" + pageId + "/food_entries",
+		  		url: "api/diary_pages/" + pageId + "/food_entries",
           dataType: 'json',
-          success: function(page) {
-			window.location.href = "/diary_pages/" + page.id;
-          }
 	  });
+		Backbone.history.navigate("diary/" + pageId, {trigger: true});
   }
 });

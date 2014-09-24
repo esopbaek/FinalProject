@@ -7,13 +7,10 @@ class Api::FoodEntriesController < ApplicationController
   
   def create
     @page = DiaryPage.find(params[:diary_page_id])
-    
-    params.require(:diary_page)["food_ids"].each do |id|
-      food = @page.food_entries.new(food_id: id, meal: params[:food_entries][:meal])
-    end
+    @page.food_entries.new(food_id: params[:food_id], meal: params[:meal], diary_page_id: params[:diary_page_id])
     
     if @page.save
-      redirect_to diary_page_url(@page)
+      head :ok
     else
       flash.now[:errors] = @page.errors.full_messages
     end

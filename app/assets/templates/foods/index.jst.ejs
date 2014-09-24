@@ -12,13 +12,7 @@
   <div class="bottom">
     <div class="results">
       <ul>
-        <% if (foods.length > 0) {%>
-        <% foods.each(function(food) { %>
-          <li class="list" data-food_id="<%= food.get("item_id") %>"><%= food.get("item_name") %></li>
-        <% }); } else { %>
-          <li class="none">No items match your search, try again.</li>
-          <% } %>
-					 <li class="list">HEY</li>
+        
       </ul>
     </div>
 
@@ -75,13 +69,13 @@ h1 {
   overflow: scroll;
 }
 
-li.list {
+li.food-list {
   border-bottom: RGB solid RGB(244, 244, 244);
   color: RGB(11, 94, 177);
   padding: 10px 10px;
 }
 
-li.list:hover {
+li.food-list:hover {
   color: orange;
   background: RGB(241, 241, 241);
 }

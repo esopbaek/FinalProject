@@ -2,13 +2,13 @@ window.App.Views.FoodsIndex = Backbone.CompositeView.extend({
   template: JST["foods/index"],
 
   initialize: function(options) {
-    this.collection = options.collection;
-    this.listenTo(this.collection, "sync", this.render);
+		this.meal = options.meal;
+		this.pageId = options.pageId
   },
 
   events: {
     "submit form.search": "submit",
-    "click li.list": "showNutrition"
+    "click li.food-list": "showNutrition"
   },
 
   render: function() {
@@ -19,8 +19,9 @@ window.App.Views.FoodsIndex = Backbone.CompositeView.extend({
 
   submit: function (event) {
 		var that = this;
-		
     event.preventDefault();
+		
+		this.$("div.results ul").empty();
     var query = $(event.currentTarget).serializeJSON()["query"];
 		App.Collections.searchResults.fetch({
 			data: {
@@ -28,13 +29,17 @@ window.App.Views.FoodsIndex = Backbone.CompositeView.extend({
 			}, 
 			success: function(collection) {
 				collection.each(function(food) {
-					var showView = new App.Views.foodsShow({
-						model: food
+					var showView = new App.Views.FoodsShow({
+						model: food,
+						meal: that.meal,
+						pageId: that.pageId
 					})
 					that.appendChildTo(showView, that.$("div.results ul"))
-				})
+				});
+				if (collection.length == 0) {
+					that.$("div.results ul").append("No foods match your search. Please try again")
+				};
 			}
 		});
 	}
-	
 });

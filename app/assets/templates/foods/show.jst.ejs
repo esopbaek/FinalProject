@@ -2,7 +2,7 @@
 
 <div class="wrapper">
   <header class="group">
-    <span class="serving-size">Servings: <%= food.get("serving_size_qty") %> <%= food.get("serving_size") || "N/A" %> <!-- <%= food.get("serving_size_unit") || "N/A" %></span> -->
+    <span class="serving-size">Servings: <%= food.get("serving_size_qty") %> <%= food.get("serving_size") || "N/A" %>
     <span class="servings-per">Servings per Container:
               <%= food.get("servings_per_container") || "N/A" %></span>
   </header>
@@ -89,7 +89,6 @@
   </footer>
 </div>
 
-<!--just for rails demo. get rid of this shit -->
 <button data-food_id="<%= food.id %>">Add To Diary</button>
 
 </script>
