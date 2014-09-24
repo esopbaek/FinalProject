@@ -1,5 +1,4 @@
-
-
+json.pageId(@page.id)
 json.entryDate(@entry_date)
 json.breakfasts(@breakfasts)
 

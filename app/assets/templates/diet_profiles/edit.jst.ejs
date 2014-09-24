@@ -1,79 +1,106 @@
-<form>
+<div class="goals-edit">
+	<h3 id="goals-edit">Update Your Profile and Goals</h3>
 
-<label>Current Weight:</label>
-<input type="text" name="profile[current_weight]" value="<%= profile.get("current_weight") %>">lbs
-<br>
+	<form class="goals-edit">
 
-<label>Goal Weight:</label>
-<input type="text" name="profile[goal_weight]" value="<%= profile.get("goal_weight") %>">lbs
-<br>
+	<label>Current Weight:</label>
+	<input type="text" name="profile[current_weight]" value="<%= profile.get("current_weight") %>">lbs
+	<br>
 
-<label>Height:</label>
-  <input type="text" name="profile[height_ft]" value="<%= profile.get("height_ft") %>">ft
-  <input type="text" name="profile[height_in]" value="<%= profile.get("height_in") %>">in
-<br>
+	<label>Goal Weight:</label>
+	<input type="text" name="profile[goal_weight]" value="<%= profile.get("goal_weight") %>">lbs
+	<br>
 
-<label>Gender:</label>
-<input type="radio" name="profile[gender]" value="male" checked>Male
-<input type="radio" name="profile[gender]" value="female">Female
-<br>
+	<label>Height:</label>
+	  <input type="text" name="profile[height_ft]" value="<%= profile.get("height_ft") %>">ft
+	  <input type="text" name="profile[height_in]" value="<%= profile.get("height_in") %>">in
+	<br>
 
-<label>Date Of Birth:</label>
-<input type="date" name="profile[d_o_b]" value="<%= profile.get("d_o_b") %>"
-<br>
+	<label>Gender:</label>
+	<input type="radio" name="profile[gender]" value="male" checked>Male
+	<input type="radio" name="profile[gender]" value="female">Female
+	<br>
 
-<p><strong>How would you describe your normal daily activities?</strong></p>
-<input type="radio" name="profile[activity_level]" value="Sedentary" checked>
-Sedentary: Spend most of the day sitting (e.g. bank teller, desk job)
-<br>
+	<label>Date Of Birth:</label>
+	<input type="date" name="profile[d_o_b]" value="<%= profile.get("d_o_b") %>"
+	<br>
 
-<input type="radio" name="profile[activity_level]" value="Lightly Active">
-Lightly Active: Spend a good part of the day on your feet (e.g. teacher, salesman)
-<br>
+	<p><strong>How would you describe your normal daily activities?</strong></p>
+	<input type="radio" name="profile[activity_level]" value="Sedentary" checked>
+	Sedentary: Spend most of the day sitting (e.g. bank teller, desk job)
+	<br>
 
-<input type="radio" name="profile[activity_level]" value="Active">
-Active: Spend a good part of the day doing some physical activity (e.g. waitress, mailman)
-<br>
+	<input type="radio" name="profile[activity_level]" value="Lightly Active">
+	Lightly Active: Spend a good part of the day on your feet (e.g. teacher, salesman)
+	<br>
 
-<input type="radio" name="profile[activity_level]" value="Very Active">
-Very Active: Spend most of the day doing heavy physical activity (e.g. bike messenger, carpenter)
-<br>
-<br>
+	<input type="radio" name="profile[activity_level]" value="Active">
+	Active: Spend a good part of the day doing some physical activity (e.g. waitress, mailman)
+	<br>
 
-<label>How many times a week do you plan on exercising?</label>
-<select name="profile[workouts_per_week]">
-  <option value="0">0</option>
-  <option value="1" selected>1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-  <option value="6">6</option>
-  <option value="7">7</option>
-</select>workouts/week
-<input type="text" name="profile[mins_per_workout]" value=
-"<%= profile.get("mins_per_workout") %>">min./workout
-<br>
-<label>What is your goal?</label>
-<select name="profile[goal_rate]">
-  <option value="Lose 2 pounds per week">Lose 2 pounds per week</option>
-  <option value="Lose 1.5 pounds per week">Lose 1.5 pounds per week</option>
-  <option value="Lose 1 pound per week">Lose 1 pound per week</option>
-  <option value="Lose 0.5 pounds per week">Lose 0.5 pounds per week</option>
-  <option value="Maintain my current weight" selected>Maintain my current weight</option>
-  <option value="Gain 0.5 pounds per week">Gain 0.5 pounds per week</option>
-  <option value="Gain 1 pound per week">Gain 1 pound per week</option>
-</select>
-<br>
-<br>
+	<input type="radio" name="profile[activity_level]" value="Very Active">
+	Very Active: Spend most of the day doing heavy physical activity (e.g. bike messenger, carpenter)
+	<br>
+	<br>
 
-<input type="submit" value="Save and Continue">
-</form>
+	<label>How many times a week do you plan on exercising?</label>
+	<select name="profile[workouts_per_week]">
+	  <option value="0">0</option>
+	  <option value="1" selected>1</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	</select>workouts/week
+	<input type="text" name="profile[mins_per_workout]" value=
+	"<%= profile.get("mins_per_workout") %>">min./workout
+	<br>
+	<label>What is your goal?</label>
+	<select name="profile[goal_rate]">
+	  <option value="Lose 2 pounds per week">Lose 2 pounds per week</option>
+	  <option value="Lose 1.5 pounds per week">Lose 1.5 pounds per week</option>
+	  <option value="Lose 1 pound per week">Lose 1 pound per week</option>
+	  <option value="Lose 0.5 pounds per week">Lose 0.5 pounds per week</option>
+	  <option value="Maintain my current weight" selected>Maintain my current weight</option>
+	  <option value="Gain 0.5 pounds per week">Gain 0.5 pounds per week</option>
+	  <option value="Gain 1 pound per week">Gain 1 pound per week</option>
+	</select>
+	<br>
+	<br>
+
+	<input type="submit" value="Save and Continue">
+	</form>
+</div>
 
 <style>
 
-form {
-	margin: 10px;
+div.goals-edit {
+	font-family: sans-serif;;
+	width: 700px;
+	margin: 40px auto;
+  background: RGB(241,241,241);
+  box-shadow: 2px 5px 5px  #888888;
+}
+
+h3#goals-edit {
+   color: white;
+   font-size: 16px;
+   background: RGB(27,62,113);
+   text-align: left;
+	 padding: 10px;
+	 width: 100%;
+	 margin: 0;
+}
+
+form.goals-edit {
+  background: RGB(244,244,244);
+  font-size: 12px;
+  padding: 10px;
+	width: 100%;
+	margin: 0;
+	font-family: sans-serif;
 }
 
 </style>

@@ -24,7 +24,6 @@ window.App.Views.NutritionShow = Backbone.View.extend({
 	  event.preventDefault();
 		App.Collections.foods.fetch({wait: true});
 		var food = App.Collections.foods.where({name: this.model.get("name"), brand: this.model.get("brand")})[0]
-		debugger
 	  var foodId = food.id
 	  var meal = this.meal;
 	  var pageId = this.pageId;

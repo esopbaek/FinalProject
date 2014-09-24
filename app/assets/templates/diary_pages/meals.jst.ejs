@@ -5,4 +5,49 @@
 <td class="macro"><%= food.get("protein") %></td>
 <td class="macro"><%= food.get("sodium") %></td>
 <td class="macro"><%= food.get("sugar") %></td>
-<td class="delete">-</td>
+<td class="delete"><button class="delete-diary-entry">--</button></td>
+
+<style>
+
+button.delete-diary-entry {
+
+		position:relative;
+		width:10px;
+		color:#FFF;
+		display:block;
+		text-decoration:none;
+		margin:0 auto;
+		border-radius:5px;
+		border:solid 1px #D94E3B;
+		background:red;
+		text-align:center;
+		padding: 0px 3px;
+		font-size: 10px;
+		-webkit-transition: all 0.1s;
+		-moz-transition: all 0.1s;
+		transition: all 0.1s;
+	
+		-webkit-box-shadow: 0px 2px 0px #84261a;
+	        -moz-box-shadow: 0px 2px 0px #84261a;
+	        box-shadow: 0px 2px 0px #84261a;
+
+
+}
+
+.push_button:active{
+
+}
+
+button.delete-diary-entry:hover {
+	cursor: pointer;
+}
+
+button.delete-diary-entry:active {
+  -webkit-box-shadow: 0px 2px 0px #84261a;
+  -moz-box-shadow: 0px 2px 0px #84261a;
+  box-shadow: 0px 2px 0px #84261a;
+  position:relative;
+  top:1.3px;
+}
+
+</style>

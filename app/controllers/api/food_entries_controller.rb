@@ -16,13 +16,6 @@ class Api::FoodEntriesController < ApplicationController
     end
   end
   
-  def destroy
-    @page = DiaryPage.find(params[:diary_page_id])
-    @entry = FoodEntry.find(params[:id])
-    @entry.destroy
-    redirect_to diary_page_url(params[:diary_page_id])
-  end
-  
   def search
     @results = Food.search_by_name(params[:query])
   end
@@ -30,6 +23,30 @@ class Api::FoodEntriesController < ApplicationController
   def index
     @results = Food.all
     render json: @results
+  end
+  
+  def destroy_breakfast
+    @entry = FoodEntry.where("diary_page_id = ? AND food_id = ?", params[:diary_page_id], params[:food_id]).first
+    @entry.destroy
+    render json: {}
+  end
+  
+  def destroy_lunch
+    @entry = FoodEntry.where("diary_page_id = ? AND food_id = ?", params[:diary_page_id], params[:food_id]).first
+    @entry.destroy
+    render json: {}
+  end
+  
+  def destroy_dinner
+    @entry = FoodEntry.where("diary_page_id = ? AND food_id = ?", params[:diary_page_id], params[:food_id]).first
+    @entry.destroy
+    render json: {}
+  end
+  
+  def destroy_snack
+    @entry = FoodEntry.where("diary_page_id = ? AND food_id = ?", params[:diary_page_id], params[:food_id]).first
+    @entry.destroy
+    render json: {}
   end
   
   private

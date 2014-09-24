@@ -4,6 +4,7 @@ window.App.Views.GoalsEdit = Backbone.View.extend({
   initialize: function(options) {
     this.model = options.model;
     this.listenTo(this.model, "sync", this.render)
+		
   },
 
   events: {
@@ -23,14 +24,10 @@ window.App.Views.GoalsEdit = Backbone.View.extend({
     event.preventDefault();
     var params = $(event.currentTarget).serializeJSON();
     var profile = this.model;
-    profile.set(params["profile"]);
-    profile.save([], {
-      success: function() {
-        Backbone.history.navigate("/", { trigger: true });
-      },
-	  error: function() {
-		  alert("FEAFEs")
-	  }
-    })
-  }
+		profile.save(params, 
+			{url: "/api/diet_profile", 
+			success: function() { 
+				Backbone.history.navigate("", {trigger: true}) 
+			}})
+	}
 })

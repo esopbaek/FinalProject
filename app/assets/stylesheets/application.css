@@ -251,13 +251,6 @@ img {
   width: 100%;
 }
 
-div {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-}
-
 .image-holder  {
   height: 122px;
   width: 110px;
@@ -350,7 +343,6 @@ p.progress {
 }
 
 .progress {
-
   float: left;
 }
 
@@ -369,17 +361,6 @@ p.progress {
 }
 
 /* HEADERS */
-
-li {
-
-}
-
-body, div.nav, div, ul, li, a, img {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-}
 
 a.nav {
   text-decoration: none;

@@ -44,6 +44,7 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
   goalsEdit: function() {
     var profile = new App.Models.DietProfile();
     profile.fetch();
+		
     var goalsEditView = new App.Views.GoalsEdit({
       model: profile
     });

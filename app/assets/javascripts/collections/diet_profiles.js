@@ -1,4 +1,4 @@
-window.App.Collections.DietProfile = Backbone.Collection.extend({
+window.App.Collections.DietProfiles = Backbone.Collection.extend({
   url: "/api/diet_profile",
 
 })

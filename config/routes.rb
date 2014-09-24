@@ -61,7 +61,7 @@ MyApp::Application.routes.draw do
     end
     
     resources :diary_pages, only: [:create, :update, :edit, :show] do
-      resources :food_entries, only: [:create, :new, :destroy]
+      resources :food_entries, only: [:create, :new]
       member do
         get :breakfasts
         get :lunches
@@ -69,6 +69,9 @@ MyApp::Application.routes.draw do
         get :snacks
       end
     end
-
+    delete '/diary_pages/:diary_page_id/breakfasts/:food_id', to: 'food_entries#destroy_breakfast', as: 'food_entries_breakfast'
+    delete '/diary_pages/:diary_page_id/lunches/:food_id', to: 'food_entries#destroy_lunch', as: 'food_entries_lunch'
+    delete '/diary_pages/:diary_page_id/dinners/:food_id', to: 'food_entries#destroy_dinner', as: 'food_entries_dinner'
+    delete '/diary_pages/:diary_page_id/snacks/:food_id', to: 'food_entries#destroy_snack', as: 'food_entries_snack'
   end
 end
