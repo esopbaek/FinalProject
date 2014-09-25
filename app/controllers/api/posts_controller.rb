@@ -2,6 +2,7 @@ class Api::PostsController < ApplicationController
   wrap_parameters false
   
   def index
+    @user = current_user
     @posts = Post.includes(:comments).where("user_id = ?", current_user.id)
     render "index"
   end

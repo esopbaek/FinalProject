@@ -5,7 +5,10 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
     "foods/:meal/:id": "foodsIndex",
     "goals": "goalsShow",
     "goals/edit": "goalsEdit",
-		"checkin": "checkIn"
+		"goals/summary": "goalsSummary",
+		"checkin": "checkIn",
+		"measurement/new": "measurementsNew",
+		"measurement/logs": "measurementsEdit"
   },
 	
 	
@@ -52,15 +55,62 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 		this._swapHeaderView(homeHeaderView);
     this._swapView(goalsEditView);
   },
-  
+	
+	goalsSummary:function() {
+		var profile = new App.Models.GoalSummaryProfile();
+    profile.fetch();
+		
+    var goalsSummaryView = new App.Views.GoalsSummary({
+      model: profile
+    });
+		var homeHeaderView = new App.Views.MyHomeHeader();
+		this._swapHeaderView(homeHeaderView);
+    this._swapView(goalsSummaryView);
+		
+	},
+	 
   checkIn: function() {
-	  var measurement = new App.Models.Measurement();
-	  measurement.fetch();
-	  var checkinView = new App.Views.MeasurementsIndex({
-	  	model: measurement
+		var that = this;
+	  var measurements = new App.Collections.Measurements();
+	  measurements.fetch({
+	  	success: function(collection) {
+			  var checkinView = new App.Views.MeasurementsIndex({
+			  	collection: collection
+			  });
+				var homeHeaderView = new App.Views.MyHomeHeader();
+				that._swapHeaderView(homeHeaderView);
+			  that._swapView(checkinView)
+	  	}
 	  });
-	  this._swapView(checkinView)
   },
+	
+	measurementsNew: function() {
+		var that = this;
+		App.Collections.measurements.fetch({
+			success: function(collection) {
+				var newMeasurementView = new App.Views.MeasurementsNew({
+					collection: collection
+				});
+				var homeHeaderView = new App.Views.MyHomeHeader();
+				that._swapHeaderView(homeHeaderView);
+		    that._swapView(newMeasurementView);
+			}
+		})
+	},
+	
+	measurementsEdit: function() {
+		var that = this;
+		App.Collections.measurements.fetch({
+			success: function(collection) {
+				var measurementLogsView = new App.Views.MeasurementsLogView({
+					collection: collection
+				});
+				var homeHeaderView = new App.Views.MyHomeHeader();
+				that._swapHeaderView(homeHeaderView);
+		    that._swapView(measurementLogsView);
+			}
+		})
+	},
 
   foodDiaryShow: function(id) {
 		var page = App.Collections.foodDiaryPages.getOrFetch(id);

@@ -1,5 +1,5 @@
 window.App.Views.GoalsShow = Backbone.View.extend({
-  template: JST["diet_profiles/goals"],
+  template: JST["diet_profiles/goals_view"],
 
   initialize: function(options) {
     this.model = options.model;

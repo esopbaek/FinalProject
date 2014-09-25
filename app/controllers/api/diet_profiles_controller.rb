@@ -36,6 +36,7 @@ class Api::DietProfilesController < ApplicationController
 
     @projected_loss = calculate_projected_loss(@profile)
     @cals_burned = calculate_calories_burned(@profile)
+    render "summary"
   end
 
   def goals

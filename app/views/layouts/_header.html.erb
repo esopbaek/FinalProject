@@ -2,7 +2,7 @@
 	<% if signed_in? %>
 	<div id="header" class="group">
 	<div class="logo group">
-		<a href="<%= dashboard_url %>"><img src="<%= asset_path 'YourFitnessPal-logo.png' %>" alt="Logo"></a>
+		<a href="#"><img src="<%= asset_path 'YourFitnessPal-logo.png' %>" alt="Logo"></a>
 	</div>
 	
 	<div id="signout"><%= button_to "Sign Out", session_url, :method => :delete %></div>

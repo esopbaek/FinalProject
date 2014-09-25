@@ -2,7 +2,6 @@ window.App.Views.GoalsEdit = Backbone.View.extend({
   template: JST["diet_profiles/edit"],
 
   initialize: function(options) {
-    this.model = options.model;
     this.listenTo(this.model, "sync", this.render)
 		
   },
@@ -27,7 +26,7 @@ window.App.Views.GoalsEdit = Backbone.View.extend({
 		profile.save(params, 
 			{url: "/api/diet_profile", 
 			success: function() { 
-				Backbone.history.navigate("", {trigger: true}) 
+				Backbone.history.navigate("goals/summary", {trigger: true}) 
 			}})
 	}
 })

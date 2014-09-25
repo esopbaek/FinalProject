@@ -1,0 +1,141 @@
+	<h3 id="goals-summary">Your Suggested Fitness And Nutrition Goals</h3>
+
+<div class="goals-summary">
+
+<p><em>Congratulations! Your personalized diet and fitness profile is now complete. Based on your answers, here are your suggested nutrition and fitness goals</em></p>
+
+<table class="nutrition-goals">
+  <tr>
+    <th>Nutrition Goals</th>
+    <th>Target</th>
+  </tr>
+
+  <tr>
+
+    <td><strong>Net Calories Consumed*/Day</strong></td>
+    <td class="red"><%= profile.get("dailyCalories") %> Calories/Day</td>
+  </tr>
+
+  <tr>
+    <td>Carbs/Day</td>
+    <td><%= profile.get("dailyCarbs") %> g</td>
+  </tr>
+
+  <tr>
+    <td>Fat/Day</td>
+    <td><%= profile.get("dailyFat") %> g</td>
+  </tr>
+
+  <tr>
+    <td>Protein/Day</td>
+    <td><%= profile.get("dailyProtein") %> g</td>
+  </tr>
+</table>
+
+<br>
+
+<table class="fitness-goals">
+  <tr>
+    <th>Fitness Goals</th>
+    <th>Target</th>
+  </tr>
+
+  <tr>
+    <td><strong>Calories Burned/Week</strong></td>
+    <td class="red"><%=  profile.get("weeklyCalsBurned") %> Calories</td>
+  </tr>
+
+  <tr>
+    <td>Workouts/Week</td>
+    <td><%=  profile.get("weeklyWorkoutCount")  %> workout(s)</td>
+  </tr>
+
+  <tr>
+    <td>Minutes/Workout</td>
+    <td><%= profile.get("minsPerWorkout") %> minute(s)</td>
+  </tr>
+
+</table>
+
+<p>If I follow this plan...</p>
+
+<p><strong>I will <span class="red"><%= profile.get("goal") %></span></strong></p>
+<p><strong>I should lose <span class="red"><%= profile.get("projectedLoss") %> lbs</span> by <span class="red"><%= profile.get("oneMonthLater") %></span></strong></p>
+
+<button class="goals-summary">Get Started Now!</button>
+
+</div>
+
+<style>
+
+div.goals-summary {
+	font-family: sans-serif;;
+	width: 700px;
+	margin: 0 auto 40px auto;
+  background: RGB(241,241,241);
+  box-shadow: 2px 5px 5px  #888888;
+	text-align: center;
+	padding: 10px;
+}
+
+h3#goals-summary {
+   color: white;
+   font-size: 20px;
+   background: RGB(27,62,113);
+   text-align: left;
+	 width: 100%;
+	 margin: 40px auto 0 auto;
+	 text-align: center;
+	 width:700px;
+	 	padding: 10px;
+}
+
+div.goals-summary p {
+	font-size: 15px;
+	padding: 10px;
+	margin: 0;
+	padding: 4px;
+}
+
+.red {
+  color: red;
+}
+
+.nutrition-goals th, .fitness-goals th {
+  color: white;
+  font-size: 16px;
+  background: RGB(27,62,113);
+  text-align: left;
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+td {
+  background: white;
+  font-size: 15px;
+  padding: 1px;
+}
+table.nutrition-goals, table.fitness-goals {
+	margin: 10px auto;
+	border-spacing: 1px 0;
+	width: 400px;
+	padding: 10px;
+}
+
+button.goals-summary {
+	border: 1px solid black;
+	margin: 0 auto;
+	display: block;
+	border-radius: 5px;
+	background: green;
+	color: white;
+	padding: 10px;
+}
+
+button.goals-summary:hover {
+	cursor: pointer;
+}
+
+</style>
+
+

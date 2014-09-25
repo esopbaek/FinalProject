@@ -47,8 +47,13 @@ MyApp::Application.routes.draw do
       resources :comments, only: [:index, :create, :show, :destroy]
     end
     
-    resources :measurements
-    resources :logs, only: [:create, :destroy, :index]
+    shallow do
+      resources :measurements do
+          resources :logs
+      end
+    end
+      
+      
     resources :diary_pages, only: [:create, :update, :edit, :show] do
     resources :food_entries, only: [:create, :new, :destroy]
     end

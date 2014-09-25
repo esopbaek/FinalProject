@@ -4,16 +4,66 @@
   <div class="weight-update-and-table">
     <div class="weight-update">
       <h3>Enter today's weight: </h3>
-      <form>
+      <form class="log-measurement">
          <input
             name="log[measurement_id]"
             type="hidden"
-            value="<%= 2 %>">
+            value="<%= measurements.findWhere({name: "weight"}).id %>">
         <input type="text" name="log[amount]">lbs
+				<input type="submit" value="Log Weight">
       </form>
-      <i>Last recorded weight: <%= measurements.get("most_recent_weight") %> lbs on 
-		  <%= "TBD" %></i>
+      <i>Last recorded weight: <%= latestWeightLog.get("amount") %> lbs on 
+		  <%= latestWeightLog.get("created_at") %></i>
     </div>
+		
+		    <div class="other-measures">
+		      <table>
+		        <thead>
+		          <tr>
+		            <th>Other Measurements</th>
+		            <th>Last Entry</th>
+		            <th>Today's Entry</th>
+		          </tr>
+		        </thead>
+          
+		      <tbody>
+						
+         <% _.each(measurements.models, function(measurement) { %>
+					 <% if (measurement.get("name") != "weight") { %>
+           <tr>
+             <td class="measurement"><%= measurement.get("name") %></td>
+             <td class="measurement"><%= ((measurement.logs().length == 0) ?
+                   "None." : measurement.logs().last().get("amount") + measurement.get("unit") + " on " + measurement.logs().last().get("created_at")) %></td>
+             <td class="measurement">
+               <form class="log-measurement">
+                  <input
+                     name="log[measurement_id]"
+                     type="hidden"
+                     value="<%= measurement.id %>">
+                 <input type="text" name="log[amount]">
+								 <input type="submit" value="Submit">
+               </form>
+             </td>
+           </tr>
+					 <% } %>
+         <% }) %>
+
+		            <tr>
+		              <td colspan="3"><a href="#measurement/new">Track Additional Measurements</a> | <a href="#measurement/logs">See Your Logged Measurements</a></td>
+		            </tr>
+		        </tbody>
+		      </table>
+		    </div>
+		  </div>
+		  <div class="info">
+		    <div class="info-header">
+		      <p>Check-in</p>
+		    </div>
+		    <div class="body-text">
+		      <p>To help track your progress, you should record your weight periodically. We suggest once a week because your weight fluctuates daily due to uncontrollable factors like water. Try to always weigh yourself at the same time of day - we suggest early in the morning before breakfast.</p>
+		<br>
+		      <p>Taking your measurements can be an even better gauge of your progress because when you burn fat and build heavier muscle, your weight may not change or even increase even though your body is tighter and smaller. We suggest taking your measurements every 2-4 weeks.</p>
+		    </div>
 	
 	</div>
 </div>

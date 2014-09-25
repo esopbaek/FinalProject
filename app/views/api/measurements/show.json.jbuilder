@@ -1,0 +1,1 @@
+json.partial!("measurement", :measurement => @measurement, :logs => @measurement.logs)

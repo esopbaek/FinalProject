@@ -1,0 +1,173 @@
+<div class="h3"><h2>Track Additional Measurements</h2></div>
+
+
+<div class="parent">
+  <div class="add-measurements">
+    <table>
+      <tr>
+        <th colspan="2">Current Measurements</th>
+      </tr>
+
+      <% _.each(measurements.models, function(measurement) { %>
+				<% if (measurement.get("name") != "weight") {%>
+        <tr>
+          <td><%= measurement.get("name") %></td>
+          <td><button data-measurement_id=<%= measurement.id %>>Remove</button>
+        </tr>
+				<% } %>
+      <% }) %>
+
+
+    </table>
+
+    <div class="add-another-measurement">
+      <div class="header-add-another">
+        <p class="add-another">Add Another Measurement</p>
+      </div>
+      <div class="body-add-another">
+        <form class="add-measurement">
+          <label>Description:</label>
+            <input type="text" name="measurement[name]" placeholder="(i.e. 'Body Fat')">
+            <br>
+          <label>Unit:</label>
+            <input type="text" name="measurement[unit]" placeholder="(i.e. 'lbs')">
+        	  <input type="submit" value="Add Measurement">
+        </form>
+				<a href="/#checkin">Cancel</a>
+			</div>
+
+    </div>
+  </div>
+
+  <div class="measurements-info">
+    <div class="measurements-info-head">
+      <p>Change Measurements</p>
+    </div>
+    <div class="measurements-info-body">
+      <p>MyFitnessPal.com allows you to customize what measurements you track to fit your own personal program and goals.</p>
+      <br>
+      <p>Simply use the form on the right to add or remove any measurement. The changes you enter will be used to track your progress from now on.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+
+h2, div, table, tr, td, p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+th {
+  color: white;
+  font-weight: bold;
+  background: RGB(10, 63, 115);
+}
+
+td {
+/*  border: 1px solid black;*/
+  background: RGB(244, 244, 244);
+}
+
+.h3 {
+  text-align: center;
+  margin: 0 auto;
+/*  border: 1px solid black;*/
+  padding: 30px, 0, 20px, 20px;
+  font-size: 30px;
+  width: 700px;
+  border-bottom: 1px solid RGB(224, 224, 224);
+}
+
+h2 {
+  font-family: sans-serif;
+  margin-top: 30px;
+  color: RGB(10, 62, 113);
+}
+
+
+.parent {
+  width: 700px;
+/*  border: 1px solid green;*/
+  height: 200px;
+  margin: 0 auto;
+}
+
+.add-measurements {
+  float: left;
+  margin-top: 50px;
+  display: block;
+/*  border: 1px solid black;*/
+  width: 300px;
+  height: 100%;
+}
+
+div.measurements-info{
+  float: right;
+  margin-top: 50px;
+  display: block;
+/*  border: 1px solid black;*/
+  background: RGB(244, 244, 244);
+  width: 400px;
+  height: 100%;
+}
+
+.measurements-info-head > p{
+  color: RGB(14, 64, 113);
+  font-weight: bold;
+  font-size: 14px;
+  font-family: sans-serif;
+  padding: 20px;
+  background: RGB(244,244,244);
+  border-bottom: 1px solid RGB(224, 224, 224);
+}
+
+.measurements-info-body > p {
+  background: RGB(244,244,244);
+  font-family: sans-serif;
+  font-size: 12px;
+  padding: 10px;
+}
+
+table {
+  width: 200px;
+/*  border: 1px solid red;*/
+}
+
+.header-add-another {
+  bottom-border: 1px solid RGB (224,224,224);
+}
+
+.body-add-another {
+  bottom-border: 1px solid RGB (224,224,224);
+}
+
+.add-another {
+  margin-top:80px;
+  color: RGB(14,75,165);
+  font-size: 20px;
+  margin-bottom: 5px;;
+}
+
+input[value="Add Measurement"] {
+  text-decoration: none;
+  border: 1px solid grey;
+  border-radius: 3px;
+  width: 160px;
+  height: 33px;
+  color: white;
+  font-size: 12px;
+  background: RGB(88, 188, 70);
+  margin-top: 5px;
+}
+
+input[value="Add Measurement"]:hover {
+	cursor: pointer;
+}
+
+
+
+</style>
+
