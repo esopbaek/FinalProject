@@ -8,7 +8,10 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 		"goals/summary": "goalsSummary",
 		"checkin": "checkIn",
 		"measurement/new": "measurementsNew",
-		"measurement/logs": "measurementsEdit"
+		"measurement/logs": "measurementsEdit",
+		"reports": "reports",
+		"profile": "profile",
+		"profile/edit": "profileEdit"
   },
 	
 	
@@ -124,6 +127,39 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 		this._swapHeaderView(foodHeaderView);
    	this._swapView(diaryShow);
   },
+	
+	reports: function() {
+		var that = this;
+		App.Collections.measurements.fetch({
+			success: function(collection) {
+				var reportsShow = new App.Views.ReportsShow({
+					collection: collection
+				})
+				var reportsHeaderView = new App.Views.ReportsHeader();
+				that._swapHeaderView(reportsHeaderView);
+		    that._swapView(reportsShow);
+			}
+		})
+	},
+	
+	profile: function() {
+		var that = this;
+		var profile = new App.Models.SocialProfile();
+		profile.fetch({
+			success: function(model){
+				var profileShow = new App.Views.SocialProfileShow({
+					model: model
+				})
+				var homeHeaderView = new App.Views.MyHomeHeader();
+				that._swapHeaderView(homeHeaderView);
+		    that._swapView(profileShow);
+			}
+		})
+	},
+	
+	profileEdit: function() {
+		
+	},
 	
   _swapHeaderView: function (newHeaderView) {
     if (this.currentHeaderView) {

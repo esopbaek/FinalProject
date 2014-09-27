@@ -48,17 +48,17 @@
         <h3>Add New Entry</h3> 
       </div>
       <div class="add-form">
-        <form>
+        <form class="add-custom-log">
           <input
              name="log[measurement_id]"
              type="hidden"
-             value="<%= chosenMeasurement %>">
+             value="<%= chosenMeasurement.id %>">
           <label for="log-date">Date:</label>
-          <input type="date" name="log[created_at]" value="<%= "TBD" %>">
+          <input type="date" name="log[created_at]" value="">
           <label for="log-amount">Amount:</label>
-          <input type="text" name="log[amount]">
+          <input type="text" name="log[amount]" placeholder="(i.e. 100)">
       
-          <input type="submit" value="Add New Entry">
+          <input type="submit" value="Add New Amount">
         </form>
       </div>
     </div>

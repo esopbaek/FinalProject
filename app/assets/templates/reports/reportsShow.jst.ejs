@@ -1,0 +1,36 @@
+<div class="report">
+  <h2>Charts and Reports</h2>
+
+
+    <label>Choose a report:</label>
+    <select name="measurement_id">
+      <% _.each(measurements.models, function(measurement) { %>
+      	<option value="<%= measurement.id %>"><%= measurement.get("name") %></option>
+			<% }) %>
+    </select>
+    <button data-data_length=7>Chart of Last 7 Entries</button>
+		<button data-data_length=30>Chart of Last (upto) 30 Entries</button>
+	
+
+	<div class="highchart"></div>
+</div>
+
+<style>
+
+h2 {
+  color: RGB(27, 62, 113);
+  border-bottom: 1px solid RGB(220, 220, 220);
+  font-size: 50px;
+  text-align: center;
+}
+
+.report {
+  padding: 10px 10px;
+}
+
+div.highchart {
+	margin: 40px 0;
+}
+
+</style>
+

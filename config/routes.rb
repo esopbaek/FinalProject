@@ -53,7 +53,6 @@ MyApp::Application.routes.draw do
       end
     end
       
-      
     resources :diary_pages, only: [:create, :update, :edit, :show] do
     resources :food_entries, only: [:create, :new, :destroy]
     end
@@ -64,6 +63,8 @@ MyApp::Application.routes.draw do
         get :goals
       end
     end
+    
+    resource :social_profile, :only => [:show, :update, :edit]
     
     resources :diary_pages, only: [:create, :update, :edit, :show] do
       resources :food_entries, only: [:create, :new]

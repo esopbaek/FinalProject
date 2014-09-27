@@ -7,7 +7,7 @@ logs ||= nil
 unless logs.nil?
   json.logs(logs) do |log|
     json.(log, :id, :amount, :measurement_id, :updated_at)
-		json.set! :created_at, log.created_at.strftime("%d %b. %Y")
+		json.set! :created_at, log.created_at.strftime("%b. %d %Y")
   end
 
 end

@@ -1,0 +1,132 @@
+<div id="profile-body">
+  <div class="block1">
+    <div id="profile-head"><h2><%= "TBD" %>'s profile</h2></div>
+    <div class="img"></div>
+
+    <div class="basic-info">
+      <div class="basic-info-profile">
+        <%= "TBD" %><br>
+        <%= profile.get('age') %><br>
+        <%= profile.get('gender') %><br>
+        <%= profile.get('page_title') %>
+      </div>
+      
+      <div class="basic-info-links">
+        <a href="#" class="profile-links">Edit Profile</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="block2">
+    <div class="about-me">
+      <p>About Me</p>
+
+        <%= ((profile.get("about_me")  == "") ? "I havent filled this out yet." : profile.get("about_me")) %>
+      <p>Why I Want to get in shape</p>
+        <%= ((profile.get("why")  == "") ? "I havent filled this out yet." : profile.get("why")) %>
+      <p>My Inspirations</p>
+      <%= ((profile.get("inspir1")  == "") ? "I havent filled this out yet." : profile.get("inspir1")) %>
+    </div>
+
+    <div class="my-progress">
+      <a href="http://www.myfitnesspal.com/weight-loss-ticker"><img border="0" src="http://tickers.myfitnesspal.com/ticker/show/4082/4948/40824948.png" /></a><p style="text-align:center;width:420px;"><small>Created by MyFitnessPal - Free <a href="http://www.myfitnesspal.com">Calorie Counter</a></small></p>
+    </div>
+  </div>
+
+</div>
+
+<style>
+
+div, h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+
+#profile-body {
+  width: 800px;
+  display: block;
+  margin: 20px auto;
+}
+
+#profile-head {
+  width: 500px;
+	border: 1px solid black;
+}
+
+.block1, .block2 {
+  width: 800px;
+}
+
+.block1 {
+  background: RGB(245,245,245);
+  border: 3px solid black;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.basic-info, .img {
+  margin-top: 20px;
+}
+
+.img {
+  float: left;
+  height: 100px;
+  width: 100px;
+  margin-left: 50px;
+  border: 1px solid red;
+}
+
+.basic-info {
+  float: right;
+/*  border: 1px solid black;*/
+  width: 500px;
+  height: 200px;
+}
+
+.basic-info-profile {
+/*  border: 1px solid red;*/
+}
+
+.basic-info-links {
+  height: 100px;
+/*  border: 1px solid green;*/
+    margin-top: 40px;
+}
+
+.profile-links {
+
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.block2 {
+  margin-top: 30px;
+/*  border: 3px solid red;*/
+  height: 400px;
+}
+
+.about-me .my-progress {
+  display: block;
+}
+
+.about-me {
+  float: left;
+  display: block;
+}
+.my-progress {
+  float: right;
+}
+
+</style>
+

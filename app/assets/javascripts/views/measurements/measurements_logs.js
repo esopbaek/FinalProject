@@ -9,7 +9,8 @@ App.Views.MeasurementsLogView = Backbone.View.extend({
 	},
 	events: {
 		"submit form.see-logs": "showLogs",
-		"click button.delete-log": "deleteLog"
+		"click button.delete-log": "deleteLog",
+		"submit form.add-custom-log": "addCustomLog"
 	},
 	render: function() {
 		var renderedContent = this.template({
@@ -26,8 +27,17 @@ App.Views.MeasurementsLogView = Backbone.View.extend({
 		this.render();
 	},
 	deleteLog: function(event) {
+		event.preventDefault();
 		var logId = $(event.currentTarget).data("log_id");
 		var log = this.chosenMeasurement.logs().get(logId);
 		log.destroy({url: "/api/logs/" + logId});
+	},
+	
+	addCustomLog: function(event) {
+		var that = this;
+		event.preventDefault();
+		var params = $(event.currentTarget).serializeJSON()["log"];
+		var newLog = new App.Models.Log(params);
+		this.chosenMeasurement.logs().create(params);
 	}
 })

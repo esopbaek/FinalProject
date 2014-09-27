@@ -24,6 +24,6 @@ class Api::LogsController < ApplicationController
 
   private
   def log_params
-    params.require(:log).permit(:amount, :measurement_id)
+    params.require(:log).permit(:amount, :measurement_id, :created_at)
   end
 end

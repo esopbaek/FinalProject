@@ -12,8 +12,11 @@
         <input type="text" name="log[amount]">lbs
 				<input type="submit" value="Log Weight">
       </form>
+			
+			<% if (latestWeightLog) {%>
       <i>Last recorded weight: <%= latestWeightLog.get("amount") %> lbs on 
 		  <%= latestWeightLog.get("created_at") %></i>
+			<% } %>
     </div>
 		
 		    <div class="other-measures">
