@@ -6,6 +6,15 @@ class User < ActiveRecord::Base
   has_many :exercise_diary_pages, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  
+  has_attached_file :profile_photo, :styles => {
+          :big => "600x600>",
+          :small => "50x50#"
+        }
+        validates_attachment_content_type(
+          :profile_photo,
+          :content_type => /\Aimage\/.*\Z/
+        )
 
   attr_reader :password
   validates :password_digest, :presence => true

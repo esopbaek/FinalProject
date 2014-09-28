@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923194150) do
+ActiveRecord::Schema.define(version: 20140928192332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,9 +158,6 @@ ActiveRecord::Schema.define(version: 20140923194150) do
     t.text     "about_me",   default: ""
     t.text     "why",        default: ""
     t.text     "inspir1",    default: ""
-    t.text     "inspir2",    default: ""
-    t.text     "inspir3",    default: ""
-    t.text     "inspir4",    default: ""
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -174,11 +171,15 @@ ActiveRecord::Schema.define(version: 20140923194150) do
   add_index "social_profiles", ["user_id"], name: "index_social_profiles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
+    t.string   "username",                   null: false
+    t.string   "password_digest",            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "session_token",   null: false
+    t.string   "session_token",              null: false
+    t.string   "profile_photo_file_name"
+    t.string   "profile_photo_content_type"
+    t.integer  "profile_photo_file_size"
+    t.datetime "profile_photo_updated_at"
   end
 
   add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree

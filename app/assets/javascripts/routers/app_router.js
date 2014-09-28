@@ -14,7 +14,6 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 		"profile/edit": "profileEdit"
   },
 	
-	
   foodsIndex: function(meal, id) {
     var indexView = new App.Views.FoodsIndex({
       collection: App.Collections.foods,
@@ -130,6 +129,7 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 	
 	reports: function() {
 		var that = this;
+		App.Models.dashboard.fetch();
 		App.Collections.measurements.fetch({
 			success: function(collection) {
 				var reportsShow = new App.Views.ReportsShow({
@@ -158,7 +158,18 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 	},
 	
 	profileEdit: function() {
-		
+		var that = this;
+		var profile = new App.Models.SocialProfile();
+		profile.fetch({
+			success: function(model){
+				var profileEditView = new App.Views.SocialProfileEdit({
+					model: model
+				})
+				var homeHeaderView = new App.Views.MyHomeHeader();
+				that._swapHeaderView(homeHeaderView);
+		    that._swapView(profileEditView);
+			}
+		})
 	},
 	
   _swapHeaderView: function (newHeaderView) {

@@ -39,3 +39,6 @@ gem "rest-client"
 gem "nokogiri"
 gem "highcharts-rails", "~> 3.0.0"
 gem 'lazy_high_charts'
+gem 'figaro'
+gem "paperclip"
+gem "aws-sdk"

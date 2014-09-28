@@ -8,7 +8,6 @@ window.App.Views.FoodsIndex = Backbone.CompositeView.extend({
 
   events: {
     "submit form.search": "submit",
-    "click li.food-list": "showNutrition"
   },
 
   render: function() {

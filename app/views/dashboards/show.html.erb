@@ -19,6 +19,7 @@
   </ul>
 </div>
 
+
 <div class="all-content group">
   <div class="summary-box group">
     <div class="head">
@@ -33,6 +34,7 @@
       </div>
 
       <div class="image-holder">
+				<%= image_tag @user.profile_photo.url(:big) %>
       </div>
 
       <div class="total"><%= @cals_remaining %></div><p>CALORIES REMAINING</p>

@@ -1,7 +1,7 @@
 <div class="diary-head">
   <a href="#">Yesterday</a>
   <p>Your Food Diary For <%= page.escape("entryDate") %></p>
-  <a href="#">Tomorrow</a>
+  <a href="#diary/">Tomorrow</a>
 </div>
 <div class="table">
 <table>
@@ -23,12 +23,12 @@
       <td class="links">
         <a href="/#foods/breakfast/<%= page.id %>">Add Food</a>
       </td>
-      <td class="macro"><%= page.get("totalBreakfastCals") %></td>
-      <td class="macro"><%= page.get("totalBreakfastCarbs") %></td>
-      <td class="macro"><%= page.get("totalBreakfastFat") %></td>
-      <td class="macro"><%= page.get("totalBreakfastProtein") %></td>
-      <td class="macro"><%= page.get("totalBreakfastSodium") %></td>
-      <td class="macro"><%= page.get("totalBreakfastSugar") %></td>
+      <td class="macro"><%= breakfastTotals[0] || 0 %></td>
+      <td class="macro"><%= breakfastTotals[1] || 0 %></td>
+      <td class="macro"><%= breakfastTotals[2] || 0 %></td>
+      <td class="macro"><%= breakfastTotals[3] || 0 %></td>
+      <td class="macro"><%= breakfastTotals[4] || 0 %></td>
+      <td class="macro"><%= breakfastTotals[5] || 0 %></td>
       <td class="delete"></td>
     </tr>
 
@@ -50,12 +50,12 @@
       <td class="links">
         <a href="/#foods/lunch/<%= page.id %>">Add Food</a>
       </td>
-      <td class="macro"><%= page.get("totalLunchCals") %></td>
-      <td class="macro"><%= page.get("totalLunchCarbs") %></td>
-      <td class="macro"><%= page.get("totalLunchFat") %></td>
-      <td class="macro"><%= page.get("totalLunchProtein") %></td>
-      <td class="macro"><%= page.get("totalLunchSodium") %></td>
-      <td class="macro"><%= page.get("totalLunchSugar") %></td>
+      <td class="macro"><%= lunchTotals[0] || 0 %></td>
+      <td class="macro"><%= lunchTotals[1] || 0 %></td>
+      <td class="macro"><%= lunchTotals[2] || 0 %></td>
+      <td class="macro"><%= lunchTotals[3] || 0 %></td>
+      <td class="macro"><%= lunchTotals[4] || 0 %></td>
+      <td class="macro"><%= lunchTotals[5] || 0 %></td>
       <td class="delete"></td>
     </tr>
 
@@ -78,12 +78,12 @@
       <td class="links">
         <a href="/#foods/dinner/<%= page.id %>">Add Food</a>
       </td>
-      <td class="macro"><%= page.get("totalDinnerCals") %></td>
-      <td class="macro"><%= page.get("totalDinnerCarbs") %></td>
-      <td class="macro"><%= page.get("totalDinnerFat") %></td>
-      <td class="macro"><%= page.get("totalDinnerProtein") %></td>
-      <td class="macro"><%= page.get("totalDinnerSodium") %></td>
-      <td class="macro"><%= page.get("totalDinnerSugar") %></td>
+      <td class="macro"><%= dinnerTotals[0] || 0 %></td>
+      <td class="macro"><%= dinnerTotals[1] || 0 %></td>
+      <td class="macro"><%= dinnerTotals[2] || 0 %></td>
+      <td class="macro"><%= dinnerTotals[3] || 0 %></td>
+      <td class="macro"><%= dinnerTotals[4] || 0 %></td>
+      <td class="macro"><%= dinnerTotals[5] || 0 %></td>
       <td class="delete"></td>
     </tr>
 
@@ -105,12 +105,12 @@
         <a href="/#foods/snack/<%= page.id %>">
           Add Food</a>
       </td>
-      <td class="macro"><%= page.get("totalSnackCals") %></td>
-      <td class="macro"><%= page.get("totalSnackCarbs") %></td>
-      <td class="macro"><%= page.get("totalSnackFat") %></td>
-      <td class="macro"><%= page.get("totalSnackProtein") %></td>
-      <td class="macro"><%= page.get("totalSnackSodium") %></td>
-      <td class="macro"><%= page.get("totalSnackSugar") %></td>
+      <td class="macro"><%= snackTotals[0] || 0 %></td>
+      <td class="macro"><%= snackTotals[1] || 0 %></td>
+      <td class="macro"><%= snackTotals[2] || 0 %></td>
+      <td class="macro"><%= snackTotals[3] || 0 %></td>
+      <td class="macro"><%= snackTotals[4] || 0 %></td>
+      <td class="macro"><%= snackTotals[5] || 0 %></td>
       <td class="delete"></td>
     </tr>
 
@@ -124,12 +124,12 @@
   <table class="total-tabulations">
     <tr class="heading">
       <th class="total-label">Totals</th>
-      <th class="total-col"><%= page.get("totalCals") %></th>
-      <th class="total-col"><%= page.get("totalCarbs") %></th>
-      <th class="total-col"><%= page.get("totalFat") %></th>
-      <th class="total-col"><%= page.get("totalProtein") %></th>
-      <th class="total-col"><%= page.get("totalSodium") %></th>
-      <th class="total-col"><%= page.get("totalSugar") %></th>
+      <th class="total-col"><%= dailyTotals[0] || 0 %></th>
+      <th class="total-col"><%= dailyTotals[1] || 0 %></th>
+      <th class="total-col"><%= dailyTotals[2] || 0 %></th>
+      <th class="total-col"><%= dailyTotals[3] || 0 %></th>
+      <th class="total-col"><%= dailyTotals[4] || 0 %></th>
+      <th class="total-col"><%= dailyTotals[5] || 0 %></th>
     </tr>
 
     <tr class="heading">
@@ -144,41 +144,41 @@
 
     <tr class="heading">
       <td class="total-label">Remaining</td>
-			<% if (page.get("targetCals") - page.get("totalCals") < 0) { %>  
-				      <td class="remaining"><span class="red"><%= page.get("targetCals") - page.get("totalCals") %></span></td>
+			<% if (page.get("targetCals") - dailyTotals[0] < 0) { %>  
+				      <td class="remaining"><span class="red"><%= page.get("targetCals") - dailyTotals[0] %></span></td>
 				<% } else { %>
-      <td class="remaining"><%= page.get("targetCals") - page.get("totalCals") %></td>
+      <td class="remaining"><%= page.get("targetCals") - dailyTotals[0] %></td>
 			<% } %>
 			
-			<% if (page.get("targetCarbs") - page.get("totalCarbs") < 0) { %>  
-				      <td class="remaining"><span class="red"><%= page.get("targetCarbs") - page.get("totalCarbs") %></span></td>
+			<% if (page.get("targetCarbs") - dailyTotals[1] < 0) { %>  
+				      <td class="remaining"><span class="red"><%= page.get("targetCarbs") - dailyTotals[1] %></span></td>
 				<% } else { %>
-      <td class="remaining"><%= page.get("targetCarbs") - page.get("totalCarbs") %></td>
+      <td class="remaining"><%= page.get("targetCarbs") - dailyTotals[1] %></td>
 			<% } %>
 			
-			<% if (page.get("targetFat") - page.get("totalFat") < 0) { %>  
-				      <td class="remaining"><span class="red"><%= page.get("targetFat") - page.get("totalFat") %></span></td>
+			<% if (page.get("targetFat") - dailyTotals[2] < 0) { %>  
+				      <td class="remaining"><span class="red"><%= page.get("targetFat") - dailyTotals[2] %></span></td>
 				<% } else { %>
-      <td class="remaining"><%= page.get("targetFat") - page.get("totalFat") %></td>
+      <td class="remaining"><%= page.get("targetFat") - dailyTotals[2] %></td>
 			<% } %>
 			
 			
-			<% if (page.get("targetProtein") - page.get("totalProtein") < 0) { %>  
-				      <td class="remaining"><span class="red"><%= page.get("targetProtein") - page.get("totalProtein") %></span></td>
+			<% if (page.get("targetProtein") - dailyTotals[3] < 0) { %>  
+				      <td class="remaining"><span class="red"><%= page.get("targetProtein") - dailyTotals[3] %></span></td>
 				<% } else { %>
-      <td class="remaining"><%= page.get("targetProtein") - page.get("totalProtein") %></td>
+      <td class="remaining"><%= page.get("targetProtein") - dailyTotals[3] %></td>
 			<% } %>
 
-			<% if (page.get("targetSodium") - page.get("totalSodium") < 0) { %>  
-				      <td class="remaining"><span class="red"><%= page.get("targetSodium") - page.get("totalSodium") %></span></td>
+			<% if (page.get("targetSodium") - dailyTotals[4] < 0) { %>  
+				      <td class="remaining"><span class="red"><%= page.get("targetSodium") - dailyTotals[4] %></span></td>
 				<% } else { %>
-      <td class="remaining"><%= page.get("targetSodium") - page.get("totalSodium") %></td>
+      <td class="remaining"><%= page.get("targetSodium") - dailyTotals[4] %></td>
 			<% } %>
 			
-			<% if (page.get("targetSugar") - page.get("totalSugar") < 0) { %>  
-				      <td class="remaining"><span class="red"><%= page.get("targetSugar") - page.get("totalSugar") %></span></td>
+			<% if (page.get("targetSugar") - dailyTotals[5] < 0) { %>  
+				      <td class="remaining"><span class="red"><%= page.get("targetSugar") - dailyTotals[5] %></span></td>
 				<% } else { %>
-	    <td class="remaining"><%= page.get("targetSugar") - page.get("totalSugar") %></td>
+	    <td class="remaining"><%= page.get("targetSugar") - dailyTotals[5] %></td>
 			<% } %>
     </tr>
 

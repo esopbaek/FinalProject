@@ -1,16 +1,16 @@
 <div class="nav group">
   <ul>
     <li class="linkylinks"><a class="nav" href="/#">MY HOME</a></li>
-    <li class="linkylinks selected"><a class="nav" href="/#foods">FOOD</a></li>
-    <li class="linkylinks"><a class="nav" href="/#">REPORTS</a></li>
+    <li class="linkylinks selected"><a class="nav" href="/#diary/<%= diaryPage.get("todaysPageId") %>">FOOD</a></li>
+    <li class="linkylinks"><a class="nav" href="/#reports">REPORTS</a></li>
     <li class="linkylinks"><a class="nav" href="/#">COMMUNITY</a></li>   
-    <li class="linkylinks"><a class="nav" href="/#">BLOG</a></li>
+    <!-- <li class="linkylinks"><a class="nav" href="/#">BLOG</a></li> -->
   </ul>
 </div>
 
 <div class="nav2 group">
   <ul>
-    <li class="linkylinks"><a class="nav" href="#foods/diary/<%= diaryPage.get("todaysPageId") %>">Food Diary</a></li>
+    <li class="linkylinks"><a class="nav" href="#diary/<%= diaryPage.get("todaysPageId") %>">Food Diary</a></li>
     <li class="linkylinks"><a class="nav" href="#">Database</a></li>  
   </ul>
 </div>

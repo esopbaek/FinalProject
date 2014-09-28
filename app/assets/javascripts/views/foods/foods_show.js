@@ -40,7 +40,7 @@ window.App.Views.FoodsShow = Backbone.CompositeView.extend({
 				};
 			}, 
 		});
-		this.appendChildTo(nutritionShow, $("div.nutrition-label"))
+		this.renderChildInto(nutritionShow, $("div.nutrition-label"))
 	}
 	
 
