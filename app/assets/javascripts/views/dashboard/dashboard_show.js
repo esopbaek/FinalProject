@@ -7,9 +7,12 @@ window.App.Views.Dashboard = Backbone.CompositeView.extend({
   },
   renderSummary: function() {
   var model = App.Models.dashboard;
+	App.Models.currentUser.fetch();
   var summaryView = new App.Views.DailySummaryView({
+		currentUser: App.Models.currentUser,
     model: model
   });
+	console.log(App.Models.currentUser.attributes)
   this.appendChildTo(summaryView, this.$el)
   },
   renderFeed: function() {

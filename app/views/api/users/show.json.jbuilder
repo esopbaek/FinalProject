@@ -1,0 +1,1 @@
+json.(@current_user, :id, :username, :profile_photo)

@@ -27,12 +27,18 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
   },
 
   dashboardShow: function() {
+		var view = this;
     App.Models.dashboard.fetch();
     App.Collections.posts.fetch();
-		var homeHeaderView = new App.Views.MyHomeHeader();
-    var dashboardView = new App.Views.Dashboard();
-		this._swapHeaderView(homeHeaderView);
-    this._swapView(dashboardView);
+		App.Models.currentUser.fetch({
+			success: function() {
+				var homeHeaderView = new App.Views.MyHomeHeader();
+		    var dashboardView = new App.Views.Dashboard();
+				view._swapHeaderView(homeHeaderView);
+		    view._swapView(dashboardView);
+			}
+		});
+
   },
 
   goalsShow: function() {

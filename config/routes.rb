@@ -34,19 +34,25 @@ MyApp::Application.routes.draw do
   resource :reports, only: [:show]
 
   root to: 'site#root'
+  
   namespace :api, defaults: {format: :json} do
     resources :foods do
       collection do
         get 'search'
       end
     end
-
+    
+    resources :users do
+      collection do
+        get :current_user
+      end
+    end
+    
     resource :dashboard, :only => [:show]
     resources :posts, only: [:index, :create, :destroy, :show] do
       resources :likes, only: [:create, :destroy]
       resources :comments, only: [:index, :create, :show, :destroy]
     end
-    
     shallow do
       resources :measurements do
           resources :logs

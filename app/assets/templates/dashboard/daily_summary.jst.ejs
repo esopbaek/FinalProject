@@ -1,5 +1,5 @@
 <div class="head">
-    Your Daily Summary
+    Your Daily Summary 		
 </div>
 
 <div class="wrap group">
@@ -9,8 +9,12 @@
   </div>
 
   <div class="image-holder">
-  </div>
-
+		<% if (currentUser.get("profile_photo")) { %>
+		<img src="<%= currentUser.get("profile_photo") %>" alt="Smiley face" height="30" width="30">
+		<% } else {%>
+		<input type="file" class="my-photo-upload">
+		<% } %>
+	</div>
 	<% if (dashboard.get("calsRemaining") < 0) { %>  
 		      <div class="total"><span class="red"><%= dashboard.get("calsRemaining") %></span></div><p>CALORIES REMAINING</p>
 		<% } else { %>
