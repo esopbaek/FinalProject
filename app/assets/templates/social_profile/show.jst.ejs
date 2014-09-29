@@ -1,18 +1,20 @@
 <div id="profile-body">
   <div class="block1">
-    <div id="profile-head"><h2><%= "TBD" %>'s profile</h2></div>
-    <div class="img"></div>
+    <div id="profile-head"><h2><%= currentUser.get("username") %>'s profile</h2></div>
+    <div class="img">
+    	<img src="<%= currentUser.get("profile_photo") %>" alt="Smiley face" height="30" width="30">
+    </div>
 
     <div class="basic-info">
       <div class="basic-info-profile">
-        <%= "TBD" %><br>
+        <%= currentUser.get("username") %><br>
         <%= profile.get('age') %><br>
         <%= profile.get('gender') %><br>
         <%= profile.get('page_title') %>
       </div>
       
       <div class="basic-info-links">
-        <a href="#" class="profile-links">Edit Profile</a>
+        <a href="#profile/edit" class="profile-links">Edit Profile</a>
       </div>
     </div>
   </div>
@@ -20,12 +22,11 @@
   <div class="block2">
     <div class="about-me">
       <p>About Me</p>
-
-        <%= ((profile.get("about_me")  == "") ? "I havent filled this out yet." : profile.get("about_me")) %>
+        <em><%= ((profile.get("about_me")  == "") ? "I havent filled this out yet." : profile.get("about_me")) %></em>		<br>
       <p>Why I Want to get in shape</p>
-        <%= ((profile.get("why")  == "") ? "I havent filled this out yet." : profile.get("why")) %>
+        <em><%= ((profile.get("why")  == "") ? "I havent filled this out yet." : profile.get("why")) %></em>
       <p>My Inspirations</p>
-      <%= ((profile.get("inspir1")  == "") ? "I havent filled this out yet." : profile.get("inspir1")) %>
+      <em><%= ((profile.get("inspir1")  == "") ? "I havent filled this out yet." : profile.get("inspir1")) %></em>
     </div>
 
     <div class="my-progress">
@@ -59,8 +60,8 @@ div, h2 {
 }
 
 #profile-head {
-  width: 500px;
-	border: 1px solid black;
+	margin-top: 10px;
+	margin-left: 50px;
 }
 
 .block1, .block2 {
@@ -69,7 +70,7 @@ div, h2 {
 
 .block1 {
   background: RGB(245,245,245);
-  border: 3px solid black;
+  border: 1px solid lightgrey;
   height: 200px;
   margin: 0 auto;
 }
@@ -83,7 +84,7 @@ div, h2 {
   height: 100px;
   width: 100px;
   margin-left: 50px;
-  border: 1px solid red;
+  border: 1px solid grey;
 }
 
 .basic-info {

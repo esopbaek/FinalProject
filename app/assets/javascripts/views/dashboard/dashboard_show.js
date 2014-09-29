@@ -12,11 +12,12 @@ window.App.Views.Dashboard = Backbone.CompositeView.extend({
 		currentUser: App.Models.currentUser,
     model: model
   });
-	console.log(App.Models.currentUser.attributes)
   this.appendChildTo(summaryView, this.$el)
   },
   renderFeed: function() {
-    var feedView = new App.Views.NewsFeedView();
+    var feedView = new App.Views.NewsFeedView({
+    	currentUser: App.Models.currentUser,
+    });
     this.appendChildTo(feedView, this.$el)
   }
 });

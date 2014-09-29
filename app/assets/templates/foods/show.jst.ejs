@@ -58,8 +58,8 @@
     <div class="left-vitamins">
       <span class="labels">
         <ul>
-          <li><bold>Vitamin A</bold></li>
-          <li><bold>Vitamin C</bold></li>
+          <li><bold>Vitamin A&nbsp;</bold></li>
+          <li><bold>Vitamin C&nbsp;</bold></li>
         </ul>
       </span>
       <span class="quantities">
@@ -72,14 +72,14 @@
     <div class="right-vitamins">
       <span class="labels">
         <ul>
-          <li><bold>Calcium</bold></li>
-          <li><bold>Iron</bold></li>
+          <li><bold>Calcium</bold>&nbsp;</li>
+          <li><bold>Iron</bold>&nbsp;</li>
         </ul>
       </span>
       <span class="quantities">
         <ul>
-          <li><%= food.get("calcium") || 0 %></li>
-          <li><%= food.get("iron") || 0 %></li>
+          <li><%= food.get("calcium") || 0 %> %</li>
+          <li><%= food.get("iron") || 0 %>%</li>
         </ul>
       </span>
     </div>
@@ -111,11 +111,10 @@ li {
 }
 
 header, div.all-nutrients, div.all-vitamins, footer{
-  border-bottom: 3px solid black;
 }
 
 .all-nutrients {
-  border-top: 1px solid black;
+
 }
 
 .all-vitamins {
@@ -127,6 +126,7 @@ header, div.all-nutrients, div.all-vitamins, footer{
 
 .quantities, .right-nutrients, .right-vitamins {
   float: right;
+	margin-right: 20px;
 }
 
 button {

@@ -1,5 +1,8 @@
 window.App.Views.NewsFeedView = Backbone.CompositeView.extend({
   className: 'news-feed',
+	initialize: function(options) {
+		this.currentUser = options.currentUser
+	},
   render: function(){
     this.renderLayout();
 		this.renderForm();
@@ -18,7 +21,7 @@ window.App.Views.NewsFeedView = Backbone.CompositeView.extend({
 
   renderList: function() {
     var postsList = new window.App.Views.PostsIndex({
-      collection: App.Collections.posts
+      collection: App.Collections.posts,
     })
     this.appendChild(postsList);
   }

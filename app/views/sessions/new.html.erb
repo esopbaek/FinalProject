@@ -1,7 +1,7 @@
 <h1>YourFitnessPal</h1>
 <button id="demo">DEMO USER</button>
 <div class="sign-in">
-	<h2>Sign In</h2>
+	<h2>Sign In <span class="small">(or <%= link_to "Sign Up", controller: "users", action: "new" %>)</span></h2>
 	<%= render "layouts/errors" %>
 	<form id="login" action="<%= session_url %>" method="post">
 	  <input
@@ -31,7 +31,7 @@
 
 $(document).ready( function() {
 	$("button#demo").click(function() {
-		$("input#user_username").val("esop1")
+		$("input#user_username").val("DemoUser")
 		$("input#user_password").val("password")
 	})
 })
@@ -63,6 +63,10 @@ button {
 	padding: 13px;
 	font-size: 15px;
 	cursor: pointer;
+}
+
+span.small {
+	font-size: 15px;
 }
 
 h1 {

@@ -149,11 +149,14 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 	},
 	
 	profile: function() {
+		var user = App.Models.currentUser;
+		user.fetch({wait: true})
 		var that = this;
 		var profile = new App.Models.SocialProfile();
 		profile.fetch({
 			success: function(model){
 				var profileShow = new App.Views.SocialProfileShow({
+					user: user,
 					model: model
 				})
 				var homeHeaderView = new App.Views.MyHomeHeader();

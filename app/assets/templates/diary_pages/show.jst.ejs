@@ -1,7 +1,8 @@
 <div class="diary-head">
-  <a href="#">Yesterday</a>
+  <a href="#diary/<%= page.id - 1 %>">Yesterday</a>
+	
   <p>Your Food Diary For <%= page.escape("entryDate") %></p>
-  <a href="#diary/">Tomorrow</a>
+  <a href="#diary/<%= parseInt(page.id) + 1 %>">Tomorrow</a>
 </div>
 <div class="table">
 <table>
@@ -223,8 +224,8 @@ body, table, thead, tfoot, tbody, tr, td, th {
 }
 
 .totals {
-/*  border: 1px solid black;*/
-  height: 90px;
+	height: 100px;
+	margin-bottom: 150px;
 }
 
 th.macro {

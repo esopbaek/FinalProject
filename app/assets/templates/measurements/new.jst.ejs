@@ -24,7 +24,7 @@
       <div class="header-add-another">
         <p class="add-another">Add Another Measurement</p>
       </div>
-      <div class="body-add-another">
+      <div class="body-add-another group">
         <form class="add-measurement">
           <label>Description:</label>
             <input type="text" name="measurement[name]" placeholder="(i.e. 'Body Fat')">
@@ -33,9 +33,10 @@
             <input type="text" name="measurement[unit]" placeholder="(i.e. 'lbs')">
         	  <input type="submit" value="Add Measurement">
         </form>
+			</div>
+			<div class="cancel">
 				<a href="/#checkin">Cancel</a>
 			</div>
-
     </div>
   </div>
 
@@ -131,6 +132,10 @@ div.measurements-info{
   padding: 10px;
 }
 
+.cancel {
+	margin-top: 10px;
+}
+
 table {
   width: 200px;
 /*  border: 1px solid red;*/
@@ -152,15 +157,34 @@ table {
 }
 
 input[value="Add Measurement"] {
-  text-decoration: none;
-  border: 1px solid grey;
-  border-radius: 3px;
-  width: 160px;
-  height: 33px;
-  color: white;
+  float: left;
   font-size: 12px;
   background: RGB(88, 188, 70);
-  margin-top: 5px;
+	height: 25px;
+  width: 160px;
+	color: white;
+	display:block;
+	text-decoration:none;
+	margin:0 auto;
+	border-radius:5px;
+  border: 1px solid grey;
+	text-align:center;
+	
+	-webkit-transition: all 0.1s;
+	-moz-transition: all 0.1s;
+	transition: all 0.1s;
+	
+	-webkit-box-shadow: 0px 5px 0px #006600;
+        -moz-box-shadow: 0px 5px 0px #006600;
+        box-shadow: 0px 5px 0px #006600;
+}
+
+input[value="Add Measurement"]:active {
+-webkit-box-shadow: 0px 2px 0px #006600;
+-moz-box-shadow: 0px 2px 0px #006600;
+box-shadow: 0px 2px 0px #006600;
+position:relative;
+top:3px;
 }
 
 input[value="Add Measurement"]:hover {

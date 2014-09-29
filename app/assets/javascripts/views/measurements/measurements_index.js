@@ -14,7 +14,7 @@ window.App.Views.MeasurementsIndex = Backbone.View.extend({
   },
 
   render: function() {
-		var weightMeasurement = this.collection.get(1);
+		var weightMeasurement = this.collection.findWhere({name: "weight"});
 		var weightLogs = weightMeasurement.logs();
 		var latestWeightLog = weightLogs.models[weightLogs.length - 1];
 		
