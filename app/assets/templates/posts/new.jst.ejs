@@ -1,4 +1,9 @@
+<% if (user && currentUser) { %>
 <form class="new-post">
   <input type="text" name="post[content]" placeholder="What's on your mind?">
+	<input type="hidden" name="post[user_id]" value="<%= user.id %>">
+	<input type="hidden" name="post[poster_id]" value="<%= currentUser.id %>">
+	<input type="hidden" name='post[poster_name]' value="<%= currentUser.get("username") %>">
   <input type="submit" value="Share">
 </form>
+	<% } %>

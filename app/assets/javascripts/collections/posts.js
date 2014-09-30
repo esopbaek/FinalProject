@@ -7,7 +7,7 @@ window.App.Collections.Posts = Backbone.Collection.extend({
     if (post = this.get(id)) {
       post.fetch();
     } else {
-      post = new App.Models.Food();
+      post = new App.Models.Post();
       post.fetch({
         success: function () { posts.add(post); }
       });

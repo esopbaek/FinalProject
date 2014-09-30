@@ -16,6 +16,7 @@ window.App.Views.Dashboard = Backbone.CompositeView.extend({
   },
   renderFeed: function() {
     var feedView = new App.Views.NewsFeedView({
+			user: App.Models.currentUser,
     	currentUser: App.Models.currentUser,
     });
     this.appendChildTo(feedView, this.$el)

@@ -20,13 +20,14 @@ window.App.Views.FoodsIndex = Backbone.CompositeView.extend({
 		var that = this;
     event.preventDefault();
 		
-		this.$("div.results ul").empty();
+		this.$("div.results ul").html("Loading...");
     var query = $(event.currentTarget).serializeJSON()["query"];
 		App.Collections.searchResults.fetch({
 			data: {
 				query: query
 			}, 
 			success: function(collection) {
+				that.$("div.results ul").empty();
 				collection.each(function(food) {
 					var showView = new App.Views.FoodsShow({
 						model: food,

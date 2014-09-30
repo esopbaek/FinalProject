@@ -1,6 +1,7 @@
 class Api::SocialProfilesController < ApplicationController 
   def show   
-    @social_profile = current_user.social_profile 
+    @user = User.find(params[:user_id])
+    @social_profile = @user.social_profile
     render json: @social_profile
   end
   

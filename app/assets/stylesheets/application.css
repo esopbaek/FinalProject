@@ -127,7 +127,7 @@ ul.daily-links li.first {
 }
 
 .post-block > .photo {
-  border: 1px solid red;
+  border: 1px solid lightgrey;
   float: left;
   width: 48px;
   height: 48px;
@@ -384,13 +384,6 @@ div.add-food {
 	padding: 0 10px;
 }
 
-p {
-  color: black;
-  font-family: sans-serif;
-  font-size: 10px;
-  line-height: 1;
-}
-
 .progress {
   float: left;
 	margin-top: 5px;
@@ -417,6 +410,80 @@ span.blue {
 	color: RGB(24, 44, 97);
 	font-size: 15px;
 	font-family: Arial;
+}
+
+/* FOODS INDEX */
+
+
+
+.content {
+  height: 400px;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.bottom {
+  margin-top: 10px;
+  height: 330px;
+}
+
+.results {
+  float: left;
+  border: 1px solid black;
+  width: 400px;
+  height: 100%;
+  overflow: scroll;
+}
+
+li.food-list, li.users-list {
+  border-bottom: RGB solid RGB(244, 244, 244);
+  color: RGB(11, 94, 177);
+  padding: 13px 10px;
+}
+
+li.food-list:hover, li.users-list:hover {
+  color: orange;
+  background: RGB(241, 241, 241);
+	cursor: pointer;
+}
+
+.nutrition-label {
+  float: right;
+  border: 1px solid black;
+  height: 100%;
+  width: 400px;
+}
+
+/*// nutrition-label*/
+.bold {
+  font-weight: bold;
+}
+
+.wrapper {
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+header, div.all-nutrients, div.all-vitamins, footer{
+  border-bottom: 3px solid black;
+}
+
+.labels, .left-nutrients, .left-vitamins {
+  float: left;
+}
+
+.quantities, .right-nutrients, .right-vitamins {
+  float: right;
+}
+
+div.content div.form h3 {
+  border-bottom: 2px solid RGB(220,220,220);
+  margin-bottom: 30px;
+  font-family: sans-serif;
+  color: RGB(29,44,96);
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* HEADERS */

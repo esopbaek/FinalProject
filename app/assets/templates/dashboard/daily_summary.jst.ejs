@@ -30,9 +30,10 @@
 		<% } %>
 	</div>
 	<% if (dashboard.get("calsRemaining") < 0) { %>  
-		      <div class="total"><span class="red"><%= dashboard.get("calsRemaining") %></span></div><p>CALORIES REMAINING</p>
+		      <div class="total"><span class="red"><%= dashboard.get("calsRemaining") %></span></div><p class="cals-remaining">CALORIES REMAINING</p>
 		<% } else { %>
-  <div class="total"><p><%= dashboard.get("calsRemaining") %></p></div><p>CALORIES REMAINING</p>
+  <div class="total"><p><%= dashboard.get("calsRemaining") %></p></div>
+		<p class="cals-remaining">CALORIES REMAINING</p>
 	<% } %>
 <br>
     <div class="equation">
@@ -60,7 +61,10 @@
 
 <style>
 
+p.cals-remaining {
+	font-size: 11px;
 
+}
 
 </style>
 

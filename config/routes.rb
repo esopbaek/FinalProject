@@ -41,12 +41,16 @@ MyApp::Application.routes.draw do
         get 'search'
       end
     end
-    
+  
     resources :users do
       collection do
         get :current_user
+        get :search
       end
+      resource :social_profile, only: [:index, :new, :create, :show]
     end
+    resource :social_profile, only: [:edit,:update, :destroy]
+
     
     resource :dashboard, :only => [:show]
     resources :posts, only: [:index, :create, :destroy, :show] do
@@ -70,7 +74,7 @@ MyApp::Application.routes.draw do
       end
     end
     
-    resource :social_profile, :only => [:show, :update, :edit]
+
     
     resources :diary_pages, only: [:create, :update, :edit, :show] do
       resources :food_entries, only: [:create, :new]

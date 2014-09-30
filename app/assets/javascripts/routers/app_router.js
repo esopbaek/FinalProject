@@ -10,13 +10,13 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 		"measurement/new": "measurementsNew",
 		"measurement/logs": "measurementsEdit",
 		"reports": "reports",
-		"profile": "profile",
+		"users/:id/social_profile": "profile",
 		"profile/edit": "profileEdit",
 		"community": "community"
   },
 	
 	community: function() {
-		var users = new App.Collections.Users();
+		var users = App.Collections.users;
 		users.fetch();
 		var communityView = new App.Views.Community({
 			collection: users
@@ -40,10 +40,11 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 
   dashboardShow: function() {
 		var view = this;
+		App.Collections.users.fetch();
     App.Models.dashboard.fetch();
-    App.Collections.posts.fetch();
 		App.Models.currentUser.fetch({
-			success: function() {
+			success: function(model) {
+				App.Collections.posts.fetch({data: {user_id: model.id}});
 				var homeHeaderView = new App.Views.MyHomeHeader();
 		    var dashboardView = new App.Views.Dashboard();
 				view._swapHeaderView(homeHeaderView);
@@ -160,38 +161,40 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 		})
 	},
 	
-	profile: function() {
-		App.Collections.posts.fetch();
-		var user = App.Models.currentUser;
-		user.fetch({wait: true})
+	profile: function(id) {
+		App.Collections.users.fetch();
+		App.Models.currentUser.fetch();
 		var that = this;
-		var profile = new App.Models.SocialProfile();
+		App.Collections.posts.fetch({data: {user_id: id}});
+		var user = App.Collections.users.getOrFetch(id);
+		var profile = user.socialProfile();
 		profile.fetch({
 			success: function(model){
 				var profileShow = new App.Views.SocialProfileShow({
+					currentUser: App.Models.currentUser,
 					user: user,
 					model: model
 				})
 				var homeHeaderView = new App.Views.MyHomeHeader();
 				that._swapHeaderView(homeHeaderView);
-		    that._swapView(profileShow);
+					    that._swapView(profileShow);
 			}
 		})
 	},
 	
 	profileEdit: function() {
-		var that = this;
-		var profile = new App.Models.SocialProfile();
-		profile.fetch({
-			success: function(model){
+		var that = this
+		var user = App.Models.currentUser;
+		user.fetch({
+			success: function(model) {
 				var profileEditView = new App.Views.SocialProfileEdit({
-					model: model
+					model: model.socialProfile()
 				})
 				var homeHeaderView = new App.Views.MyHomeHeader();
 				that._swapHeaderView(homeHeaderView);
-		    that._swapView(profileEditView);
+						    that._swapView(profileEditView);		
 			}
-		})
+		});
 	},
 	
   _swapHeaderView: function (newHeaderView) {

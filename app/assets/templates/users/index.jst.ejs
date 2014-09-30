@@ -1,6 +1,57 @@
-<div class="community">
-	<% _.each(users, function(user) { %>
-		<%= user.get("username") %>
+<div class="community group">
+	<h3>Search For Users By Name</h3>
+	<form class="search-user">
+		<input type="text" name="query">
+		<input type="submit" value="Search">
+	</form>
+	
+	<ul class="users-list">
+	<% _.each(users.models, function(user) { %>
+		<a href="#users/<%= user.id %>/social_profile">
+		<li class="users-list">
+			<div class="profile-img">
+					<p>
+						<%= user.get("username") %>
+						<img src="<%= user.get("profile_photo") %>" alt="Missing" height="30" width="30">
+					</p>
+		</div>
+	</li>
+	</a>
 	<% }) %>
+</ul>
 
 </div>
+
+<style>
+
+
+div.community h3 {
+  font-family: sans-serif;
+  color: RGB(29,44,96);
+  font-size: 20px;
+  font-weight: bold;
+	margin: 10px auto;
+}
+
+form.search-user {
+	  border-bottom: 2px solid RGB(220,220,220);
+		padding-bottom: 10px;
+}
+
+div.community {
+	border: 1px solid lightgrey;
+	width: 400px;
+	margin: 30px auto;
+	overflow: auto;
+	text-align: center;
+	border-radius: 5px;
+	height: 400px;
+}
+
+div.profile-img img {
+	width: 30px;
+	height: 30px;
+	float: left
+}
+
+</style>

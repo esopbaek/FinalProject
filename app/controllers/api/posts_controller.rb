@@ -1,21 +1,21 @@
 class Api::PostsController < ApplicationController
   wrap_parameters false
-  
+
   def index
     @user = current_user
-    @posts = Post.all
+    @posts = Post.where(user_id: params[:user_id])
     render "index"
   end
-  
+
   def show
     @post = Post.find(params[:id])
     @user = @post.user
     @comments = @post.comments
     render "show"
   end
-  
+
   def create
-    @post = current_user.posts.new(post_params)
+    @post = Post.new(post_params)
     @user = @post.user
     @comments = @post.comments
     if @post.save
@@ -25,15 +25,15 @@ class Api::PostsController < ApplicationController
       #some crazy shit
     end
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
     render json: {}
   end
-  
+
   private
   def post_params
-    params.require(:post).permit(:content, :post_id)
+    params.require(:post).permit(:content, :user_id, :poster_id, :poster_name)
   end
 end

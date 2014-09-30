@@ -2,20 +2,30 @@ class Api::UsersController < ApplicationController
   include ApplicationHelper
   wrap_parameters :user, include: [:profile_photo]
 
-  before_action :require_signed_in!, :only => [:show]
   before_action :require_signed_out!, :only => [:create, :new]
 
   def new
     @user = User.new
   end
   
+  def search
+    @users = User.search_by_username(params[:query])
+    render "index"
+  end
+  
+  def show
+    @user = User.find(params[:id])
+    @social_profile = @user.social_profile
+    render "show"
+  end
+  
   def index
     @users = User.all
-    render json: @users
+    render "index"
   end
 
   def current_user
-    @current_user ||= User.find_by_session_token(session[:token])
+    @user ||= User.find_by_session_token(session[:token])
     render "show"
   end
   

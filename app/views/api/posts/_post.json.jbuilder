@@ -1,4 +1,4 @@
-json.(post, :id, :content, :user_id, :created_at, :updated_at)
+json.(post, :id, :content, :user_id, :poster_id, :poster_name, :created_at, :updated_at)
 
 comments ||= nil
 unless comments.nil?

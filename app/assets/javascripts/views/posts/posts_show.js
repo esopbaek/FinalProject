@@ -1,9 +1,12 @@
 window.App.Views.PostsShow = Backbone.CompositeView.extend({
   className: 'post-block group',
-  initialize: function() {
+  initialize: function(options) {
+		this.user = options.user;
+		this.currentUser = options.currentUser;
     _.bindAll(this, "renderDetails");
     this.listenTo(this.model, "sync", this.render);
 		this.listenTo(this.model.comments(), "sync add remove", this.render);
+		this.listenTo(App.Collections.users, "sync", this.render)
     this.model.on("add change", this.renderDetails);
   },
 	events: {
@@ -17,7 +20,12 @@ window.App.Views.PostsShow = Backbone.CompositeView.extend({
   },
   renderDetails: function() {
     var that = this;
-    var renderedContent = JST['posts/details']({ post: this.model });
+    var renderedContent = JST['posts/details']({ 
+			currentUser: this.currentUser,
+			user: this.user,
+			post: this.model, 
+			poster: App.Collections.users.get(this.model.get("poster_id"))
+		});
     this.$el.html(renderedContent);
     this.model.comments().each(function(comment) {
       var commentsShow = new App.Views.CommentsShow({

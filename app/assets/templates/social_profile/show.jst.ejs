@@ -1,18 +1,19 @@
 <div id="profile-body">
   <div class="block1">
     <div class="img">
-    	<img src="<%= currentUser.get("profile_photo") %>" alt="Missing.png" height="30" width="30">
+    	<img src="<%= user.get("profile_photo") %>" alt="Missing.png" height="30" width="30">
     </div>
-
     <div class="basic-info">
       <div class="basic-info-profile">
-        <strong><%= currentUser.get("username") %></strong><br>
+        <strong><%= user.get("username") %></strong><br>
         <%= profile.get('age') %><br>
         <%= profile.get('gender') %><br>
         "<%= profile.get('page_title') %>"
+				<% if (App.Models.currentUser.id == user.id) { %>
 	      <div class="basic-info-links">
 	        <a href="#profile/edit" class="profile-links">Edit Profile</a>
 	      </div>
+				<% } %>
       </div>
       
 			

@@ -1,8 +1,14 @@
-<div class="photo"></div>
+<div class="photo">
+	<% if (poster) { %>
+	<img src="<%= poster.get("profile_photo") %>" alt="missing">
+	<% } %>
+</div>
 <div class='post-info'>
-  <div class="post-author"><%= post.get("user").username %></div>
+  <div class="post-author"><%= post.get("poster_name") %></div>
   <div class="post-content"><%= post.escape("content") %></div>
+		<% if (user.id == currentUser.id) { %>
 	<div data-post_id="<%= post.id %>" class="delete-post">X</div>
+	<% } %>
   <div class="links">
     <form class="like">
       <input type="submit" value="Like">

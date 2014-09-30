@@ -1,5 +1,5 @@
-App.Models.CurrentUser = Backbone.Model.extend({
-	url: "api/users/current_user",
+App.Models.User = Backbone.Model.extend({
+	urlRoot: "/api/users",
   socialProfile: function () {
     this._social_profile = this._social_profile ||
         new App.Models.SocialProfile([], { user: this });
@@ -14,5 +14,3 @@ App.Models.CurrentUser = Backbone.Model.extend({
     return jsonResp;
   },
 })
-
-App.Models.currentUser = new App.Models.CurrentUser();

@@ -1,1 +1,4 @@
-json.(@current_user, :id, :username, :profile_photo)
+json.(@user, :id, :username, :profile_photo)
+json.social_profile(@user.social_profile)
+
+

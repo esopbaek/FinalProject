@@ -12,11 +12,14 @@ App.Views.SocialProfileEdit = Backbone.View.extend({
 	},
 	
   submit: function(event) {
+		var that = this;
     event.preventDefault();
     var params = $(event.currentTarget).serializeJSON();
     var profile = this.model;
-		profile.save(params, {url: "/api/social_profile", success: function() {
-			Backbone.history.navigate("profile", {trigger: true})
-		}});
+		profile.save(params, {
+			url: "/api/social_profile", 
+			success: function(){
+				Backbone.history.navigate("users/" + that.model.user.id + "/social_profile", {trigger: true})
+			}});
 	}
 })

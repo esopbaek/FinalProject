@@ -12,6 +12,8 @@
     <li class="linkylinks"><a class="nav" href="#/">Home</a></li>
     <li class="linkylinks"><a class="nav" href="/#goals">Goals</a></li>
     <li class="linkylinks"><a class="nav" href="#checkin">Check-in</a></li>
-    <li class="linkylinks"><a class="nav" href="#profile">Profile</a></li>
+		<% if (App.Models.currentUser.id) {%>
+    <li class="linkylinks"><a class="nav" href="#users/<%= App.Models.currentUser.id %>/social_profile">Profile</a></li>
+		<% } %>
   </ul>
 </div>
