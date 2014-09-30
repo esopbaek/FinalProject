@@ -14,8 +14,8 @@ class UsersController < ApplicationController
       sign_in(@user)
       Measurement.create(name: "weight", user_id: @user.id, unit: "lbs")
 
-      i = -365
-      while i < 365 do
+      i = -5
+      while i < 50 do
         DiaryPage.create!(entry_date: Date.today + i, user_id: @user.id)
         ExerciseDiaryPage.create!(exercise_entry_date: Date.today + i, user_id: @user.id)
         i+=1
