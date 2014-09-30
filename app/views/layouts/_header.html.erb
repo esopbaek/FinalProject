@@ -1,17 +1,21 @@
 
-	<% if signed_in? %>
-	<div id="header" class="group">
+
+	<div id="header" >
 	<div class="logo group">
 		<a href="#"><img src="<%= asset_path 'YourFitnessPal-logo.png' %>" alt="Logo"></a>
 	</div>
-	
+		<% if signed_in? %>
 	<div id="signout"><%= button_to "Sign Out", session_url, :method => :delete %></div>
-	<div class="user-profile">Hi, <a href="<%= social_profile_url %>"> <%= current_user.username %></a></div>
-
-	</div>
 	<% end %>
+	</div>
+
 
 <style>
+
+div#header {
+	background: url(<%= asset_path ("grey-background.jpeg") %>);
+	height: 30px;
+}
 
 .group:after {
 	clear: both;
@@ -21,29 +25,28 @@
 
 div#signout > form input[type="submit"] {
 	-webkit-appearance:none;
-	color: red;
+	color: white;
 	background: none;
 	cursor: pointer;
 	border: none;
 }
 
-div.user-profile {
-	float: right;
-	margin-top: 15px;
-	margin-right: 20px;
+div#signout > form input[type="submit"]:hover {
+	color: red;
 }
 
 div#signout {
 	float: right;
-	margin-top: 12px;
+	margin-top: 4px;
 	margin-right: 60px;
 }
 
 .logo {
+	padding-top: 4px;
 	float: left;
 	width: 200px;
-	height: 60px;
-	margin-left: 100px;
+	height: 25px;
+	margin-left: 50px;
 }
 
 .logo img {

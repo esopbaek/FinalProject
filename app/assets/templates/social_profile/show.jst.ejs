@@ -1,37 +1,38 @@
 <div id="profile-body">
   <div class="block1">
-    <div id="profile-head"><h2><%= currentUser.get("username") %>'s profile</h2></div>
     <div class="img">
-    	<img src="<%= currentUser.get("profile_photo") %>" alt="Smiley face" height="30" width="30">
+    	<img src="<%= currentUser.get("profile_photo") %>" alt="Missing.png" height="30" width="30">
     </div>
 
     <div class="basic-info">
       <div class="basic-info-profile">
-        <%= currentUser.get("username") %><br>
+        <strong><%= currentUser.get("username") %></strong><br>
         <%= profile.get('age') %><br>
         <%= profile.get('gender') %><br>
-        <%= profile.get('page_title') %>
+        "<%= profile.get('page_title') %>"
+	      <div class="basic-info-links">
+	        <a href="#profile/edit" class="profile-links">Edit Profile</a>
+	      </div>
       </div>
       
-      <div class="basic-info-links">
-        <a href="#profile/edit" class="profile-links">Edit Profile</a>
-      </div>
+			
+	    <div class="about-me">
+	      <p><strong><span class='blue'>About Me</span></strong></p>
+	        &nbsp;&nbsp;&nbsp;&nbsp;<em><%= ((profile.get("about_me")  == "") ? "I havent filled this out yet." : profile.get("about_me")) %></em>		<br>
+	      <p><strong><span class='blue'>Why I Want to get in shape</span></strong></p>
+	        &nbsp;&nbsp;&nbsp;&nbsp;<em><%= ((profile.get("why")  == "") ? "I havent filled this out yet." : profile.get("why")) %></em>
+		
+	      <p><strong><span class='blue'>My Inspirations</span></strong></p>
+	      &nbsp;&nbsp;&nbsp;&nbsp;<em><%= ((profile.get("inspir1")  == "") ? "I havent filled this out yet." : profile.get("inspir1")) %></em>
+	    </div>
+			
+		
+			
     </div>
   </div>
 
-  <div class="block2">
-    <div class="about-me">
-      <p>About Me</p>
-        <em><%= ((profile.get("about_me")  == "") ? "I havent filled this out yet." : profile.get("about_me")) %></em>		<br>
-      <p>Why I Want to get in shape</p>
-        <em><%= ((profile.get("why")  == "") ? "I havent filled this out yet." : profile.get("why")) %></em>
-      <p>My Inspirations</p>
-      <em><%= ((profile.get("inspir1")  == "") ? "I havent filled this out yet." : profile.get("inspir1")) %></em>
-    </div>
+  <div class="my-progress">
 
-    <div class="my-progress">
-      <a href="http://www.myfitnesspal.com/weight-loss-ticker"><img border="0" src="http://tickers.myfitnesspal.com/ticker/show/4082/4948/40824948.png" /></a><p style="text-align:center;width:420px;"><small>Created by MyFitnessPal - Free <a href="http://www.myfitnesspal.com">Calorie Counter</a></small></p>
-    </div>
   </div>
 
 </div>
@@ -51,10 +52,8 @@ div, h2 {
   clear: both;
 }
 
-
-
 #profile-body {
-  width: 800px;
+  width: 600px;
   display: block;
   margin: 20px auto;
 }
@@ -64,15 +63,14 @@ div, h2 {
 	margin-left: 50px;
 }
 
-.block1, .block2 {
-  width: 800px;
-}
+
 
 .block1 {
   background: RGB(245,245,245);
   border: 1px solid lightgrey;
-  height: 200px;
+  height: 170px;
   margin: 0 auto;
+	padding: 10px;
 }
 
 .basic-info, .img {
@@ -88,25 +86,20 @@ div, h2 {
 }
 
 .basic-info {
-  float: right;
-/*  border: 1px solid black;*/
-  width: 500px;
+  float: left;
+  width: 400px;
   height: 200px;
+	margin-left: 10px;
+	
 }
 
 .basic-info-profile {
-/*  border: 1px solid red;*/
+	width: 100px;
+	float: left;
 }
 
-.basic-info-links {
-  height: 100px;
-/*  border: 1px solid green;*/
-    margin-top: 40px;
-}
 
 .profile-links {
-
-  border: 1px solid black;
   border-radius: 4px;
   padding: 10px;
 }
@@ -117,16 +110,38 @@ div, h2 {
   height: 400px;
 }
 
-.about-me .my-progress {
-  display: block;
+div.basic-info-links {
+	margin-top: 10px;
+		color:#FFF;
+		display:block;
+		text-decoration:none;
+		border-radius:5px;
+		border:solid 1px #006600;
+		background:RGB(57, 164, 54);
+		text-align:center;
+		-webkit-transition: all 0.1s;
+		-moz-transition: all 0.1s;
+		transition: all 0.1s;
+		-webkit-box-shadow: 0px 5px 0px #006600;
+	        -moz-box-shadow: 0px 5px 0px #006600;
+	        box-shadow: 0px 5px 0px #006600;
+				}
+				
+div.basic-info-links:active{
+    -webkit-box-shadow: 0px 2px 0px #84261a;
+    -moz-box-shadow: 0px 2px 0px #84261a;
+    box-shadow: 0px 2px 0px #84261a;
+    position:relative;
+    top: 3px;
 }
 
 .about-me {
-  float: left;
-  display: block;
-}
-.my-progress {
   float: right;
+  display: block;
+
+	position:relative;
+	top: 0px;
+	right:0px;
 }
 
 </style>

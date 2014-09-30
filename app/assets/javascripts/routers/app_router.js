@@ -11,8 +11,20 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 		"measurement/logs": "measurementsEdit",
 		"reports": "reports",
 		"profile": "profile",
-		"profile/edit": "profileEdit"
+		"profile/edit": "profileEdit",
+		"community": "community"
   },
+	
+	community: function() {
+		var users = new App.Collections.Users();
+		users.fetch();
+		var communityView = new App.Views.Community({
+			collection: users
+		})
+		var homeHeaderView = new App.Views.MyHomeHeader();
+		this._swapHeaderView(homeHeaderView);
+    this._swapView(communityView);
+	},
 	
   foodsIndex: function(meal, id) {
     var indexView = new App.Views.FoodsIndex({
@@ -149,6 +161,7 @@ window.App.Routers.AppRouter = Backbone.Router.extend({
 	},
 	
 	profile: function() {
+		App.Collections.posts.fetch();
 		var user = App.Models.currentUser;
 		user.fetch({wait: true})
 		var that = this;

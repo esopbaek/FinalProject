@@ -1,19 +1,10 @@
 <% method = (@profile.persisted? ? "put" : "post") %>
-<% header = (@profile.persisted? ? "Update Your Profile" : "Create Your Free Account - Step 2 of 3") %>
+<% header = (@profile.persisted? ? "Update Your Profile" : "Create Your Free Account") %>
 
-<style>
-label {
-  font-weight: bold;
-}
 
-button {
-  border: 1px solid black;
-  color: green;
-}
-</style>
+<div class="create-diet-profile">
 <h2><%= header %></h2>
-<%= render "layouts/errors" %>
-<form action="/diet_profile", method="post">
+<form class="create-diet-profile" action="/diet_profile", method="post">
   <input
      name="authenticity_token"
      type="hidden"
@@ -45,7 +36,7 @@ button {
 <input type="date" name="profile[d_o_b]" value="<%= @profile.d_o_b.nil? ? "" : @profile.d_o_b.strftime("%Y-%m-%d") %>"
 <br>
 
-<p><strong>How would you describe your normal daily activities?</strong></p>
+<strong><h4>How would you describe your normal daily activities?</h4></strong>
 <input type="radio" name="profile[activity_level]" value="Sedentary" checked>
 Sedentary: Spend most of the day sitting (e.g. bank teller, desk job)
 <br>
@@ -91,3 +82,21 @@ Very Active: Spend most of the day doing heavy physical activity (e.g. bike mess
 
 <input type="submit" value="Save and Continue">
 </form>
+</div>
+
+<style>
+
+body {
+	background: lightblue;
+}
+
+div.create-diet-profile {
+	border: 1px solid lightgrey;
+	margin: 30px auto;
+	width: 500px;
+	padding: 10px;
+	border-radius: 5px;
+	background: white;
+}
+
+</style>

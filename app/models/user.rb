@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_username, :against => :username
   has_one :diet_profile, dependent: :destroy
   has_one :social_profile, dependent: :destroy
   has_many :measurements, dependent: :destroy
@@ -23,6 +25,7 @@ class User < ActiveRecord::Base
   validates :username, :presence => true, :uniqueness => true
 
   before_validation :ensure_session_token
+  
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)

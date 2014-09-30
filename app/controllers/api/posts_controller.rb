@@ -3,7 +3,7 @@ class Api::PostsController < ApplicationController
   
   def index
     @user = current_user
-    @posts = Post.includes(:comments).where("user_id = ?", current_user.id)
+    @posts = Post.all
     render "index"
   end
   

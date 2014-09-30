@@ -1,4 +1,4 @@
-App.Views.SocialProfileShow = Backbone.View.extend({
+App.Views.SocialProfileShow = Backbone.CompositeView.extend({
 	template: JST["social_profile/show"],
 	initialize: function(options) {
 		this.currentUser = options.user
@@ -9,6 +9,14 @@ App.Views.SocialProfileShow = Backbone.View.extend({
 			profile: this.model
 		});
 		this.$el.html(renderedContent);
+		this.renderFeed();
 		return this;
 	},
+	
+  renderFeed: function() {
+    var feedView = new App.Views.NewsFeedView({
+    	currentUser: this.currentUser,
+    });
+    this.appendChildTo(feedView, this.$(".my-progress"))
+  }
 })

@@ -324,7 +324,7 @@
 	  <div class="bottom-form">
 	    <div class="social-info">
 	      <h2>About You</h2>
-	      <label>Your Page Title: (e.g. "Mom on a mission", "It's time to change...")</label>
+	      <label>Your Page Title: (e.g. "Mom on a mission", "It's time to change...")</label><br>
 	      <input type="text" name="social_profile[page_title]" value="<%= profile.get('page_title') %>">
 	      <br>
       
@@ -366,13 +366,22 @@ div.edit-profile, h1.editprofile {
 	width: 800px;
 	display: block;
 	margin: 30px auto;
-	border: 1px solid black;
+	border: 1px solid grey;
 	text-align: left;
 	padding: 10px;
 	border-radius: 5px;
+	background: RGB(241,241,241);
 }
 
+form.edit-profile input {
+	width: 400px;
+}
 
+form.edit-profile input[type="submit"] {
+	display: block;
+	margin: 30px auto;
+	width: 100px;
+	padding: 30px;
 }
 
 </style

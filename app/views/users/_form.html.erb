@@ -2,7 +2,7 @@
 <% method = (user.persisted? ? "put" : "post") %>
 <% message = (user.persisted? ? "Update user" : "Create user") %>
 <%= render "layouts/errors" %>
-<form action="<%= action %>" method="post">
+<form class="create-user" action="<%= action %>" method="post">
   <input
      name="_method"
      type="hidden"
@@ -28,3 +28,26 @@
 
   <input type="submit" value="<%= message %>">
 </form>
+
+<style>
+
+form.create-user {
+	text-align: center;
+}
+
+h1.create-user, h2.create-user {
+	margin: 0 auto;
+	text-align: center;
+}
+
+h1.create-user {
+	margin-top: 100px;
+}
+
+body {
+	background: lightblue;
+}
+</style>
+
+
+

@@ -1,8 +1,11 @@
 <div class="diary-head">
-  <a href="#diary/<%= page.id - 1 %>">Yesterday</a>
-	
-  <p>Your Food Diary For <%= page.escape("entryDate") %></p>
-  <a href="#diary/<%= parseInt(page.id) + 1 %>">Tomorrow</a>
+ 
+  <h4> 
+		<a href="#diary/<%= page.id - 1 %>"><-</a>
+		&nbsp;&nbsp;Your Food Diary For <%= page.escape("entryDate") %>&nbsp;&nbsp;
+		<a href="#diary/<%= parseInt(page.id) + 1 %>">-></a>
+	</h4>
+  
 </div>
 <div class="table">
 <table>
@@ -210,11 +213,14 @@ body, table, thead, tfoot, tbody, tr, td, th {
 
 
 .diary-head {
-  margin-top:30px;
   text-align: center;
   color: RGB(15,68,111);
-  font-size: 20px;
+  font-size: 30px;
   border-bottom: 3px solid RGB(224,224,224);
+}
+
+.diary-head h4 {
+	margin: 20px auto;
 }
 
 .table, .totals {

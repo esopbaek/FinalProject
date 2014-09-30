@@ -10,7 +10,7 @@ class DietProfilesController < ApplicationController
       weight.save
       @age = calculate_age(@profile)
       SocialProfile.create(age: @age, gender: @profile.gender, user_id: current_user.id)
-      render :email
+      redirect_to root_url
     else
       flash.now[:errors] = @profile.errors.full_messages
       render :new
