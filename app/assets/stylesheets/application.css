@@ -262,10 +262,11 @@ div.comment-block > div.comment-info > div.comment-links {
 }
 
 textarea[name="comment[comment]"] {
-  width: 490px;
+  width: 400px;
   height: 20px;
   background: white;
   border: 1px solid RGB(230, 230, 230);
+	margin-left:10px;
 }
 
 a {

@@ -9,7 +9,11 @@ class Api::UsersController < ApplicationController
   end
   
   def search
-    @users = User.search_by_username(params[:query])
+    if params[:query] == ""
+      @users = User.all
+    else
+      @users = User.search_by_username(params[:query])
+    end
     render "index"
   end
   

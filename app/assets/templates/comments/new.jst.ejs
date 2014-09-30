@@ -1,8 +1,26 @@
-<div class="comment-photo"></div>
+<% if (user && currentUser) { %>
+<div class="comment-photo">
+	<img src="<%= currentUser.get("profile_photo") %>" alt="missing">
+</div>
 <div class="the-form">
   <form class="new-comment">
+		<input type="hidden" name="comment[user_id]" value=<%= user.id %>>
 		<input type="hidden" name="comment[post_id]" value=<%= post.id %>>
+		<input type="hidden" name="comment[commenter_id]" value=<%= currentUser.id %>>
+		<input type="hidden" name="comment[commenter_name]" value=<%= currentUser.get("username") %>>
 		<textarea name="comment[comment]" placeholder="Write a comment..."></textarea>
 		<input type="submit" value="Add Comment...">
   </form>
 </div>
+<% } %>
+
+<style>
+
+div.comment-photo {
+	border: 1px solid lightgrey;
+	width: 30px;
+	height: 30px;
+	float: left;
+}
+
+</style>

@@ -4,8 +4,15 @@ window.App.Views.CommentsNew = Backbone.CompositeView.extend({
     "submit form.new-comment": "createComment"
   },
 	
+	initialize: function(options) {
+		this.user = options.user;
+		this.currentUser = options.currentUser;
+	},
+	
   render: function() {
     this.$el.html(JST['comments/new']({
+			user: this.user,
+			currentUser: this.currentUser,
     	post: this.model
     }));
   },

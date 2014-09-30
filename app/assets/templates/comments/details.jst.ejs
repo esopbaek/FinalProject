@@ -1,15 +1,21 @@
-<div class="comment-photo"></div>
+<% if (commenter && user) { %>
+<div class="comment-photo">
+	<img src="<%= commenter.get("profile_photo") %>" alt="missing">
+</div>
 <div class="comment-info">
-   <div class="comment-content"><span class="blue"><%= comment.get("user").username %></span>
+   <div class="comment-content"><span class="blue"><%= comment.get("commenter_name") %></span>
      <%= comment.get("comment") %> </div>
   <div class="comment-links">
-    <time><%= humanized_time_span(comment.escape("created_at")) %></time> -
-      <form class="like">
-         <input type="submit" value="Like">
-      </form> -
+    <time><%= humanized_time_span(comment.escape("created_at")) %></time> <!-- - -->
+				<!-- <form class="like">
+         <input type="submit" value="Like"> -->
+      </form>
+			<% if ((currentUser.id == commenter.id) || (user.id == currentUser.id)) { %>
       <form class="delete-comment">
         <input type="submit" value="Delete">
      </form>
+		 <% } %>
   </div>
 </div>
+<% } %>
 
